@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-import Profile from "./Profile/index";
+import Account from "./Account/index";
 
 class App extends Component {
   render() {
@@ -8,7 +8,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Redirect from="/" to="/EveryInteract" />
-          <Route exact path="/EveryInteract" component={Profile} />
+          <Route exact path="/EveryInteract" component={Account} />
         </div>
       </BrowserRouter>
     );
