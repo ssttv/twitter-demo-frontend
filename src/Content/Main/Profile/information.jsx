@@ -13,7 +13,7 @@ const ProfileContainer = styled.div`
 
 const ProfileTitle = styled.div``;
 
-const Nickname = styled.div`
+const UserHandle = styled.div`
   display: flex;
   flex-direction: row;
 
@@ -156,12 +156,12 @@ export default () => {
   return (
     <ProfileContainer>
       <ProfileTitle>
-        <Nickname>
+        <UserHandle>
           <Link to="/EveryInteract" className="link-profile">
             <Text>Every Interaction</Text>
           </Link>
           <Verified alt="Verified user" src={check} />
-        </Nickname>
+        </UserHandle>
         <FollowContainer>
           <Link to="/EveryInteract">
             <StatusFollow>@EveryInteract</StatusFollow>
