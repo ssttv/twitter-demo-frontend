@@ -149,6 +149,10 @@ const Interact = styled.button`
   &:hover {
     opacity: 0.8;
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default () => (

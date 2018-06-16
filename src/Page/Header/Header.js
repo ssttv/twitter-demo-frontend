@@ -14,7 +14,8 @@ const Text = styled.span`
 `;
 
 const LargeText = Text.extend`
-  font-size: 20px;
+  font-size: 18px;
+  color: #707e88;
 `;
 
 const ProfileHeader = styled.img`
@@ -60,6 +61,37 @@ const ProfileInfo = styled.div`
   min-width: 200px;
   justify-content: space-between;
   padding-left: 18px;
+`;
+
+const StatLink = styled(NavLink)`
+  padding-bottom: 8px;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  align-items: center;
+  width: 100%;
+
+  &.normal {
+    border-bottom: 3px solid transparent;
+  }
+
+  &.active {
+    border-bottom: 3px solid #1da1f2;
+
+    ${LargeText} {
+      color: #1da1f2;
+    }
+  }
+
+  &:hover {
+    border-bottom: 3px solid #1da1f2;
+    transition: all 0.1s ease-in-out;
+
+    ${LargeText} {
+      color: #1da1f2;
+    }
+  }
 `;
 
 const Info = styled.div`
@@ -123,13 +155,17 @@ export default () => (
         </ProfileBlock>
         <ProfileInfo>
           <Info>
-            <Text>Tweets</Text>
-            <LargeText>8,058</LargeText>
+            <StatLink to="/EveryInteract">
+              <Text>Tweets</Text>
+              <LargeText>8,058</LargeText>
+            </StatLink>
           </Info>
+
           <Info>
             <Text>Following</Text>
             <LargeText>721</LargeText>
           </Info>
+
           <Info>
             <Text>Followers</Text>
             <LargeText>1,815</LargeText>

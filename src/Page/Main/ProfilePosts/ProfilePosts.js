@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import pinned from "./pinned.svg";
 import contentImg from "./post-img.jpg";
 import comment from "./comment.svg";
@@ -32,12 +32,30 @@ const Heading = styled.li`
   font-weight: bold;
 `;
 
-const HeadingLink = styled(Link)`
+const HeadingLink = styled(NavLink)`
   text-decoration: none;
-  color: #1da1f2;
+  padding-bottom: 10px;
+  color: black;
 
-  &:hover {
-    text-decoration: underline;
+  &.normal {
+    color: black;
+
+    &:hover {
+      border-bottom: 2px solid grey;
+      transition: all 0.1s ease-in-out;
+    }
+  }
+
+  &.active {
+    color: #1da1f2;
+    border-bottom: 2px solid #1da1f2;
+
+    &:hover {
+      border-bottom: 2px solid #1da1f2;
+      transition: all 0.1s ease-in-out;
+    }
+
+    }
   }
 `;
 

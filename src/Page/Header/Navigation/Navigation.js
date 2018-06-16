@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import home from "./home.svg";
 import moments from "./moments.svg";
@@ -23,29 +24,60 @@ const BreadCrumbs = styled.div`
   justify-content: space-between;
 `;
 
-const Home = styled.div`
+/* const Home = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-top: 1px;
 `;
-
-const CrumbText = styled.span`
+*/
+/* const CrumbText = styled.span`
   padding-left: 6px;
   font-size: 13px;
   font-weight: bold;
   line-height: 15px;
   letter-spacing: 0.01px;
   color: #667580;
+`; */
+
+const Home = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #667580;
+  text-decoration: none;
+  padding-bottom: 4px;
+  padding-top: 4px;
+
+  &.normal {
+    border-bottom: 2px solid transparent;
+  }
+
+  &.active {
+    border-bottom: 2px solid black;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid grey;
+    transition: all 0.1s ease-in-out;
+  }
 `;
+
+const CrumbText = styled.span`
+  padding-left: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 15px;
+`;
+
+const CrumbIcon = styled.img``;
 
 const Moments = Home.extend``;
 
 const Notifications = Home.extend``;
 
 const Messages = Home.extend``;
-
-const CrumbIcon = styled.img``;
 
 const TwitterLogo = styled.img`
   min-height: 17px;
@@ -58,7 +90,7 @@ const ActionsContainer = styled.div`
   align-items: center;
 `;
 
-const SearchContainer = styled.div`
+const Search = styled.form`
   position: relative;
 `;
 
@@ -71,34 +103,51 @@ const SearchInput = styled.input`
   padding-top: 9px;
   padding-bottom: 8px;
   min-width: 220px;
+  font-weight: normal;
+  line-height: 14px;
+  font-size: 12px;
+
+  &:focus {
+    border: 2px solid #1da1f2;
+    outline: none;
+  }
 `;
 
-const Search = styled.button`
+const SearchBtn = styled.button`
   background-image: url(${search});
   position: absolute;
   height: 18px;
   width: 18px;
+  background-color: #f5f8fa;
   background-position: center;
   background-repeat: no-repeat;
   border-color: transparent;
-  background-color: transparent;
   right: 10px;
   top: 9px;
 `;
 
-const Avatar = styled.button`
-  background-image: url(${"/avatar.svg"});
-  width: 26px;
-  height: 26px;
-  background-repeat: no-repeat;
-  background-position: center;
+const AvatarLink = styled(Link)`
+  width: 30px;
+  height: 30px;
   border-color: transparent;
-  background-color: transparent;
+
+  &:hover {
+    border: 1px solid black;
+    border-radius: 100px;
+    transition: all 0.1s ease-in-out;
+  }
+`;
+
+const Avatar = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
 `;
 
 const Tweet = styled.button`
   padding: 9px 14px;
   border-radius: 100px;
+  border-style: none;
   border-color: #1da1f2;
   background-color: #1da1f2;
   color: white;
@@ -106,44 +155,52 @@ const Tweet = styled.button`
   line-height: 14px;
   letter-spacing: 0.01px;
   font-weight: bold;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
-export default () => {
-  return (
-    <div className="container">
-      <Nav>
-        <BreadCrumbs>
-          <Home>
-            <CrumbIcon alt="Home" src={home} />
-            <CrumbText>Home</CrumbText>
-          </Home>
-          <Moments>
-            <CrumbIcon alt="Moments" src={moments} />
-            <CrumbText>Moments</CrumbText>
-          </Moments>
-          <Notifications>
-            <CrumbIcon alt="Notifications" src={notifications} />
-            <CrumbText>Notifications</CrumbText>
-          </Notifications>
-          <Messages>
-            <CrumbIcon alt="Messages" src={messages} />
-            <CrumbText>Messages</CrumbText>
-          </Messages>
-        </BreadCrumbs>
-        <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
-        <ActionsContainer>
-          <SearchContainer>
-            <SearchInput
-              type="text"
-              id="search-input"
-              placeholder="Search Twitter"
-            />
-            <Search />
-          </SearchContainer>
-          <Avatar />
-          <Tweet>Tweet</Tweet>
-        </ActionsContainer>
-      </Nav>
-    </div>
-  );
-};
+export default () => (
+  <div className="container">
+    <Nav>
+      <BreadCrumbs>
+        <Home>
+          <CrumbIcon alt="Home" src={home} />
+          <CrumbText>Home</CrumbText>
+        </Home>
+        <Moments>
+          <CrumbIcon alt="Moments" src={moments} />
+          <CrumbText>Moments</CrumbText>
+        </Moments>
+        <Notifications>
+          <CrumbIcon alt="Notifications" src={notifications} />
+          <CrumbText>Notifications</CrumbText>
+        </Notifications>
+        <Messages>
+          <CrumbIcon alt="Messages" src={messages} />
+          <CrumbText>Messages</CrumbText>
+        </Messages>
+      </BreadCrumbs>
+      <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
+      <ActionsContainer>
+        <Search action="/search">
+          <SearchInput
+            type="text"
+            id="search-input"
+            placeholder="Search Twitter"
+          />
+          <SearchBtn />
+        </Search>
+        <AvatarLink to="/EveryInteract">
+          <Avatar src="/img/avatar-min.png" />
+        </AvatarLink>
+        <Tweet>Tweet</Tweet>
+      </ActionsContainer>
+    </Nav>
+  </div>
+);
