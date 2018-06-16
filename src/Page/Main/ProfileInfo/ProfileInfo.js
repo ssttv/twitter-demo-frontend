@@ -35,7 +35,7 @@ const Text = styled.h1`
   }
 `;
 
-const Verified = styled.img`
+const Checkmark = styled.img`
   margin-left: 5px;
   margin-top: 4px;
 `;
@@ -137,10 +137,11 @@ const Actions = styled.div`
   justify-content: space-between;
 `;
 
-const Tweet = styled.button`
+const Interact = styled.button`
   color: white;
   padding: 10px 12px;
   border-radius: 100px;
+  border-style: none;
   background-color: #1da1f2;
   min-width: 128px;
   cursor: pointer;
@@ -150,52 +151,48 @@ const Tweet = styled.button`
   }
 `;
 
-const Message = Tweet.extend``;
-
-export default () => {
-  return (
-    <ProfileContainer>
-      <ProfileTitle>
-        <UserHandle>
-          <Link to="/EveryInteract" className="link-profile">
-            <Text>Every Interaction</Text>
-          </Link>
-          <Verified alt="Verified user" src={checkmark} />
-        </UserHandle>
-        <FollowContainer>
-          <Link to="/EveryInteract">
-            <StatusFollow>@EveryInteract</StatusFollow>
-          </Link>
-          <TextFollow>Follows you</TextFollow>
-        </FollowContainer>
-      </ProfileTitle>
-      <ProfileBio>
-        UX Design studio focussed problem solving creativity. Design to us is
-        how can we make things *work* amazing.
-      </ProfileBio>
-      <Location>
-        <LocationIcon alt="mapmarker" src={mapmarker} />
-        <Place>
-          <City>London</City>,
-          <Country>UK</Country>
-        </Place>
-      </Location>
-      <Website>
-        <WebsiteIcon alt="website" src={linkimg} />
-        <Source href="everyinteraction.com">everyinteraction.com</Source>
-      </Website>
-      <DateOfReg>
-        <DateIcon alt="Registration date" src={date} />
-        <Date>
-          Joined
-          <Month>May</Month>
-          <Year>2008</Year>
-        </Date>
-      </DateOfReg>
-      <Actions>
-        <Tweet>Tweet to</Tweet>
-        <Message>Message</Message>
-      </Actions>
-    </ProfileContainer>
-  );
-};
+export default () => (
+  <ProfileContainer>
+    <ProfileTitle>
+      <UserHandle>
+        <Link to="/EveryInteract" className="link-profile">
+          <Text>Every Interaction</Text>
+        </Link>
+        <Checkmark alt="Verified user" src={checkmark} />
+      </UserHandle>
+      <FollowContainer>
+        <Link to="/EveryInteract">
+          <StatusFollow>@EveryInteract</StatusFollow>
+        </Link>
+        <TextFollow>Follows you</TextFollow>
+      </FollowContainer>
+    </ProfileTitle>
+    <ProfileBio>
+      UX Design studio focussed problem solving creativity. Design to us is how
+      can we make things *work* amazing.
+    </ProfileBio>
+    <Location>
+      <LocationIcon alt="mapmarker" src={mapmarker} />
+      <Place>
+        <City>London</City>,
+        <Country>UK</Country>
+      </Place>
+    </Location>
+    <Website>
+      <WebsiteIcon alt="website" src={linkimg} />
+      <Source href="everyinteraction.com">everyinteraction.com</Source>
+    </Website>
+    <DateOfReg>
+      <DateIcon alt="Registration date" src={date} />
+      <Date>
+        Joined
+        <Month>May</Month>
+        <Year>2008</Year>
+      </Date>
+    </DateOfReg>
+    <Actions>
+      <Interact>Tweet to</Interact>
+      <Interact>Message</Interact>
+    </Actions>
+  </ProfileContainer>
+);

@@ -118,7 +118,7 @@ export default () => (
       <ProfileInfoContainer>
         <ProfileBlock>
           <AvatarLink to="/images">
-            <Avatar src="img/big-avatar.png" />
+            <Avatar src="img/avatar-max.png" />
           </AvatarLink>
         </ProfileBlock>
         <ProfileInfo>

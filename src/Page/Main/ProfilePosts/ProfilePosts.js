@@ -53,7 +53,7 @@ const AvatarContainer = styled.div`
 `;
 
 const Avatar = styled(Link)`
-  background-image: url(${"/avatar.svg"});
+  background-image: url(${"/img/avatar-min.png"});
   width: 45px;
   height: 45px;
   display: block;
@@ -89,46 +89,54 @@ const Pinned = styled.p`
 const Title = styled.div`
   display: flex;
   flex-direction: row;
-  width: 57%;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
   margin-top: 5px;
 `;
 
-const Person = styled.div``;
+const Person = styled.div`
+  margin-right: 2px;
+`;
 
 const PersonLink = styled(Link)`
   font-size: 16px;
   line-height: 16px;
   color: black;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const UserHandle = styled.div``;
+const UserHandle = styled(Person)``;
 
 const UserHandleLink = styled(Link)`
   font-size: 14px;
   line-height: 16px;
   color: #697787;
   text-decoration: none;
+  padding-left: 2px;
 
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const DateLink = UserHandleLink.extend``;
-
-const Day = styled.span`
-  padding-right: 2px;
+const DateLink = styled(UserHandleLink)`
+  padding-left: 2px;
+  cursor: pointer;
 `;
 
-const Month = Day.extend``;
+const DayMonthYear = styled.div`
+  padding-left: 2px;
 
-const Year = Month.extend``;
+  &:before {
+    content: "•";
+    color: #697787;
+  }
+`;
 
 const PostMessage = styled.p`
   font-size: 25px;
@@ -224,11 +232,9 @@ export default () => (
           <UserHandle>
             <UserHandleLink to="/EveryInteract">@EveryInteract</UserHandleLink>
           </UserHandle>
-          <DateLink to="/status/777">
-            <Day>2</Day>
-            <Month>Mar</Month>
-            <Year>2015</Year>
-          </DateLink>
+          <DayMonthYear>
+            <DateLink to="/status/777">2 Mar 2015</DateLink>
+          </DayMonthYear>
         </Title>
         <PostMessage>
           We&apos;ve made some more resources for all you wonderful{" "}
