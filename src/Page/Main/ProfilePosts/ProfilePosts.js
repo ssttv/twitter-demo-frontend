@@ -64,6 +64,11 @@ const Post = styled.div`
   display: flex;
   flex-direction: row;
   border-top: 1px solid #e6ecf0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f8fa;
+  }
 `;
 
 const AvatarContainer = styled.div`
@@ -87,7 +92,6 @@ const Pinned = styled.p`
   margin: 0;
   font-size: 12px;
   line-height: 14px;
-  letter-spacing: -0.18px;
   color: #707e88;
   position: relative;
 
@@ -107,13 +111,13 @@ const Pinned = styled.p`
 const Title = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   margin-top: 5px;
 `;
 
 const Person = styled.div`
-  margin-right: 2px;
+  margin-right: 4px;
 `;
 
 const PersonLink = styled(Link)`
@@ -142,12 +146,7 @@ const UserHandleLink = styled(Link)`
   }
 `;
 
-const DateLink = styled(UserHandleLink)`
-  padding-left: 2px;
-  cursor: pointer;
-`;
-
-const DayMonthYear = styled.div`
+const Date = styled.div`
   padding-left: 2px;
 
   &:before {
@@ -156,10 +155,33 @@ const DayMonthYear = styled.div`
   }
 `;
 
+const DateLink = styled(UserHandleLink)`
+  padding-left: 2px;
+  cursor: pointer;
+`;
+
 const PostMessage = styled.p`
   font-size: 25px;
-  font-weight: lighter;
+  font-weight: 200;
   line-height: 30px;
+  color: black;
+  margin: 2px 0 8px 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
+
+const LinkProfile = styled(Link)`
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const PostMessageLink = styled.p`
+  font-size: 16px;
+  line-height: 22px;
   color: black;
   margin: 2px 0 15px 0;
   white-space: pre-wrap;
@@ -184,7 +206,45 @@ const LinkWebSite = styled.a`
   }
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  width: 100%;
+  backface-visibility: hidden;
+  will-change: transform;
+  max-width: 100%;
+`;
+
+const InfoContainer = styled.div`
+  font-size: 15px;
+  line-height: 18px;
+  border: 1px solid #e1e8ed;
+  border-left: none;
+  padding: 6px 2px 4px 9px;
+`;
+
+const InfoTitle = styled.span`
+  font-weight: 500;
+`;
+
+const InfoText = styled.p`
+  margin: 0;
+  padding-bottom: 2px;
+`;
+
+const InfoLink = styled.a`
+  font-weight: normal;
+  color: #697787;
+  text-decoration: none;
+  opacity: 0.8;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const PostLinkContainer = styled.div`
+  display: grid;
+  grid-template-columns: ${props => (props.imgWidth ? "1fr" : "126px 1fr")};
+`;
 
 const Actions = styled.div`
   display: flex;
@@ -212,9 +272,8 @@ const Count = styled.span`
   display: inline-block;
   min-height: 16px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 15px;
-  letter-spacing: -0.19px;
   color: #667580;
 `;
 
@@ -227,7 +286,7 @@ export default () => (
         </HeadingLink>
       </Heading>
       <Heading>
-        <HeadingLink to="/EveryInteract/with_replies" className="heading-link">
+        <HeadingLink to="/EveryInteract/replies" className="heading-link">
           Tweets & replies
         </HeadingLink>
       </Heading>
@@ -250,9 +309,9 @@ export default () => (
           <UserHandle>
             <UserHandleLink to="/EveryInteract">@EveryInteract</UserHandleLink>
           </UserHandle>
-          <DayMonthYear>
+          <Date>
             <DateLink to="/status/777">2 Mar 2015</DateLink>
-          </DayMonthYear>
+          </Date>
         </Title>
         <PostMessage>
           We&apos;ve made some more resources for all you wonderful{" "}
@@ -263,7 +322,9 @@ export default () => (
           <Hashtag to="/hashtag/webdesign">#webdesign</Hashtag>{" "}
           <Hashtag to="/hashtag/ui">#UI</Hashtag>{" "}
         </PostMessage>
-        <Image alt="post image" src={contentImg} />
+        <PostLinkContainer imgWidth>
+          <Image alt="post image" src={contentImg} />
+        </PostLinkContainer>
         <Actions>
           <Action>
             <ActionImage alt="comment" src={comment} />
@@ -276,6 +337,102 @@ export default () => (
           <Action>
             <ActionImage alt="like" src={like} />
             <Count>47</Count>
+          </Action>
+          <Action>
+            <ActionImage alt="message" src={message} />
+            <Count />
+          </Action>
+        </Actions>
+      </ContentContainer>
+    </Post>
+    <Post>
+      <AvatarContainer>
+        <Avatar alt="avatar" to="/EveryInteract" />
+      </AvatarContainer>
+      <ContentContainer>
+        <Title>
+          <Person>
+            <PersonLink to="/EveryInteract">Every Interaction</PersonLink>
+          </Person>
+          <UserHandle>
+            <UserHandleLink to="/EveryInteract">@EveryInteract</UserHandleLink>
+          </UserHandle>
+          <Date>
+            <DateLink to="/status/777">23h</DateLink>
+          </Date>
+        </Title>
+        <PostMessage>
+          Our new website concept; Taking you from ...{" "}
+          <LinkProfile to="/EveryInteract">@ Every Interaction</LinkProfile>{" "}
+          <LinkWebSite href="https://instagram.com/p/BNFGrfhBP3M/">
+            instagram.com/p/BNFGrfhBP3M/
+          </LinkWebSite>{" "}
+        </PostMessage>
+        <PostLinkContainer />
+        <Actions>
+          <Action>
+            <ActionImage alt="comment" src={comment} />
+            <Count>1</Count>
+          </Action>
+          <Action>
+            <ActionImage alt="retweet" src={retweet} />
+            <Count>4</Count>
+          </Action>
+          <Action>
+            <ActionImage alt="like" src={like} />
+            <Count>2</Count>
+          </Action>
+          <Action>
+            <ActionImage alt="message" src={message} />
+            <Count />
+          </Action>
+        </Actions>
+      </ContentContainer>
+    </Post>
+    <Post>
+      <AvatarContainer>
+        <Avatar alt="avatar" to="/EveryInteract" />
+      </AvatarContainer>
+      <ContentContainer>
+        <Title>
+          <Person>
+            <PersonLink to="/EveryInteract">Every Interaction</PersonLink>
+          </Person>
+          <UserHandle>
+            <UserHandleLink to="/EveryInteract">@EveryInteract</UserHandleLink>
+          </UserHandle>
+          <Date>
+            <DateLink to="/status/777">Nov 18</DateLink>
+          </Date>
+        </Title>
+        <PostMessageLink>
+          Variable web fonts are coming, and will open a world of opportunities
+          for weight use online
+        </PostMessageLink>
+        <PostLinkContainer>
+          <Image alt="Promo website" src="/img/preview.png" />
+          <InfoContainer>
+            <InfoTitle>The Future of Web Fonts</InfoTitle>
+            <InfoText>
+              We love typefaces. They give our sites and applications
+              personalized feel. They convey the information and tell a story.
+              They establish information hierarchy. But they’re…
+            </InfoText>
+            <InfoLink href="https://vilijamis.com">vilijamis.com</InfoLink>
+          </InfoContainer>
+        </PostLinkContainer>
+        <Actions>
+          <Action>
+            <ActionImage alt="comment" src={comment} />
+            <Count />
+          </Action>
+          <Action>
+            <ActionImage alt="retweet" src={retweet} />
+            <Count />
+          </Action>
+          <Action>
+            <ActionImage alt="like" src={like} />
+            <Count />
           </Action>
           <Action>
             <ActionImage alt="message" src={message} />
