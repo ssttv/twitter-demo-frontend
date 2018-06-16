@@ -192,80 +192,73 @@ const Count = styled.span`
   color: #667580;
 `;
 
-export default () => {
-  return (
-    <Container>
-      <ProfileHeading>
-        <Heading>
-          <HeadingLink to="/EveryInteract" className="heading-link">
-            Tweets
-          </HeadingLink>
-        </Heading>
-        <Heading>
-          <HeadingLink
-            to="/EveryInteract/with_replies"
-            className="heading-link"
-          >
-            Tweets & replies
-          </HeadingLink>
-        </Heading>
-        <Heading>
-          <HeadingLink to="/EveryInteract/media" className="heading-link">
-            Media
-          </HeadingLink>
-        </Heading>
-      </ProfileHeading>
-      <Post>
-        <AvatarContainer>
-          <Avatar alt="avatar" to="/EveryInteract" />
-        </AvatarContainer>
-        <ContentContainer>
-          <Pinned>Pinned Tweet</Pinned>
-          <Title>
-            <Person>
-              <PersonLink to="/EveryInteract">Every Interaction</PersonLink>
-            </Person>
-            <UserHandle>
-              <UserHandleLink to="/EveryInteract">
-                @EveryInteract
-              </UserHandleLink>
-            </UserHandle>
-            <DateLink to="/status/777">
-              <Day>2</Day>
-              <Month>Mar</Month>
-              <Year>2015</Year>
-            </DateLink>
-          </Title>
-          <PostMessage>
-            We've made some more resources for all you wonderful{" "}
-            <Hashtag to="/hashtag/design">#design</Hashtag> folk{" "}
-            <LinkWebSite href="https://everyinteraction.com/resources/">
-              everyinteraction.com/resources/
-            </LinkWebSite>{" "}
-            <Hashtag to="/hashtag/webdesign">#webdesign</Hashtag>{" "}
-            <Hashtag to="/hashtag/ui">#UI</Hashtag>{" "}
-          </PostMessage>
-          <Image alt="post image" src={contentImg} />
-          <Actions>
-            <Action>
-              <ActionImage alt="comment" src={comment} />
-              <Count />
-            </Action>
-            <Action>
-              <ActionImage alt="retweet" src={retweet} />
-              <Count>17</Count>
-            </Action>
-            <Action>
-              <ActionImage alt="like" src={like} />
-              <Count>47</Count>
-            </Action>
-            <Action>
-              <ActionImage alt="message" src={message} />
-              <Count />
-            </Action>
-          </Actions>
-        </ContentContainer>
-      </Post>
-    </Container>
-  );
-};
+export default () => (
+  <Container>
+    <ProfileHeading>
+      <Heading>
+        <HeadingLink to="/EveryInteract" className="heading-link">
+          Tweets
+        </HeadingLink>
+      </Heading>
+      <Heading>
+        <HeadingLink to="/EveryInteract/with_replies" className="heading-link">
+          Tweets & replies
+        </HeadingLink>
+      </Heading>
+      <Heading>
+        <HeadingLink to="/EveryInteract/media" className="heading-link">
+          Media
+        </HeadingLink>
+      </Heading>
+    </ProfileHeading>
+    <Post>
+      <AvatarContainer>
+        <Avatar alt="avatar" to="/EveryInteract" />
+      </AvatarContainer>
+      <ContentContainer>
+        <Pinned>Pinned Tweet</Pinned>
+        <Title>
+          <Person>
+            <PersonLink to="/EveryInteract">Every Interaction</PersonLink>
+          </Person>
+          <UserHandle>
+            <UserHandleLink to="/EveryInteract">@EveryInteract</UserHandleLink>
+          </UserHandle>
+          <DateLink to="/status/777">
+            <Day>2</Day>
+            <Month>Mar</Month>
+            <Year>2015</Year>
+          </DateLink>
+        </Title>
+        <PostMessage>
+          We&apos;ve made some more resources for all you wonderful{" "}
+          <Hashtag to="/hashtag/design">#design</Hashtag> folk{" "}
+          <LinkWebSite href="https://everyinteraction.com/resources/">
+            everyinteraction.com/resources/
+          </LinkWebSite>{" "}
+          <Hashtag to="/hashtag/webdesign">#webdesign</Hashtag>{" "}
+          <Hashtag to="/hashtag/ui">#UI</Hashtag>{" "}
+        </PostMessage>
+        <Image alt="post image" src={contentImg} />
+        <Actions>
+          <Action>
+            <ActionImage alt="comment" src={comment} />
+            <Count />
+          </Action>
+          <Action>
+            <ActionImage alt="retweet" src={retweet} />
+            <Count>17</Count>
+          </Action>
+          <Action>
+            <ActionImage alt="like" src={like} />
+            <Count>47</Count>
+          </Action>
+          <Action>
+            <ActionImage alt="message" src={message} />
+            <Count />
+          </Action>
+        </Actions>
+      </ContentContainer>
+    </Post>
+  </Container>
+);

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import location from "./location.svg";
-import web from "./web.svg";
-import reg from "./reg.svg";
-import check from "./check.svg";
+import mapmarker from "./mapmarker.svg";
+import linkimg from "./linkimg.svg";
+import date from "./date.svg";
+import checkmark from "./checkmark.svg";
 
 const ProfileContainer = styled.div`
   padding-top: 32px;
@@ -99,11 +99,11 @@ const Country = City.extend`
   padding-left: 4px;
 `;
 
-const WebSite = Location.extend`
+const Website = Location.extend`
   padding-top: 0;
 `;
 
-const WebSiteIcon = styled.img``;
+const WebsiteIcon = styled.img``;
 
 const Source = styled.a`
   padding-left: 13px;
@@ -118,7 +118,7 @@ const Source = styled.a`
   }
 `;
 
-const DateReg = Location.extend`
+const DateOfReg = Location.extend`
   padding-top: 0;
 `;
 
@@ -160,7 +160,7 @@ export default () => {
           <Link to="/EveryInteract" className="link-profile">
             <Text>Every Interaction</Text>
           </Link>
-          <Verified alt="Verified user" src={check} />
+          <Verified alt="Verified user" src={checkmark} />
         </UserHandle>
         <FollowContainer>
           <Link to="/EveryInteract">
@@ -174,24 +174,24 @@ export default () => {
         how can we make things *work* amazing.
       </ProfileBio>
       <Location>
-        <LocationIcon alt="location" src={location} />
+        <LocationIcon alt="mapmarker" src={mapmarker} />
         <Place>
           <City>London</City>,
           <Country>UK</Country>
         </Place>
       </Location>
-      <WebSite>
-        <WebSiteIcon alt="website" src={web} />
+      <Website>
+        <WebsiteIcon alt="website" src={linkimg} />
         <Source href="everyinteraction.com">everyinteraction.com</Source>
-      </WebSite>
-      <DateReg>
-        <DateIcon alt="date registration" src={reg} />
+      </Website>
+      <DateOfReg>
+        <DateIcon alt="Registration date" src={date} />
         <Date>
           Joined
           <Month>May</Month>
           <Year>2008</Year>
         </Date>
-      </DateReg>
+      </DateOfReg>
       <Actions>
         <Tweet>Tweet to</Tweet>
         <Message>Message</Message>

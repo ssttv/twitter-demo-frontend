@@ -45,9 +45,9 @@ const Notifications = Home.extend``;
 
 const Messages = Home.extend``;
 
-const CrumbSvg = styled.img``;
+const CrumbIcon = styled.img``;
 
-const TwitterSvg = styled.img`
+const TwitterLogo = styled.img`
   min-height: 17px;
 `;
 
@@ -114,23 +114,23 @@ export default () => {
       <Nav>
         <BreadCrumbs>
           <Home>
-            <CrumbSvg alt="Home" src={home} />
+            <CrumbIcon alt="Home" src={home} />
             <CrumbText>Home</CrumbText>
           </Home>
           <Moments>
-            <CrumbSvg alt="Moments" src={moments} />
+            <CrumbIcon alt="Moments" src={moments} />
             <CrumbText>Moments</CrumbText>
           </Moments>
           <Notifications>
-            <CrumbSvg alt="Notifications" src={notifications} />
+            <CrumbIcon alt="Notifications" src={notifications} />
             <CrumbText>Notifications</CrumbText>
           </Notifications>
           <Messages>
-            <CrumbSvg alt="Messages" src={messages} />
+            <CrumbIcon alt="Messages" src={messages} />
             <CrumbText>Messages</CrumbText>
           </Messages>
         </BreadCrumbs>
-        <TwitterSvg alt="Twitter logo" src={twitterLogo} />
+        <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
         <ActionsContainer>
           <SearchContainer>
             <SearchInput
