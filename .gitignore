@@ -8,8 +8,6 @@
 
 # production
 /build
-# rebundant files
-/src/trash
 
 # misc
 .DS_Store
