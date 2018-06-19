@@ -20,7 +20,8 @@ const LargeText = Text.extend`
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
-  background-width: 100%;
+  width: 100%;
+  object-fit: cover;
   will-change: transform;
   min-width: 100%;
 `;
