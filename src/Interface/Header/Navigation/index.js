@@ -24,42 +24,18 @@ const BreadCrumbs = styled.div`
   justify-content: space-between;
 `;
 
-/* const Home = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-top: 1px;
-`;
-*/
-/* const CrumbText = styled.span`
-  padding-left: 6px;
-  font-size: 13px;
-  font-weight: bold;
-  line-height: 15px;
-  letter-spacing: 0.01px;
-  color: #667580;
-`; */
-
 const Home = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #667580;
   text-decoration: none;
-  padding-bottom: 4px;
+  padding-bottom: 10px;
   padding-top: 4px;
-
-  &.normal {
-    border-bottom: 2px solid transparent;
-  }
-
-  &.active {
-    border-bottom: 2px solid black;
-  }
 
   &:hover {
     cursor: pointer;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid #1da1f2;
     transition: all 0.1s ease-in-out;
   }
 `;
@@ -113,8 +89,10 @@ const SearchInput = styled.input`
   }
 `;
 
-const SearchBtn = styled.button`
-  background-image: url(${search});
+const SearchBtn = styled.img`
+  src: url(${search});
+  border: none;
+  cursor: pointer;
   position: absolute;
   height: 18px;
   width: 18px;
@@ -194,7 +172,7 @@ export default () => (
             id="search-input"
             placeholder="Search Twitter"
           />
-          <SearchBtn />
+          <SearchBtn alt="search img" src={search} />
         </Search>
         <AvatarLink to="/EveryInteract">
           <Avatar src="/img/avatar-min.png" />
