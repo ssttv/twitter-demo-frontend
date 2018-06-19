@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Header from "./Header";
-import Main from "./Main";
+import Content from "./Content";
 
 export default () => (
   <div>
@@ -10,7 +10,7 @@ export default () => (
     </Helmet>
     <Header />
     <main>
-      <Main />
+      <Content />
     </main>
   </div>
 );
