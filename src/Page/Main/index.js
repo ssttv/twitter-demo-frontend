@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import ProfilePosts from "./ProfilePosts/ProfilePosts";
+import ProfileInfo from "./ProfileInfo";
+import ProfilePosts from "./ProfilePosts";
 
 const Container = styled.div`
   background-color: #e6ecf0;

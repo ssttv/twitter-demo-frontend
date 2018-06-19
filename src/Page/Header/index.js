@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
-import Navigation from "./Navigation/Navigation";
+import Navigation from "./Navigation";
 import background from "./background.jpg";
 import optiondots from "./optiondots.svg";
 
