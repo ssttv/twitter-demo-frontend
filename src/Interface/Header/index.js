@@ -4,19 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import Navigation from "./Navigation";
 import background from "./background.jpg";
 import optiondots from "./optiondots.svg";
-
-const Text = styled.span`
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 20px;
-  letter-spacing: 0.01px;
-  color: #707e88;
-`;
-
-const LargeText = Text.extend`
-  font-size: 18px;
-  color: #707e88;
-`;
+import StatUnit from "./StatUnit";
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
@@ -56,52 +44,14 @@ const Avatar = styled.img`
   height: 83%;
 `;
 
-const ProfileInfo = styled.div`
+const Statistics = styled.ul`
+  margin: 0;
   display: flex;
   flex-direction: row;
   min-width: 200px;
-  justify-content: space-between;
-  padding-left: 18px;
-`;
-
-const StatLink = styled(NavLink)`
-  padding-bottom: 8px;
-  padding-top: 8px;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  align-items: center;
-  width: 100%;
-
-  &.normal {
-    border-bottom: 3px solid transparent;
-  }
-
-  &.active {
-    border-bottom: 3px solid #1da1f2;
-
-    ${LargeText} {
-      color: #1da1f2;
-    }
-  }
-
-  &:hover {
-    border-bottom: 3px solid #1da1f2;
-    transition: all 0.1s ease-in-out;
-
-    ${LargeText} {
-      color: #1da1f2;
-    }
-  }
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 44px;
-  min-width: 75px;
+  list-style: none;
+  justify-content: flex-start;
+  padding: 0 18px;
 `;
 
 const UserActions = styled.div`
@@ -154,32 +104,13 @@ export default () => (
             <Avatar src="img/avatar-max.png" />
           </AvatarLink>
         </ProfileBlock>
-        <ProfileInfo>
-          <Info>
-            <StatLink to="/EveryInteract">
-              <Text>Tweets</Text>
-              <LargeText>8,058</LargeText>
-            </StatLink>
-          </Info>
-
-          <Info>
-            <Text>Following</Text>
-            <LargeText>721</LargeText>
-          </Info>
-
-          <Info>
-            <Text>Followers</Text>
-            <LargeText>1,815</LargeText>
-          </Info>
-          <Info>
-            <Text>Likes</Text>
-            <LargeText>460</LargeText>
-          </Info>
-          <Info>
-            <Text>Lists</Text>
-            <LargeText>2</LargeText>
-          </Info>
-        </ProfileInfo>
+        <Statistics>
+          <StatUnit link="/EveryInteract" text="Tweets" count="8058" />
+          <StatUnit link="/following" text="Following" count="721" />
+          <StatUnit link="/followers" text="Followers" count="1815" />
+          <StatUnit link="/likes" text="Likes" count="460" />
+          <StatUnit link="/lists" text="Lists" count="2" />
+        </Statistics>
         <UserActions>
           <Follow>Follow</Follow>
           <Dropdown />

@@ -5,6 +5,7 @@ import mapmarker from "./mapmarker.svg";
 import linkimg from "./linkimg.svg";
 import date from "./date.svg";
 import checkmark from "./checkmark.svg";
+import CommonFollowers from "./SharedFollowers";
 
 const ProfileContainer = styled.div`
   padding-top: 32px;
@@ -131,7 +132,8 @@ const Month = Country.extend``;
 const Year = Month.extend``;
 
 const Actions = styled.div`
-  padding-top: 17px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -198,5 +200,6 @@ export default () => (
       <Interact>Tweet to</Interact>
       <Interact>Message</Interact>
     </Actions>
+    <CommonFollowers />
   </ProfileContainer>
 );
