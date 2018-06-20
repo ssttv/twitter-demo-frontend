@@ -89,7 +89,7 @@ export default () => (
       </TitleLink>
       <Followers>
         <Follower>
-          <FollowerLink to="/name1">
+          <FollowerLink to="/user1">
             <Avatar
               src={`${process.env.PUBLIC_URL}/img/avatar-person-1.png`}
               alt="avatar"
@@ -97,7 +97,7 @@ export default () => (
           </FollowerLink>
         </Follower>
         <Follower>
-          <FollowerLink to="/name2">
+          <FollowerLink to="/user2">
             <Avatar
               src={`${process.env.PUBLIC_URL}/img/avatar-person-2.png`}
               alt="avatar"
@@ -105,7 +105,7 @@ export default () => (
           </FollowerLink>
         </Follower>
         <Follower>
-          <FollowerLink to="/name3">
+          <FollowerLink to="/user3">
             <Avatar
               src={`${process.env.PUBLIC_URL}/img/avatar-person-3.png`}
               alt="avatar"
@@ -113,7 +113,7 @@ export default () => (
           </FollowerLink>
         </Follower>
         <Follower>
-          <FollowerLink to="/name4">
+          <FollowerLink to="/user4">
             <Avatar
               src={`${process.env.PUBLIC_URL}/img/avatar-person-4.png`}
               alt="avatar"
@@ -121,7 +121,7 @@ export default () => (
           </FollowerLink>
         </Follower>
         <Follower>
-          <FollowerLink to="/name5">
+          <FollowerLink to="/user5">
             <Avatar
               src={`${process.env.PUBLIC_URL}/img/avatar-person-5.png`}
               alt="avatar"
@@ -129,7 +129,7 @@ export default () => (
           </FollowerLink>
         </Follower>
         <Follower>
-          <FollowerLink to="/name6">
+          <FollowerLink to="/user6">
             <Avatar
               src={`${process.env.PUBLIC_URL}/img/avatar-person-6.png`}
               alt="avatar"
@@ -188,7 +188,7 @@ export default () => (
           <PhotoVideoLink to="/photovideo6">
             <PhotoVideo
               src={`${process.env.PUBLIC_URL}/img/media-6.png`}
-              alt="media"
+              alt="Photo or video"
             />
           </PhotoVideoLink>
         </PhotoVideoList>
