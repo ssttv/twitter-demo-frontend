@@ -66,16 +66,15 @@ const ActionsContainer = styled.div`
   align-items: center;
 `;
 
-const Search = styled.form`
-  position: relative;
-`;
+const Search = styled.form``;
 
 const SearchInput = styled.input`
   border-radius: 100px;
+  border: none;
   border: 1px solid #e6ecf0;
   background-color: #f5f8fa;
   padding-left: 11px;
-  padding-right: 11px;
+  padding-right: 10px;
   padding-top: 9px;
   padding-bottom: 8px;
   min-width: 220px;
@@ -93,15 +92,10 @@ const SearchBtn = styled.img`
   src: url(${search});
   border: none;
   cursor: pointer;
-  position: absolute;
+  margin: 4px 10px -4px -26px;
   height: 18px;
   width: 18px;
   background-color: #f5f8fa;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-color: transparent;
-  right: 10px;
-  top: 9px;
 `;
 
 const AvatarLink = styled(Link)`
@@ -172,7 +166,7 @@ export default () => (
             id="search-input"
             placeholder="Search Twitter"
           />
-          <SearchBtn alt="search img" src={search} />
+          <SearchBtn alt="search-icon" src={search} />
         </Search>
         <AvatarLink to="/EveryInteract">
           <Avatar src="/img/avatar-min.png" />
