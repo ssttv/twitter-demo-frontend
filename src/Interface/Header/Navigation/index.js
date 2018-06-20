@@ -92,7 +92,10 @@ const SearchBtn = styled.img`
   src: url(${search});
   border: none;
   cursor: pointer;
-  margin: 4px 10px -4px -26px;
+  margin-right: 10px;
+  margin-left: -26px;
+  margin-top: 4px;
+  margin-bottom: -4px;
   height: 18px;
   width: 18px;
   background-color: #f5f8fa;
