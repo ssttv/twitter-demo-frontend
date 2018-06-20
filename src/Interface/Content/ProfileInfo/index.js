@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import LeftSidebar from "./LeftSidebar";
 import mapmarker from "./mapmarker.svg";
 import linkimg from "./linkimg.svg";
 import date from "./date.svg";
 import checkmark from "./checkmark.svg";
-import CommonFollowers from "./SharedFollowers";
 
 const ProfileContainer = styled.div`
   padding-top: 32px;
@@ -200,6 +200,6 @@ export default () => (
       <Interact>Tweet to</Interact>
       <Interact>Message</Interact>
     </Actions>
-    <CommonFollowers />
+    <LeftSidebar />
   </ProfileContainer>
 );
