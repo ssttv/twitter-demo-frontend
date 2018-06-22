@@ -46,6 +46,7 @@ const Avatar = styled.img`
 
 const Statistics = styled.ul`
   margin: 0;
+  margin-left: 15px;
   display: flex;
   flex-direction: row;
   min-width: 200px;

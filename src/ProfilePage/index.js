@@ -4,8 +4,7 @@ import Header from "./Header";
 import Content from "./Content";
 
 export default () => (
-  // <div></div> здесь служит закрывающим тегом для хедера и хелмета
-  <div>
+  <React.Fragment>
     <Helmet>
       <title>Profile Page / Desktop</title>
     </Helmet>
@@ -13,5 +12,5 @@ export default () => (
     <main>
       <Content />
     </main>
-  </div>
+  </React.Fragment>
 );

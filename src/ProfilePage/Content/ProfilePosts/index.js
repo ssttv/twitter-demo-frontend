@@ -12,7 +12,7 @@ const Container = styled.div`
   background-color: white;
   min-width: 591px;
   width: 600px;
-  margin-left: 18px;
+  margin-left: -5px;
 `;
 
 const ProfileHeading = styled.ul`

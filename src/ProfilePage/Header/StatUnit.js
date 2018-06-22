@@ -53,7 +53,7 @@ const StatLink = styled(NavLink)`
 
 export default ({ link, text, count }) => (
   <StatBlock>
-    <StatLink to={link} activeClassName="active" exact>
+    <StatLink to={link}>
       <Text>{text}</Text>
       <Amount>{count}</Amount>
     </StatLink>
