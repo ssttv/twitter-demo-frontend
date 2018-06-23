@@ -7,14 +7,14 @@ import checkmark from "./checkmark.svg";
 
 const Button = styled.button`
   border-radius: 100px;
-  padding: 8px 23px;
+  padding: 7px 20px;
   border: 1px solid #1da1f2;
-  cursor: pointer;
   font-size: 14px;
   line-height: 14px;
   flex-grow: 1;
   white-space: nowrap;
   max-width: 128px;
+  cursor: pointer;
 
   color: ${styledMap({
     primary: "#1da1f2",
@@ -68,13 +68,15 @@ const Name = styled.span`
   line-height: 16px;
   color: black;
   word-break: break-all;
-  font-weight: 500;
+  font-weight: 800;
   border-bottom: 1px solid transparent;
   display: inline-block;
+  vertical-align: middle;
 `;
 
 const UserLink = styled(Link)`
   text-decoration: none;
+  vertical-align: middle;
   margin-bottom: 8px;
   white-space: nowrap;
   display: block;
@@ -89,13 +91,9 @@ const UserLink = styled(Link)`
   }
 `;
 
-const Follow = styled(Button)`
-  padding-top: 7px 
-  padding-right: 20px;
-`;
-
 const Status = styled.img`
   margin-left: 3px;
+  vertical-align: middle;
 `;
 
 const UserHandle = Name.extend`
