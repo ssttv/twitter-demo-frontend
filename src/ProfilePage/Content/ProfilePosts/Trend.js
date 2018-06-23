@@ -43,10 +43,12 @@ export default function(props) {
   };
 
   const statsFormat = () => {
-    if (tweets > 10000) {
-      return `${(tweets / 1000).toFixed(1)}K`;
-    } else if (tweets => 1000) {
-      return (tweets / 1000).toFixed(3).replace(".", ",");
+    if (tweets === 1) {
+      return `${tweets} Tweet`;
+    } else if (tweets >= 1000) {
+      return `${(tweets / 1000).toFixed(3).replace(".", ",")} Tweets`;
+    } else if (tweets > 10000) {
+      return `${(tweets / 1000).toFixed(1)}K Tweets`;
     }
     return tweets;
   };
@@ -55,7 +57,7 @@ export default function(props) {
     <TrendLink to={linkFormat()}>
       <Headline>{props.tag}</Headline>
       <Text>{props.text}</Text>
-      {tweets > 0 && <Count>{statsFormat()} Tweets</Count>}
+      {tweets > 0 && <Count>{statsFormat()}</Count>}
     </TrendLink>
   );
 }

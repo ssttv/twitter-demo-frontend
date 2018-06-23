@@ -22,7 +22,16 @@ export default () => (
       <div className="container">
         <ProfileFace>
           <div className="col-xs-3">
-            <ProfileInfo />
+            <ProfileInfo
+              handle="EveryInteract"
+              name="Every Interaction"
+              bio="UX Design studio focussed problem solving creativity. Design to us is how can we make things *work* amazing."
+              city="London"
+              country="UK"
+              website="everyinteraction.com"
+              month="May"
+              year={2008}
+            />
           </div>
           <div className="col-xs-6">
             <ProfilePosts />

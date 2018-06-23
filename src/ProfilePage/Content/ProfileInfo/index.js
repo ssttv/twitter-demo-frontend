@@ -7,12 +7,25 @@ import linkimg from "./linkimg.svg";
 import date from "./date.svg";
 import checkmark from "./checkmark.svg";
 
+const ProfileTitle = styled.div``;
+
 const ProfileContainer = styled.div`
   padding-top: 32px;
   max-width: 265px;
 `;
 
-const ProfileTitle = styled.div``;
+const UserLink = styled(Link)`
+  margin: 0;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 const UserHandle = styled.div`
   display: flex;
@@ -24,7 +37,7 @@ const UserHandle = styled.div`
   }
 `;
 
-const Text = styled.h1`
+const FullName = styled.h1`
   margin: 0;
   font-size: 22px;
   line-height: 22px;
@@ -157,43 +170,44 @@ const Interact = styled.button`
   }
 `;
 
-export default () => (
+export default ({ handle, name, bio, city, country, website, month, year }) => (
   <ProfileContainer>
     <ProfileTitle>
       <UserHandle>
-        <Link to="/EveryInteract" className="link-profile">
-          <Text>Every Interaction</Text>
-        </Link>
+        <UserLink to={`/${handle}`}>
+          <FullName>{name}</FullName>
+        </UserLink>
         <Checkmark alt="Verified user" src={checkmark} />
       </UserHandle>
       <FollowContainer>
-        <Link to="/EveryInteract">
-          <StatusFollow>@EveryInteract</StatusFollow>
-        </Link>
+        <UserLink to={`/follow/${handle}`}>
+          <StatusFollow>{`@${handle}`}</StatusFollow>
+        </UserLink>
         <TextFollow>Follows you</TextFollow>
       </FollowContainer>
     </ProfileTitle>
     <ProfileBio>
+      {bio}
       UX Design studio focussed problem solving creativity. Design to us is how
       can we make things *work* amazing.
     </ProfileBio>
     <Location>
       <LocationIcon alt="mapmarker" src={mapmarker} />
       <Place>
-        <City>London</City>,
-        <Country>UK</Country>
+        <City>{city}</City>,
+        <Country>{country}</Country>
       </Place>
     </Location>
     <Website>
       <WebsiteIcon alt="website" src={linkimg} />
-      <Source href="everyinteraction.com">everyinteraction.com</Source>
+      <Source href={website}>{website}</Source>
     </Website>
     <DateOfReg>
       <DateIcon alt="Registration date" src={date} />
       <Date>
         Joined
-        <Month>May</Month>
-        <Year>2008</Year>
+        <Month>{month}</Month>
+        <Year>{year}</Year>
       </Date>
     </DateOfReg>
     <Actions>
