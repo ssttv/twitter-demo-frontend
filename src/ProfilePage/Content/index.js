@@ -13,6 +13,7 @@ const ProfileFace = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: 10px;
+  justify-content: space-between;
 `;
 
 export default () => (

@@ -13,13 +13,13 @@ const Action = styled(Link)`
   }
 `;
 
-const Dotted = styled.small`
+const Dot = styled.small`
   margin: 0 5px 0 5px;
 `;
 
 export default ({ to, text }) => (
   <React.Fragment>
-    <Dotted>·</Dotted>
+    <Dot>·</Dot>
     <Action to={to}>{text}</Action>
   </React.Fragment>
 );

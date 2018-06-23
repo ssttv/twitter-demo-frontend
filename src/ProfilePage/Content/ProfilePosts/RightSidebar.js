@@ -30,10 +30,10 @@ const Desc = styled.h3`
 `;
 
 const Sidebar = styled.div`
+  justify-content: flex-end;
   background-color: white;
-  padding: 12px 16px;
+  padding: 12px 14px;
   margin-bottom: 10px;
-  margin-left: 18px;
   min-height: 290px;
   min-width: 250px;
 `;

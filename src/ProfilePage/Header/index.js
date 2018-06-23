@@ -13,16 +13,22 @@ const ProfileHeader = styled.img`
   will-change: transform;
   min-width: 100%;
 `;
+/* display: grid;
+  grid-template-columns: 265px 1fr 1fr; */
 
 const ProfileInfoContainer = styled.div`
-  display: grid;
-  grid-template-columns: 265px 1fr 1fr;
+  display: flex;
+  flex-direction: row
   min-height: 59px;
   position: relative;
   align-items: center;
 `;
 
-const ProfileBlock = styled.div``;
+const ProfileBlock = styled.div`
+  max-width: 265px;
+  padding: 0 0 0 12px;
+  width: 100%;
+`;
 
 const AvatarLink = styled(Link)`
   position: absolute;
@@ -42,17 +48,17 @@ const Avatar = styled.img`
   border-radius: 100px;
   width: 83%;
   height: 83%;
+  boder: 1px solid gainsboro;
 `;
 
 const Statistics = styled.ul`
   margin: 0;
-  margin-left: 15px;
   display: flex;
   flex-direction: row;
   min-width: 200px;
   list-style: none;
   justify-content: flex-start;
-  padding: 0 18px;
+  padding: 0 0px;
 `;
 
 const UserActions = styled.div`
@@ -100,22 +106,28 @@ export default () => (
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">
       <ProfileInfoContainer>
-        <ProfileBlock>
-          <AvatarLink to="/images">
-            <Avatar src="img/avatar-max.png" />
-          </AvatarLink>
-        </ProfileBlock>
-        <Statistics>
-          <StatUnit link="/EveryInteract" text="Tweets" count="8058" />
-          <StatUnit link="/following" text="Following" count="721" />
-          <StatUnit link="/followers" text="Followers" count="1815" />
-          <StatUnit link="/likes" text="Likes" count="460" />
-          <StatUnit link="/lists" text="Lists" count="2" />
-        </Statistics>
-        <UserActions>
-          <Follow>Follow</Follow>
-          <Dropdown />
-        </UserActions>
+        <div className="col-xs-3">
+          <ProfileBlock>
+            <AvatarLink to="/images">
+              <Avatar src="img/avatar-max.png" />
+            </AvatarLink>
+          </ProfileBlock>
+        </div>
+        <div className="col-xs-6">
+          <Statistics>
+            <StatUnit link="/EveryInteract" text="Tweets" count={8058} />
+            <StatUnit link="/following" text="Following" count={721} />
+            <StatUnit link="/followers" text="Followers" count={1815} />
+            <StatUnit link="/likes" text="Likes" count={460} />
+            <StatUnit link="/lists" text="Lists" count={2} />
+          </Statistics>
+        </div>
+        <div className="col-xs-3">
+          <UserActions>
+            <Follow>Follow</Follow>
+            <Dropdown />
+          </UserActions>
+        </div>
       </ProfileInfoContainer>
     </div>
   </header>

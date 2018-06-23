@@ -10,7 +10,6 @@ import message from "./message.svg";
 
 const Container = styled.div`
   background-color: white;
-  min-width: 591px;
 `;
 
 const ProfileHeading = styled.ul`
