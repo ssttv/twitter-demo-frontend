@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import Counter from "./Counter";
 import Navigation from "./Navigation";
+import Button from "../../UI/Button";
 import background from "./background.jpg";
 import optiondots from "./optiondots.svg";
 
@@ -66,18 +67,8 @@ const UserActions = styled.div`
   align-items: center;
 `;
 
-const Follow = styled.button`
+const FollowButton = styled(Button)`
   padding: 9px 27px;
-  border-radius: 100px;
-  border: 1px solid #1da1f2;
-  color: #1da1f2;
-  background-color: #ffffff;
-  font-style: bold;
-
-  &:hover {
-    color: #ffffff;
-    background-color: #1da1f2;
-  }
 `;
 
 const Dropdown = styled.div`
@@ -122,7 +113,7 @@ export default () => (
         </div>
         <div className="col-xs-3">
           <UserActions>
-            <Follow>Follow</Follow>
+            <FollowButton primary>Follow</FollowButton>
             <Dropdown />
           </UserActions>
         </div>

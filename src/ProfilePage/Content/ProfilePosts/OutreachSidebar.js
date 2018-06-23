@@ -12,6 +12,7 @@ const Container = styled.div``;
 
 const Suggestions = styled.div`
   margin-top: 6px;
+  padding-right: 8px;
   position: relative;
 `;
 

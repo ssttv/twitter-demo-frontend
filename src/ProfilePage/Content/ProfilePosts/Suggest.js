@@ -1,47 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import styledMap from "styled-map";
+import Button from "../../../UI/Button";
 import cross from "./cross.svg";
 import checkmark from "./checkmark.svg";
 
-const Button = styled.button`
-  border-radius: 100px;
+const FollowButton = styled(Button)`
   padding: 7px 20px;
-  border: 1px solid #1da1f2;
-  font-size: 14px;
-  line-height: 14px;
-  flex-grow: 1;
-  white-space: nowrap;
-  max-width: 128px;
-  cursor: pointer;
-
-  color: ${styledMap({
-    primary: "#1da1f2",
-    default: "white"
-  })};
-
-  background-color: ${styledMap({
-    primary: "white",
-    default: "#1da1f2"
-  })};
-
-  &:hover {
-    transition: all 0.1s ease-in-out;
-    opacity: 0.8;
-    background-color: ${styledMap({
-      primary: "#1da1f2"
-    })};
-
-    color: ${styledMap({
-      primary: "white"
-    })};
-  }
-
-  &:focus {
-    box-shadow: rgb(255, 255, 255) 0 0 0 2px, rgb(164, 217, 249) 0 0 0 4px;
-    outline: 0;
-  }
 `;
 
 const Recommended = styled.div`
@@ -131,7 +96,7 @@ export default ({ src, to, name, status, handle }) => (
           </FullName>
           <UserHandle>{handle}</UserHandle>
         </UserLink>
-        <Button primary>Follow</Button>
+        <FollowButton primary>Follow</FollowButton>
       </Info>
       <Delete src={cross} alt="remove from suggestions" />
     </Recommended>
