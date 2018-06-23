@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ProfileInfo from "./ProfileInfo";
 import ProfilePosts from "./ProfilePosts";
-import RightSidebar from "./ProfilePosts/RightSidebar";
+import OutreachSidebar from "./ProfilePosts/OutreachSidebar";
 
 const Container = styled.div`
   background-color: #e6ecf0;
@@ -28,7 +28,7 @@ export default () => (
             <ProfilePosts />
           </div>
           <div className="col-xs-3">
-            <RightSidebar />
+            <OutreachSidebar />
           </div>
         </ProfileFace>
       </div>

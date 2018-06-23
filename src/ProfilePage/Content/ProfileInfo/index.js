@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import LeftSidebar from "./LeftSidebar";
+import CommunitySidebar from "./CommunitySidebar";
 import mapmarker from "./mapmarker.svg";
 import linkimg from "./linkimg.svg";
 import date from "./date.svg";
@@ -200,6 +200,6 @@ export default () => (
       <Interact>Tweet to</Interact>
       <Interact>Message</Interact>
     </Actions>
-    <LeftSidebar />
+    <CommunitySidebar />
   </ProfileContainer>
 );

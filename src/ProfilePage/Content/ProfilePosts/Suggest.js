@@ -133,7 +133,7 @@ export default ({ src, to, name, status, handle }) => (
         </UserLink>
         <Button primary>Follow</Button>
       </Info>
-      <Delete src={cross} alt="icon delete" />
+      <Delete src={cross} alt="remove from suggestions" />
     </Recommended>
   </User>
 );

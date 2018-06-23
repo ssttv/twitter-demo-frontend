@@ -5,8 +5,8 @@ import styled from "styled-components";
 import Suggest from "./Suggest";
 import Action from "./Action";
 import Trend from "./Trend";
-import people from "./people.svg";
 import MarginsBlock from "./MarginsBlock";
+import people from "./people.svg";
 
 const Container = styled.div``;
 

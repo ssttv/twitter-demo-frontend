@@ -67,7 +67,7 @@ export default () => (
         <Follower
           to="/user1"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-1.png`}
-          alt="avatar1"
+          alt="avatar-1"
         />
         <Follower
           to="/user2"
