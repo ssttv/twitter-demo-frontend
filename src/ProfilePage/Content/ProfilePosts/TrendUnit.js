@@ -30,12 +30,14 @@ const Text = styled.p`
   color: #697787;
 `;
 
-const Number = styled(Text)``;
+const Count = styled(Text)``;
 
 export default ({ to, tag, text, number }) => (
   <TrendLink to={to}>
     <Hashtag>{tag}</Hashtag>
     <Text>{text}</Text>
-    <Number>{number}</Number>
+    <Count>
+      {number > 10000 ? `${number / 1000}K Tweets` : `${number} Tweets`}
+    </Count>
   </TrendLink>
 );

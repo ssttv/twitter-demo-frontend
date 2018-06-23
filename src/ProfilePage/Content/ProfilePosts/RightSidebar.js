@@ -33,7 +33,7 @@ const Sidebar = styled.div`
   background-color: white;
   padding: 12px 16px;
   margin-bottom: 10px;
-  margin-left: 22px;
+  margin-left: 18px;
   min-height: 290px;
   min-width: 250px;
 `;
@@ -122,7 +122,7 @@ export default () => (
             tag="#FridayFeeling"
             to="/hashtag/FridayFeeling"
             text={null}
-            number="12.1K Tweets"
+            number={12100}
           />
           <TrendUnit
             tag="#BrexitAnniversary"
@@ -134,19 +134,19 @@ export default () => (
             tag="HMS Queen Elizabeth"
             to="/search/HMS_Queen_Elizabeth"
             text={null}
-            number="1,036 Tweets"
+            number={1036}
           />
           <TrendUnit
             tag="Joe Budden"
             to="/search/Joe_Budden"
             text={null}
-            number="1,036 Tweets"
+            number={1036}
           />
           <TrendUnit
             tag="Trident"
             to="/search/Trident"
             text={null}
-            number="6,136 Tweets"
+            number={6136}
           />
         </TrendsContainer>
       </Trends>
