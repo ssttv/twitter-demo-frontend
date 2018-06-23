@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const MarginsBlock = styled.ul`
   padding: 0;
   list-style: none;
-  margin: 15px 0 0 22px;
+  margin-top: 15px;
 `;
 
 const Contact = styled.li`
