@@ -25,6 +25,8 @@ export default () => (
             <ProfileInfo
               handle="EveryInteract"
               name="Every Interaction"
+              verifiedStatus
+              followStatus
               bio="UX Design studio focussed problem solving creativity. Design to us is how can we make things *work* amazing."
               city="London"
               country="UK"

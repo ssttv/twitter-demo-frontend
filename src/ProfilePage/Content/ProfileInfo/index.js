@@ -58,7 +58,7 @@ const FollowContainer = styled.div`
   padding-top: 6px;
 `;
 
-const StatusFollow = styled.button`
+const FollowState = styled.button`
   background: transparent;
   padding-left: 0;
   border: none;
@@ -170,27 +170,34 @@ const Interact = styled.button`
   }
 `;
 
-export default ({ handle, name, bio, city, country, website, month, year }) => (
+export default ({
+  handle,
+  name,
+  verifiedStatus,
+  followStatus,
+  bio,
+  city,
+  country,
+  website,
+  month,
+  year
+}) => (
   <ProfileContainer>
     <ProfileTitle>
       <UserHandle>
         <UserLink to={`/${handle}`}>
           <FullName>{name}</FullName>
         </UserLink>
-        <Checkmark alt="Verified user" src={checkmark} />
+        {verifiedStatus && <Checkmark alt="Verified user" src={checkmark} />}
       </UserHandle>
       <FollowContainer>
         <UserLink to={`/follow/${handle}`}>
-          <StatusFollow>{`@${handle}`}</StatusFollow>
+          {followStatus && <FollowState>{`@${handle}`}</FollowState>}
         </UserLink>
         <TextFollow>Follows you</TextFollow>
       </FollowContainer>
     </ProfileTitle>
-    <ProfileBio>
-      {bio}
-      UX Design studio focussed problem solving creativity. Design to us is how
-      can we make things *work* amazing.
-    </ProfileBio>
+    <ProfileBio>{bio}</ProfileBio>
     <Location>
       <LocationIcon alt="mapmarker" src={mapmarker} />
       <Place>
