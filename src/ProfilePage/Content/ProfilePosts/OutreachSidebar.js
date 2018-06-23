@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Suggest from "./Suggest";
 import Action from "./Action";
 import Trend from "./Trend";
-import MarginsBlock from "./MarginsBlock";
+import CorporateInfo from "./CorporateInfo";
 import people from "./people.svg";
 
 const Container = styled.div``;
@@ -126,6 +126,6 @@ export default () => (
         </TrendsContainer>
       </Trends>
     </Sidebar>
-    <MarginsBlock />
+    <CorporateInfo />
   </Container>
 );
