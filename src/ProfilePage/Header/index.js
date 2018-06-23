@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
+import Counter from "./Counter";
 import Navigation from "./Navigation";
 import background from "./background.jpg";
 import optiondots from "./optiondots.svg";
-import StatUnit from "./StatUnit";
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
@@ -13,8 +13,6 @@ const ProfileHeader = styled.img`
   will-change: transform;
   min-width: 100%;
 `;
-/* display: grid;
-  grid-template-columns: 265px 1fr 1fr; */
 
 const ProfileInfoContainer = styled.div`
   display: flex;
@@ -115,11 +113,11 @@ export default () => (
         </div>
         <div className="col-xs-6">
           <Statistics>
-            <StatUnit link="/EveryInteract" text="Tweets" count={8058} />
-            <StatUnit link="/following" text="Following" count={721} />
-            <StatUnit link="/followers" text="Followers" count={1815} />
-            <StatUnit link="/likes" text="Likes" count={460} />
-            <StatUnit link="/lists" text="Lists" count={2} />
+            <Counter link="/EveryInteract" text="Tweets" count={8058} />
+            <Counter link="/following" text="Following" count={721} />
+            <Counter link="/followers" text="Followers" count={1815} />
+            <Counter link="/likes" text="Likes" count={460} />
+            <Counter link="/lists" text="Lists" count={2} />
           </Statistics>
         </div>
         <div className="col-xs-3">

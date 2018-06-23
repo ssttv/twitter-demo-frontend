@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Artefact from "./Artefact";
+import Follower from "./Follower";
 import followericon from "./follower.svg";
 import photovideo from "./photovideo.svg";
-import MediaUnit from "./MediaUnit";
-import FollowerUnit from "./FollowerUnit";
 
 const Container = styled.div`
   display: flex;
@@ -64,32 +64,32 @@ export default () => (
         <TitleText>6 followers you know</TitleText>
       </TitleLink>
       <Followers>
-        <FollowerUnit
+        <Follower
           to="/user1"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-1.png`}
           alt="avatar1"
         />
-        <FollowerUnit
+        <Follower
           to="/user2"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-2.png`}
           alt="avatar-2"
         />
-        <FollowerUnit
+        <Follower
           to="/user-3"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-3.png`}
           alt="avatar-3"
         />
-        <FollowerUnit
+        <Follower
           to="/user-4"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-4.png`}
           alt="avatar-4"
         />
-        <FollowerUnit
+        <Follower
           to="/user5"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-5.png`}
           alt="avatar-5"
         />
-        <FollowerUnit
+        <Follower
           to="/user6"
           src={`${process.env.PUBLIC_URL}/img/avatar-person-6.png`}
           alt="avatar-6"
@@ -102,32 +102,32 @@ export default () => (
         <TitleText>522 Photos and videos</TitleText>
       </TitleLink>
       <PhotoVideoBox>
-        <MediaUnit
+        <Artefact
           to="/photovideo1"
           src={`${process.env.PUBLIC_URL}/img/media-1.png`}
           alt="Photo or video"
         />
-        <MediaUnit
+        <Artefact
           to="/photovideo2"
           src={`${process.env.PUBLIC_URL}/img/media-2.png`}
           alt="Photo or video"
         />
-        <MediaUnit
+        <Artefact
           to="/photovideo3"
           src={`${process.env.PUBLIC_URL}/img/media-3.png`}
           alt="Photo or video"
         />
-        <MediaUnit
+        <Artefact
           to="/photovideo4"
           src={`${process.env.PUBLIC_URL}/img/media-4.png`}
           alt="Photo or video"
         />
-        <MediaUnit
+        <Artefact
           to="/photovideo5"
           src={`${process.env.PUBLIC_URL}/img/media-5.png`}
           alt="Photo or video"
         />
-        <MediaUnit
+        <Artefact
           to="/photovideo6"
           src={`${process.env.PUBLIC_URL}/img/media-6.png`}
           alt="Photo or video"

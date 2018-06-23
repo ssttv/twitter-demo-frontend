@@ -10,7 +10,7 @@ import MarginsBlock from "./MarginsBlock";
 
 const Container = styled.div``;
 
-const Recommendations = styled.div`
+const Suggestions = styled.div`
   margin-top: 6px;
   position: relative;
 `;
@@ -77,7 +77,7 @@ export default () => (
           <Action text="View all" to="/view_all" />
         </Actions>
       </SideTitle>
-      <Recommendations>
+      <Suggestions>
         <Suggest
           src={`${process.env.PUBLIC_URL}/img/rec-avatar-1.png`}
           to="/rec1"
@@ -99,7 +99,7 @@ export default () => (
           status={false}
           handle="@Epiphanysearch"
         />
-      </Recommendations>
+      </Suggestions>
       <SearchLink to="/all_people">
         <SearchIcon src={people} />
         <SearchText>Find people you know</SearchText>
@@ -112,37 +112,16 @@ export default () => (
           <Action to="/change" text="Change" />
         </SideTitle>
         <TrendsContainer>
-          <Trend
-            tag="#BringYourDogToWorkDay"
-            to="/hashtag/BringYourDogToWorkDay"
-            text={null}
-            tweets={null}
-          />
-          <Trend
-            tag="#FridayFeeling"
-            to="/hashtag/FridayFeeling"
-            text={null}
-            tweets={12100}
-          />
+          <Trend tag="#BringYourDogToWorkDay" text={null} tweets={null} />
+          <Trend tag="#FridayFeeling" text={null} tweets={12100} />
           <Trend
             tag="#BrexitAnniversary"
-            to="/hashtag/BrexitAnniversary"
             text="It’s one year since the UK voted to leave the European Union"
             tweets={null}
           />
-          <Trend
-            tag="HMS Queen Elizabeth"
-            to="/search/HMS_Queen_Elizabeth"
-            text={null}
-            tweets={1036}
-          />
-          <Trend
-            tag="Joe Budden"
-            to="/search/Joe_Budden"
-            text={null}
-            tweets={1036}
-          />
-          <Trend tag="Trident" to="/search/Trident" text={null} tweets={6136} />
+          <Trend tag="HMS Queen Elizabeth" text={null} tweets={1036} />
+          <Trend tag="Joe Budden" text={null} tweets={1036} />
+          <Trend tag="Trident" text={null} tweets={6136} />
         </TrendsContainer>
       </Trends>
     </Sidebar>
