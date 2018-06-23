@@ -27,8 +27,8 @@ const Button = styled.button`
   })};
 
   &:hover {
-    opacity: 0.8;
     transition: all 0.1s ease-in-out;
+    opacity: 0.8;
     background-color: ${styledMap({
       primary: "#1da1f2"
     })};

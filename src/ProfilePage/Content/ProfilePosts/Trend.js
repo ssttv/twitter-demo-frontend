@@ -32,12 +32,22 @@ const Text = styled.p`
 
 const Count = styled(Text)``;
 
-export default ({ to, tag, text, number }) => (
-  <TrendLink to={to}>
-    <Hashtag>{tag}</Hashtag>
-    <Text>{text}</Text>
-    <Count>
-      {number > 10000 ? `${number / 1000}K Tweets` : `${number} Tweets`}
-    </Count>
-  </TrendLink>
-);
+export default function(props) {
+  const { tweets } = props;
+  const statsDescr = () => {
+    if (tweets > 10000) {
+      return `${(tweets / 1000).toFixed(1)}K`;
+    } else if (tweets => 1000) {
+      return (tweets / 1000).toFixed(3).replace(".", ",");
+    }
+    return tweets;
+  };
+
+  return (
+    <TrendLink to={props.to}>
+      <Hashtag>{props.tag}</Hashtag>
+      <Text>{props.text}</Text>
+      {tweets > 0 && <Count>{statsDescr()} Tweets</Count>}
+    </TrendLink>
+  );
+}

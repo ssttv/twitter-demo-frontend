@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import RecUnit from "./RecUnit";
+import Suggest from "./Suggest";
 import Action from "./Action";
-import TrendUnit from "./TrendUnit";
+import Trend from "./Trend";
 import people from "./people.svg";
 import MarginsBlock from "./MarginsBlock";
 
@@ -78,21 +78,21 @@ export default () => (
         </Actions>
       </SideTitle>
       <Recommendations>
-        <RecUnit
+        <Suggest
           src={`${process.env.PUBLIC_URL}/img/rec-avatar-1.png`}
           to="/rec1"
           name="AppleInsider"
           status={false}
           handle="@appleinsider"
         />
-        <RecUnit
+        <Suggest
           src={`${process.env.PUBLIC_URL}/img/rec-avatar-2.png`}
           to="/rec2"
           name="Creode"
           status
           handle="@Creode"
         />
-        <RecUnit
+        <Suggest
           src={`${process.env.PUBLIC_URL}/img/rec-avatar-3.png`}
           to="/rec3"
           name="Epiphany Search"
@@ -112,42 +112,37 @@ export default () => (
           <Action to="/change" text="Change" />
         </SideTitle>
         <TrendsContainer>
-          <TrendUnit
+          <Trend
             tag="#BringYourDogToWorkDay"
             to="/hashtag/BringYourDogToWorkDay"
             text={null}
-            number={null}
+            tweets={null}
           />
-          <TrendUnit
+          <Trend
             tag="#FridayFeeling"
             to="/hashtag/FridayFeeling"
             text={null}
-            number={12100}
+            tweets={12100}
           />
-          <TrendUnit
+          <Trend
             tag="#BrexitAnniversary"
             to="/hashtag/BrexitAnniversary"
             text="It’s one year since the UK voted to leave the European Union"
-            number={null}
+            tweets={null}
           />
-          <TrendUnit
+          <Trend
             tag="HMS Queen Elizabeth"
             to="/search/HMS_Queen_Elizabeth"
             text={null}
-            number={1036}
+            tweets={1036}
           />
-          <TrendUnit
+          <Trend
             tag="Joe Budden"
             to="/search/Joe_Budden"
             text={null}
-            number={1036}
+            tweets={1036}
           />
-          <TrendUnit
-            tag="Trident"
-            to="/search/Trident"
-            text={null}
-            number={6136}
-          />
+          <Trend tag="Trident" to="/search/Trident" text={null} tweets={6136} />
         </TrendsContainer>
       </Trends>
     </Sidebar>
