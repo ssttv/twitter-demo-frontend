@@ -37,7 +37,7 @@ export default () => (
       <NoteLink to="/about">About</NoteLink>
     </Note>
     <Note>
-      <NoteLink to="/Contact">Help Center</NoteLink>
+      <NoteLink to="/support">Help Center</NoteLink>
     </Note>
     <Note>
       <NoteLink to="/terms">Terms</NoteLink>

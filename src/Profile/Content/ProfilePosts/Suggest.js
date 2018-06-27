@@ -84,21 +84,53 @@ const FullName = styled.p`
   display: inline-block;
 `;
 
-export default ({ src, to, name, status, handle }) => (
-  <User>
-    <Recommended>
-      <Info>
-        <UserLink to={to}>
-          <Avatar src={src} alt="avatar" />
-          <FullName>
-            <Name>{name}</Name>
-            {status && <Status src={checkmark} />}
-          </FullName>
-          <UserHandle>{handle}</UserHandle>
-        </UserLink>
-        <FollowButton primary>Follow</FollowButton>
-      </Info>
-      <Delete src={cross} alt="remove from suggestions" />
-    </Recommended>
-  </User>
+const publicURL = process.env.PUBLIC_URL;
+
+const suggests = [
+  {
+    id: 1,
+    src: `${publicURL}/img/rec-avatar-1.png`,
+    name: 'AppleInsider',
+    status: false,
+    handle: 'appleinsider',
+  },
+  {
+    id: 2,
+    src: `${publicURL}/img/rec-avatar-2.png`,
+    name: 'Creode',
+    status: true,
+    handle: 'Creode',
+  },
+  {
+    id: 3,
+    src: `${publicURL}/img/rec-avatar-3.png`,
+    name: 'Epiphany Search',
+    status: false,
+    handle: 'Epiphanysearch',
+  },
+];
+
+// { src, to, name, status, handle } - old props
+
+export default () => (
+  <React.Fragment>
+    {suggests.map(suggest => (
+      <User key={suggest.id}>
+        <Recommended>
+          <Info>
+            <UserLink to={`/${suggest.handle}`}>
+              <Avatar src={suggest.src} alt="avatar" />
+              <FullName>
+                <Name>{suggest.name}</Name>
+                {suggest.status && <Status src={checkmark} />}
+              </FullName>
+              <UserHandle>{`@${suggest.handle}`}</UserHandle>
+            </UserLink>
+            <FollowButton primary>Follow</FollowButton>
+          </Info>
+          <Delete src={cross} alt="Remove from suggestions" />
+        </Recommended>
+      </User>
+    ))}
+  </React.Fragment>
 );
