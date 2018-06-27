@@ -19,7 +19,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "pretty-quick --staged"
+    "lint": "eslint --ext .jsx,.js src/",
+    "precommit": "lint-staged",
+    "prepush": "yarn run lint",
+    "prettier": "prettier --write 'src/**/*.js'"
+  },
+  "lint-staged": {
+    "*.{js,css,html}": [
+      "yarn lint"
+    ]
   },
   "devDependencies": {
     "babel-eslint": "^8.2.5",

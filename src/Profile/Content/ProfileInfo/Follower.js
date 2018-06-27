@@ -17,7 +17,7 @@ const Avatar = styled.img`
 export default ({ to, src, alt }) => (
   <Follower>
     <FollowerLink to={to}>
-      <Avatar src={src} alt={src} />
+      <Avatar src={src} alt={alt} />
     </FollowerLink>
   </Follower>
 );

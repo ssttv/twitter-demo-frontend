@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import pinned from './pinned.svg';
@@ -241,7 +241,7 @@ const InfoLink = styled.a`
 
 const PostLinkContainer = styled.div`
   display: grid;
-  grid-template-columns: ${props => (props.imgWidth ? '1fr' : '126px 1fr')};
+  grid-template-columns: ${({ imgWidth }) => (imgWidth ? '1fr' : '126px 1fr')};
 `;
 
 const Actions = styled.div`

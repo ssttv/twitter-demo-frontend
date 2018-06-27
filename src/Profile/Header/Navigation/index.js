@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import home from './home.svg';
 import moments from './moments.svg';

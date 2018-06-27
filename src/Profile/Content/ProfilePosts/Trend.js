@@ -32,9 +32,7 @@ const Text = styled.p`
 
 const Count = styled(Text)``;
 
-export default function(props) {
-  const { tag, tweets } = props;
-
+export default function({ tag, tweets, text }) {
   const linkFormat = () => {
     if (tag.charAt(0) === '#') {
       return `/hashtag/${tag.slice(1).replace(' ', '_')}`;
@@ -57,8 +55,8 @@ export default function(props) {
 
   return (
     <TrendLink to={linkFormat()}>
-      <Headline>{props.tag}</Headline>
-      <Text>{props.text}</Text>
+      <Headline>{tag}</Headline>
+      <Text>{text}</Text>
       {tweets > 0 && <Count>{statsFormat()}</Count>}
     </TrendLink>
   );
