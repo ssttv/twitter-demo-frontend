@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Artefact from "./Artefact";
-import Follower from "./Follower";
-import followericon from "./follower.svg";
-import photovideo from "./photovideo.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Artefact from './Artefact';
+import Follower from './Follower';
+import followericon from './follower.svg';
+import photovideo from './photovideo.svg';
 
 const Container = styled.div`
   display: flex;

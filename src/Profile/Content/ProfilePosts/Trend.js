@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Headline = styled.span`
   color: #1da1f2;
@@ -36,18 +36,20 @@ export default function(props) {
   const { tag, tweets } = props;
 
   const linkFormat = () => {
-    if (tag.charAt(0) === "#") {
-      return `/hashtag/${tag.slice(1).replace(" ", "_")}`;
+    if (tag.charAt(0) === '#') {
+      return `/hashtag/${tag.slice(1).replace(' ', '_')}`;
     }
-    return `/search?q="${tag.slice(1).replace(" ", "_")}"`;
+    return `/search?q="${tag.slice(1).replace(' ', '_')}"`;
   };
 
   const statsFormat = () => {
     if (tweets === 1) {
       return `${tweets} Tweet`;
-    } else if (tweets >= 1000) {
-      return `${(tweets / 1000).toFixed(3).replace(".", ",")} Tweets`;
-    } else if (tweets > 10000) {
+    }
+    if (tweets >= 1000) {
+      return `${(tweets / 1000).toFixed(3).replace('.', ',')} Tweets`;
+    }
+    if (tweets > 10000) {
       return `${(tweets / 1000).toFixed(1)}K Tweets`;
     }
     return tweets;

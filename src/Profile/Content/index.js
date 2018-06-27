@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import ProfileInfo from "./ProfileInfo";
-import ProfilePosts from "./ProfilePosts";
-import OutreachSidebar from "./ProfilePosts/OutreachSidebar";
+import React from 'react';
+import styled from 'styled-components';
+import ProfileInfo from './ProfileInfo';
+import ProfilePosts from './ProfilePosts';
+import OutreachSidebar from './ProfilePosts/OutreachSidebar';
 
 const Container = styled.div`
   background-color: #e6ecf0;

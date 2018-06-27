@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import iconCheck from "./check.svg";
-import styledMap from "styled-map";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styledMap from 'styled-map';
+import iconCheck from './check.svg';
 
 const Button = styled.button`
   border-radius: 100px;
@@ -16,24 +16,24 @@ const Button = styled.button`
   max-width: 128px;
 
   background-color: ${styledMap({
-    primary: "white",
-    default: "#1da1f2"
+    primary: 'white',
+    default: '#1da1f2',
   })};
 
   color: ${styledMap({
-    primary: "#1da1f2",
-    default: "white"
+    primary: '#1da1f2',
+    default: 'white',
   })};
 
   &:hover {
     opacity: 0.8;
     transition: all 0.1s ease-in-out;
     background-color: ${styledMap({
-      primary: "#1da1f2"
+      primary: '#1da1f2',
     })};
 
     color: ${styledMap({
-      primary: "white"
+      primary: 'white',
     })};
   }
 
@@ -163,7 +163,7 @@ export default ({
   mainLink,
   dateAlt,
   dateSrc,
-  date
+  date,
 }) => (
   <Profile>
     <ProfileTitle>

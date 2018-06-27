@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Button from "../../../UI/Button";
-import cross from "./cross.svg";
-import checkmark from "./checkmark.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Button from '../../../UI/Button';
+import cross from './cross.svg';
+import checkmark from './checkmark.svg';
 
 const FollowButton = styled(Button)`
   padding: 7px 20px;

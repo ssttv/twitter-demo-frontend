@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
-import pinned from "./pinned.svg";
-import contentImg from "./post-img.jpg";
-import comment from "./comment.svg";
-import retweet from "./retweet.svg";
-import like from "./like.svg";
-import message from "./message.svg";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
+import pinned from './pinned.svg';
+import contentImg from './post-img.jpg';
+import comment from './comment.svg';
+import retweet from './retweet.svg';
+import like from './like.svg';
+import message from './message.svg';
 
 const Container = styled.div`
   background-color: white;
@@ -74,7 +74,7 @@ const AvatarContainer = styled.div`
 `;
 
 const Avatar = styled(Link)`
-  background-image: url(${"/img/avatar-min.png"});
+  background-image: url(${'/img/avatar-min.png'});
   width: 45px;
   height: 45px;
   display: block;
@@ -94,7 +94,7 @@ const Pinned = styled.p`
   position: relative;
 
   &:before {
-    content: "";
+    content: '';
     background-image: url(${pinned});
     position: absolute;
     width: 12px;
@@ -148,7 +148,7 @@ const Date = styled.div`
   padding-left: 2px;
 
   &:before {
-    content: "•";
+    content: '•';
     color: #697787;
   }
 `;
@@ -241,7 +241,7 @@ const InfoLink = styled.a`
 
 const PostLinkContainer = styled.div`
   display: grid;
-  grid-template-columns: ${props => (props.imgWidth ? "1fr" : "126px 1fr")};
+  grid-template-columns: ${props => (props.imgWidth ? '1fr' : '126px 1fr')};
 `;
 
 const Actions = styled.div`
@@ -312,13 +312,13 @@ export default () => (
           </Date>
         </Title>
         <PostMessage>
-          We&apos;ve made some more resources for all you wonderful{" "}
-          <Hashtag to="/hashtag/design">#design</Hashtag> folk{" "}
+          We&apos;ve made some more resources for all you wonderful{' '}
+          <Hashtag to="/hashtag/design">#design</Hashtag> folk{' '}
           <LinkWebSite href="https://everyinteraction.com/resources/">
             everyinteraction.com/resources/
-          </LinkWebSite>{" "}
-          <Hashtag to="/hashtag/webdesign">#webdesign</Hashtag>{" "}
-          <Hashtag to="/hashtag/ui">#UI</Hashtag>{" "}
+          </LinkWebSite>{' '}
+          <Hashtag to="/hashtag/webdesign">#webdesign</Hashtag>{' '}
+          <Hashtag to="/hashtag/ui">#UI</Hashtag>{' '}
         </PostMessage>
         <PostLinkContainer imgWidth>
           <Image alt="post image" src={contentImg} />
@@ -360,11 +360,11 @@ export default () => (
           </Date>
         </Title>
         <PostMessage>
-          Our new website concept; Taking you from ...{" "}
-          <LinkProfile to="/EveryInteract">@ Every Interaction</LinkProfile>{" "}
+          Our new website concept; Taking you from ...{' '}
+          <LinkProfile to="/EveryInteract">@ Every Interaction</LinkProfile>{' '}
           <LinkWebSite href="https://instagram.com/p/BNFGrfhBP3M/">
             instagram.com/p/BNFGrfhBP3M/
-          </LinkWebSite>{" "}
+          </LinkWebSite>{' '}
         </PostMessage>
         <PostLinkContainer />
         <Actions>

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
-import Counter from "./Counter";
-import Navigation from "./Navigation";
-import Button from "../../UI/Button";
-import background from "./background.jpg";
-import optiondots from "./optiondots.svg";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
+import Counter from './Counter';
+import Navigation from './Navigation';
+import Button from '../../UI/Button';
+import background from './background.jpg';
+import optiondots from './optiondots.svg';
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
@@ -80,7 +80,7 @@ const Dropdown = styled.div`
   line-height: 16px;
 
   &:before {
-    content: "";
+    content: '';
     background-image: url(${optiondots});
     height: 100%;
     display: block;
