@@ -62,10 +62,6 @@ const SearchLink = styled(Link)`
 
 const Trends = styled.div``;
 
-const TrendsContainer = styled.div`
-  margin-top: 14px;
-`;
-
 const SearchIcon = styled.img``;
 export default () => (
   <Container>
