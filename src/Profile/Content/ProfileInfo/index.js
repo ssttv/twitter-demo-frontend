@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import CommunitySidebar from './CommunitySidebar';
-import mapmarker from './mapmarker.svg';
-import linkimg from './linkimg.svg';
-import date from './date.svg';
-import checkmark from './checkmark.svg';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import CommunitySidebar from "./CommunitySidebar";
+import mapmarker from "./mapmarker.svg";
+import linkimg from "./linkimg.svg";
+import date from "./date.svg";
+import checkmark from "./checkmark.svg";
 
 const ProfileTitle = styled.div``;
 
@@ -180,7 +180,7 @@ export default ({
   country,
   website,
   month,
-  year,
+  year
 }) => (
   <ProfileContainer>
     <ProfileTitle>

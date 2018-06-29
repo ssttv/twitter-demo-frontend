@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Suggest from './Suggest';
-import Action from './Action';
-import Trend from './Trend';
-import CorporateInfo from './CorporateInfo';
-import people from './people.svg';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Suggest from "./Suggest";
+import Action from "./Action";
+import Trend from "./Trend";
+import CorporateInfo from "./CorporateInfo";
+import people from "./people.svg";
 
 const Container = styled.div``;
 

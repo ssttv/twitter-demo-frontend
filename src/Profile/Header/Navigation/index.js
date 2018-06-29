@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import home from './home.svg';
-import moments from './moments.svg';
-import notifications from './notifications.svg';
-import messages from './messages.svg';
-import twitterLogo from './twitter.svg';
-import search from './search.svg';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import home from "./home.svg";
+import moments from "./moments.svg";
+import notifications from "./notifications.svg";
+import messages from "./messages.svg";
+import twitterLogo from "./twitter.svg";
+import search from "./search.svg";
 
 const Nav = styled.nav`
   display: flex;

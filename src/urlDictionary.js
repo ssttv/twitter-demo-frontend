@@ -1,77 +1,77 @@
 export const pages = [
   {
     id: 1,
-    to: '/moments',
+    to: "/moments"
   },
   {
     id: 2,
-    to: '/messages',
+    to: "/messages"
   },
   {
     id: 3,
-    to: '/notifications',
+    to: "/notifications"
   },
   {
     id: 4,
-    to: '/view_all',
+    to: "/view_all"
   },
   {
     id: 5,
-    to: '/change',
+    to: "/change"
   },
   {
     id: 6,
-    to: '/all_people',
+    to: "/all_people"
   },
   {
     id: 7,
-    to: '/about',
+    to: "/about"
   },
   {
     id: 8,
-    to: '/support',
+    to: "/support"
   },
   {
     id: 9,
-    to: '/terms',
+    to: "/terms"
   },
   {
     id: 10,
-    to: '/privacy_policy',
+    to: "/privacy_policy"
   },
   {
     id: 11,
-    to: '/cookies',
+    to: "/cookies"
   },
   {
     id: 12,
-    to: '/ads',
+    to: "/ads"
   },
   {
     id: 13,
-    to: '/search',
-  },
+    to: "/search"
+  }
 ];
 
 export const users = [
   {
     id: 1,
-    name: 'Every Interaction',
-    handle: 'EveryInteract',
+    name: "Every Interaction",
+    handle: "EveryInteract"
   },
   {
     id: 2,
-    name: 'AppleInsider',
-    handle: 'appleinsider',
+    name: "AppleInsider",
+    handle: "appleinsider"
   },
   {
     id: 3,
-    name: 'Creode',
-    handle: 'Creode',
+    name: "Creode",
+    handle: "Creode"
   },
   {
     id: 4,
-    name: 'Epiphany Search',
-    handle: 'Epiphanysearch',
-  },
+    name: "Epiphany Search",
+    handle: "Epiphanysearch"
+  }
 ];

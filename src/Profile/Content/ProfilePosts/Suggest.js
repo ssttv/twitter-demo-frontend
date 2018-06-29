@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Button from '../../../UI/Button';
-import cross from './cross.svg';
-import checkmark from './checkmark.svg';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Button from "../../../UI/Button";
+import cross from "./cross.svg";
+import checkmark from "./checkmark.svg";
 
 const FollowButton = styled(Button)`
   padding: 7px 20px;
@@ -90,24 +90,24 @@ const suggests = [
   {
     id: 1,
     src: `${publicURL}/img/rec-avatar-1.png`,
-    name: 'AppleInsider',
+    name: "AppleInsider",
     status: false,
-    handle: 'appleinsider',
+    handle: "appleinsider"
   },
   {
     id: 2,
     src: `${publicURL}/img/rec-avatar-2.png`,
-    name: 'Creode',
+    name: "Creode",
     status: true,
-    handle: 'Creode',
+    handle: "Creode"
   },
   {
     id: 3,
     src: `${publicURL}/img/rec-avatar-3.png`,
-    name: 'Epiphany Search',
+    name: "Epiphany Search",
     status: false,
-    handle: 'Epiphanysearch',
-  },
+    handle: "Epiphanysearch"
+  }
 ];
 
 // { src, to, name, status, handle } - old props
