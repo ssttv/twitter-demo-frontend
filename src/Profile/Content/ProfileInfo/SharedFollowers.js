@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Followers = styled.ul`
-  margin: -8px 0 0 -8px;
+  margin: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
