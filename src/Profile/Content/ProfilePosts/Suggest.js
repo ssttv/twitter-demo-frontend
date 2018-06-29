@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../../../UI/Button";
 import cross from "./cross.svg";
 import checkmark from "./checkmark.svg";
+import suggests from "../../../data/suggests";
 
 const FollowButton = styled(Button)`
   padding: 7px 20px;
@@ -83,34 +84,6 @@ const FullName = styled.p`
   margin: 0;
   display: inline-block;
 `;
-
-const publicURL = process.env.PUBLIC_URL;
-
-const suggests = [
-  {
-    id: 1,
-    src: `${publicURL}/img/rec-avatar-1.png`,
-    name: "AppleInsider",
-    status: false,
-    handle: "appleinsider"
-  },
-  {
-    id: 2,
-    src: `${publicURL}/img/rec-avatar-2.png`,
-    name: "Creode",
-    status: true,
-    handle: "Creode"
-  },
-  {
-    id: 3,
-    src: `${publicURL}/img/rec-avatar-3.png`,
-    name: "Epiphany Search",
-    status: false,
-    handle: "Epiphanysearch"
-  }
-];
-
-// { src, to, name, status, handle } - old props
 
 export default () => (
   <React.Fragment>

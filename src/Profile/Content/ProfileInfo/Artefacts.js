@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Title from "./Title";
 import photovideo from "./photovideo.svg";
+import artefacts from "../../../data/artefacts";
 
 const Container = styled.div`
   display: flex;
@@ -38,41 +39,6 @@ const PhotoVideo = styled.img`
     border: 0 1px 2px 0 black;
   }
 `;
-
-const publicURL = process.env.PUBLIC_URL;
-
-const artefacts = [
-  {
-    id: 1,
-    src: `${publicURL}/img/media-1.png`,
-    to: "/media_1"
-  },
-  {
-    id: 2,
-    src: `${publicURL}/img/media-2.png`,
-    to: "/media_2"
-  },
-  {
-    id: 3,
-    src: `${publicURL}/img/media-3.png`,
-    to: "/media-3"
-  },
-  {
-    id: 4,
-    src: `${publicURL}/img/media-4.png`,
-    to: "/media_4"
-  },
-  {
-    id: 5,
-    src: `${publicURL}/img/media-5.png`,
-    to: "/media_5"
-  },
-  {
-    id: 6,
-    src: `${publicURL}/img/media-6.png`,
-    to: "/media_6"
-  }
-];
 
 export default () => (
   <Container>
