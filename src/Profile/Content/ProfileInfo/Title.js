@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const TitleIcon = styled.img`
+const Icon = styled.img`
   margin-right: 10px;
   min-width: 15px;
 `;
 
-const TitleText = styled.span`
+const Text = styled.span`
   margin: 0;
   font-size: 14px;
   line-height: 16px;
@@ -21,7 +21,7 @@ const TitleLink = styled(Link)`
   display: flex;
 
   &:hover {
-    ${TitleText} {
+    ${Text} {
       border-bottom: 1px solid #1da1f2;
     }
   }
@@ -29,7 +29,7 @@ const TitleLink = styled(Link)`
 
 export default ({ to, src, alt, children }) => (
   <TitleLink to={to}>
-    <TitleIcon src={src} alt={alt} />
-    <TitleText>{children}</TitleText>
+    <Icon src={src} alt={alt} />
+    <Text>{children}</Text>
   </TitleLink>
 );

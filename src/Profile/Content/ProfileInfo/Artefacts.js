@@ -11,9 +11,9 @@ const Container = styled.div`
   margin-bottom: 25px;
 `;
 
-const PhotoVideoLink = styled(Link)``;
+const ContentLink = styled(Link)``;
 
-const PhotoVideoBox = styled.ul`
+const Box = styled.ul`
   margin: -8px 0 0 -8px;
   display: flex;
   flex-direction: row;
@@ -22,14 +22,14 @@ const PhotoVideoBox = styled.ul`
   padding: 0;
 `;
 
-const PhotoVideoList = styled.li`
+const List = styled.li`
   list-style: none;
   padding: 0;
   margin: 5px 0 0 5px;
   cursor: pointer;
 `;
 
-const PhotoVideo = styled.img`
+const Content = styled.img`
   width: 83px;
   background-color: #66757f;
   border-radius: 4px;
@@ -45,14 +45,14 @@ export default () => (
     <Title to="/media" src={photovideo} alt="media icon">
       522 Photos and videos
     </Title>
-    <PhotoVideoBox>
+    <Box>
       {artefacts.map(artefact => (
-        <PhotoVideoList key={artefact.id}>
-          <PhotoVideoLink to={artefact.to}>
-            <PhotoVideo src={artefact.src} alt={artefact.alt} />
-          </PhotoVideoLink>
-        </PhotoVideoList>
+        <List key={artefact.id}>
+          <ContentLink to={artefact.to}>
+            <Content src={artefact.src} alt={artefact.alt} />
+          </ContentLink>
+        </List>
       ))}
-    </PhotoVideoBox>
+    </Box>
   </Container>
 );
