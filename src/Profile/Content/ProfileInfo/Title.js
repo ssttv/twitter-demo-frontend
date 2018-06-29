@@ -17,7 +17,6 @@ const Text = styled.span`
 
 const TitleLink = styled(Link)`
   text-decoration: none;
-  padding-left: 2px;
   margin-bottom: 8px;
   display: flex;
 
