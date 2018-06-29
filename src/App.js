@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import Profile from "./Profile";
-import urlDummy from "./urlDummy";
-import { pages } from "./urlDictionary";
+import { Error404Page, DummyPage } from "./UtilityPages";
 
 export default function App() {
   return (
@@ -11,16 +10,22 @@ export default function App() {
       <BrowserRouter>
         <React.Fragment>
           <Switch>
-            {pages.map(page => (
-              <Route
-                key={page.id}
-                exact
-                path={`${page.to}`}
-                component={urlDummy}
-              />
-            ))}
-            <Route path="/:handle" component={Profile} />
             <Redirect exact from="/" to="/EveryInteract" />
+            <Route exact path="/moments" component={DummyPage} />
+            <Route exact path="/notifications" component={DummyPage} />
+            <Route exact path="/messages" component={DummyPage} />
+            <Route exact path="/about" component={DummyPage} />
+            <Route exact path="/all_people" component={DummyPage} />
+            <Route exact path="/view_all" component={DummyPage} />
+            <Route exact path="/change" component={DummyPage} />
+            <Route exact path="/support" component={DummyPage} />
+            <Route exact path="/terms" component={DummyPage} />
+            <Route exact path="/privacy_policy" component={DummyPage} />
+            <Route exact path="/cookies" component={DummyPage} />
+            <Route exact path="/ads" component={DummyPage} />
+            <Route exact path="/search" component={DummyPage} />
+            <Route path="/:handle" component={Profile} />
+            <Route component={Error404Page} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>
