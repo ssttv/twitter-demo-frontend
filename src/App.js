@@ -24,7 +24,7 @@ export default function App() {
             <Route exact path="/cookies" component={DummyPage} />
             <Route exact path="/ads" component={DummyPage} />
             <Route exact path="/search" component={DummyPage} />
-            <Route path="/:userId" component={Profile} />
+            <Route path="/:username" component={Profile} />
             <Route component={Error404Page} />
           </Switch>
         </React.Fragment>

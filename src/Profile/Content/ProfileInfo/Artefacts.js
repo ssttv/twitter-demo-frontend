@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import Title from "./Title";
 import photovideo from "./photovideo.svg";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+`;
+
 const PhotoVideoLink = styled(Link)``;
 
 const PhotoVideoBox = styled.ul`
@@ -44,7 +50,7 @@ const artefacts = [
   {
     id: 2,
     src: `${publicURL}/img/media-2.png`,
-    to: "/media-2"
+    to: "/media_2"
   },
   {
     id: 3,
@@ -54,22 +60,22 @@ const artefacts = [
   {
     id: 4,
     src: `${publicURL}/img/media-4.png`,
-    to: "/media-4"
+    to: "/media_4"
   },
   {
     id: 5,
     src: `${publicURL}/img/media-5.png`,
-    to: "/media-5"
+    to: "/media_5"
   },
   {
     id: 6,
     src: `${publicURL}/img/media-6.png`,
-    to: "/media-6"
+    to: "/media_6"
   }
 ];
 
 export default () => (
-  <React.Fragment>
+  <Container>
     <Title to="/media" src={photovideo} alt="media icon">
       522 Photos and videos
     </Title>
@@ -82,5 +88,5 @@ export default () => (
         </PhotoVideoList>
       ))}
     </PhotoVideoBox>
-  </React.Fragment>
+  </Container>
 );

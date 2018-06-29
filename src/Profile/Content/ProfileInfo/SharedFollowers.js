@@ -4,6 +4,12 @@ import styled from "styled-components";
 import person from "./person.svg";
 import Title from "./Title";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+`;
+
 const Followers = styled.ul`
   margin: -8px 0 0 -8px;
   display: flex;
@@ -65,7 +71,7 @@ const followers = [
 ];
 
 export default () => (
-  <React.Fragment>
+  <Container>
     <Title to="/shared_followers" src={person} alt="follower icon">
       {followers.length} Followers you now
     </Title>
@@ -85,5 +91,5 @@ export default () => (
         </React.Fragment>
       ))}
     </Followers>
-  </React.Fragment>
+  </Container>
 );
