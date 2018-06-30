@@ -55,22 +55,22 @@ export default ({ match }) => (
                 <Route
                   exact
                   path={`${match.url}/following`}
-                  render={() => <h2>This is Following</h2>}
+                  render={() => <h2>Following</h2>}
                 />
                 <Route
                   exact
                   path={`${match.url}/followers`}
-                  render={() => <h2>This is Followers</h2>}
+                  render={() => <h2>Followers</h2>}
                 />
                 <Route
                   exact
                   path={`${match.url}/likes`}
-                  render={() => <h2>This is Likes</h2>}
+                  render={() => <h2>Likes</h2>}
                 />
                 <Route
                   exact
                   path={`${match.url}/lists`}
-                  render={() => <h2>This is Lists</h2>}
+                  render={() => <h2>Lists</h2>}
                 />
                 <Route path={`${match.url}`} component={Feeds} />
               </Switch>
