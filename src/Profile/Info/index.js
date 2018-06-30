@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Artefacts from "./Artefacts";
-import SharedFollowers from "./SharedFollowers";
 import mapmarker from "./mapmarker.svg";
 import linkimg from "./linkimg.svg";
 import date from "./date.svg";
@@ -222,7 +220,5 @@ export default ({
       <Interact>Tweet to</Interact>
       <Interact>Message</Interact>
     </Actions>
-    <SharedFollowers />
-    <Artefacts />
   </ProfileContainer>
 );
