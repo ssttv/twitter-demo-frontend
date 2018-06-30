@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { FormattedNumber } from "react-intl";
 
 const Text = styled.span`
   font-size: 12px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 21px;
   color: #707e88;
 `;
 
-const Sub = styled(Text)`
+const Amount = styled(Text)`
   font-size: 18px;
+  font-weight: bold;
   color: #707e88;
 `;
 
@@ -27,7 +29,7 @@ const InfoLink = styled(NavLink)`
   &.active {
     border-bottom: 3px solid #1da1f2;
 
-    ${Sub} {
+    ${Amount} {
       color: #1da1f2;
     }
   }
@@ -36,7 +38,7 @@ const InfoLink = styled(NavLink)`
     border-bottom: 3px solid #1da1f2;
     transition: all 0.1s ease-in-out;
 
-    ${Sub} {
+    ${Amount} {
       color: #1da1f2;
     }
   }
@@ -56,7 +58,9 @@ export default ({ url, to, active, text, count }) => (
   <Stat>
     <InfoLink to={`${url}${to}`} isActive={active}>
       <Text>{text}</Text>
-      <Sub>{count}</Sub>
+      <Amount>
+        <FormattedNumber value={count} />
+      </Amount>
     </InfoLink>
   </Stat>
 );

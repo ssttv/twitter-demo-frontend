@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import person from "./person.svg";
+import person from "../icons/person.svg";
 import Title from "./Title";
 import followers from "../../data/followers";
 

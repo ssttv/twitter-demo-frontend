@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, Route, withRouter } from "react-router-dom";
-import Stats from "./Stats";
+import Counters from "./Counters";
 import Button from "../../UI/Button";
 import background from "./background.jpg";
-import optiondots from "./optiondots.svg";
+import optiondots from "./icons/optiondots.svg";
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
@@ -48,17 +48,6 @@ const Avatar = styled.img`
   height: 83%;
   boder: 1px solid gainsboro;
 `;
-/*
-const Counters = styled.ul`
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  min-width: 200px;
-  list-style: none;
-  justify-content: flex-start;
-  padding: 0 0px;
-`;
-*/
 
 const UserActions = styled.div`
   display: flex;
@@ -89,16 +78,6 @@ const Dropdown = styled.div`
   }
 `;
 
-/*
-<Counters>
-  <Counter link="/tweets" text="Tweets" count={8058} />
-  <Counter link="/following" text="Following" count={721} />
-  <Counter link="/followers" text="Followers" count={1815} />
-  <Counter link="/likes" text="Likes" count={460} />
-  <Counter link="/lists" text="Lists" count={2} />
-</Counters>;
-*/
-
 export default withRouter(({ match }) => (
   <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
@@ -112,7 +91,7 @@ export default withRouter(({ match }) => (
           </ProfileBlock>
         </div>
         <div className="col-xs-6">
-          <Route component={Stats} />
+          <Route component={Counters} />
         </div>
         <div className="col-xs-3">
           <UserActions>

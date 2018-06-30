@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import mapmarker from "./mapmarker.svg";
-import linkimg from "./linkimg.svg";
-import date from "./date.svg";
-import checkmark from "./checkmark.svg";
+import mapmarker from "../icons/mapmarker.svg";
+import linkimg from "../icons/linkimg.svg";
+import date from "../icons/date.svg";
+import checkmark from "../icons/checkmark.svg";
 
 const ProfileTitle = styled.div``;
 

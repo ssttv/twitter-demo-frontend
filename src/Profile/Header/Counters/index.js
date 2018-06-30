@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Stat from "./Stat";
+import Counter from "./Counter";
 
-const StatList = styled.ul`
+const List = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -22,17 +22,17 @@ const isMainNavActive = (match, location) => {
 };
 
 export default ({ match }) => (
-  <StatList>
-    <Stat
+  <List>
+    <Counter
       url={match.url}
       active={isMainNavActive}
       to=""
       text="Tweets"
       count={8058}
     />
-    <Stat url={match.url} to="/following" text="Following" count={721} />
-    <Stat url={match.url} to="/followers" text="Followers" count={1815} />
-    <Stat url={match.url} to="/likes" text="Likes" count={460} />
-    <Stat url={match.url} to="/lists" text="Lists" count={2} />
-  </StatList>
+    <Counter url={match.url} to="/following" text="Following" count={721} />
+    <Counter url={match.url} to="/followers" text="Followers" count={1815} />
+    <Counter url={match.url} to="/likes" text="Likes" count={460} />
+    <Counter url={match.url} to="/lists" text="Lists" count={2} />
+  </List>
 );

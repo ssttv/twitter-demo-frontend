@@ -6,7 +6,7 @@ import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
 import SharedFollowers from "./Info/SharedFollowers";
-import Posts from "./Posts";
+import Feeds from "./Feeds";
 import Outreach from "./Outreach";
 import { findUser } from "../data/utils";
 
@@ -72,7 +72,7 @@ export default ({ match }) => (
                   path={`${match.url}/lists`}
                   render={() => <h2>This is Lists</h2>}
                 />
-                <Route path={`${match.url}`} component={Posts} />
+                <Route path={`${match.url}`} component={Feeds} />
               </Switch>
             </div>
             <div className="col-xs-3">

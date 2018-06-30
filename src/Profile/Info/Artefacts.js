@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Title from "./Title";
-import photovideo from "./photovideo.svg";
+import photovideo from "../icons/photovideo.svg";
 import artefacts from "../../data/artefacts";
 
 const Container = styled.div`
