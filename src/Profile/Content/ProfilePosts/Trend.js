@@ -48,7 +48,7 @@ export default function() {
       <Feed>
         {trends.map(trend => (
           <Trend key={trend.id}>
-            <TrendLink to={`/search?q=${trend.to}`}>
+            <TrendLink to={`/search?q=${trend.tag}`}>
               <Headline>{trend.tag}</Headline>
               <Text>{trend.text}</Text>
               {trend.tweets > 0 && (

@@ -90,8 +90,7 @@ const Dropdown = styled.div`
 `;
 
 export default () => (
-  <header>
-    <Navigation />
+  <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">
       <ProfileInfoContainer>
@@ -119,5 +118,5 @@ export default () => (
         </div>
       </ProfileInfoContainer>
     </div>
-  </header>
+  </React.Fragment>
 );

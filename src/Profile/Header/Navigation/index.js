@@ -8,6 +8,16 @@ import messages from "./messages.svg";
 import twitterLogo from "./twitter.svg";
 import search from "./search.svg";
 
+const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+`;
+
 const Nav = styled.nav`
   display: flex;
   flex-direction: row;
@@ -141,41 +151,43 @@ const Tweet = styled.button`
 `;
 
 export default () => (
-  <div className="container">
-    <Nav>
-      <BreadCrumbs>
-        <Home>
-          <CrumbIcon alt="Home" src={home} />
-          <CrumbText>Home</CrumbText>
-        </Home>
-        <Moments>
-          <CrumbIcon alt="Moments" src={moments} />
-          <CrumbText>Moments</CrumbText>
-        </Moments>
-        <Notifications>
-          <CrumbIcon alt="Notifications" src={notifications} />
-          <CrumbText>Notifications</CrumbText>
-        </Notifications>
-        <Messages>
-          <CrumbIcon alt="Messages" src={messages} />
-          <CrumbText>Messages</CrumbText>
-        </Messages>
-      </BreadCrumbs>
-      <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
-      <ActionsContainer>
-        <Search action="/search">
-          <SearchInput
-            type="text"
-            id="search-input"
-            placeholder="Search Twitter"
-          />
-          <SearchBtn alt="search-icon" src={search} />
-        </Search>
-        <AvatarLink to="/EveryInteract">
-          <Avatar src="/img/avatar-min.png" />
-        </AvatarLink>
-        <Tweet>Tweet</Tweet>
-      </ActionsContainer>
-    </Nav>
-  </div>
+  <Header>
+    <div className="container">
+      <Nav>
+        <BreadCrumbs>
+          <Home>
+            <CrumbIcon alt="Home" src={home} />
+            <CrumbText>Home</CrumbText>
+          </Home>
+          <Moments>
+            <CrumbIcon alt="Moments" src={moments} />
+            <CrumbText>Moments</CrumbText>
+          </Moments>
+          <Notifications>
+            <CrumbIcon alt="Notifications" src={notifications} />
+            <CrumbText>Notifications</CrumbText>
+          </Notifications>
+          <Messages>
+            <CrumbIcon alt="Messages" src={messages} />
+            <CrumbText>Messages</CrumbText>
+          </Messages>
+        </BreadCrumbs>
+        <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
+        <ActionsContainer>
+          <Search action="/search">
+            <SearchInput
+              type="text"
+              id="search-input"
+              placeholder="Search Twitter"
+            />
+            <SearchBtn alt="search-icon" src={search} />
+          </Search>
+          <AvatarLink to="/EveryInteract">
+            <Avatar src="/img/avatar-min.png" />
+          </AvatarLink>
+          <Tweet>Tweet</Tweet>
+        </ActionsContainer>
+      </Nav>
+    </div>
+  </Header>
 );

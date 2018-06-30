@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Text = styled.h1`
