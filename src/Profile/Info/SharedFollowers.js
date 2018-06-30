@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import person from "./person.svg";
 import Title from "./Title";
-import followers from "../../../data/followers";
+import followers from "../../data/followers";
 
 const Container = styled.div`
   display: flex;

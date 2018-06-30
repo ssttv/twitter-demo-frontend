@@ -25,7 +25,7 @@ const Return = styled(Link)`
   }
 `;
 
-export const Error404Page = ({ location }) => (
+export const Error404 = ({ location }) => (
   <React.Fragment>
     <Helmet>
       <title>Error 404</title>
@@ -37,7 +37,19 @@ export const Error404Page = ({ location }) => (
   </React.Fragment>
 );
 
-export const DummyPage = ({ location }) => (
+export const GenericError = ({ location }) => (
+  <React.Fragment>
+    <Helmet>
+      <title>Generic Error</title>
+    </Helmet>
+    <Text>
+      Unspecified error loading
+      {`${location.pathname}${location.search}`}
+    </Text>
+  </React.Fragment>
+);
+
+export const Dummy = ({ location }) => (
   <React.Fragment>
     <Helmet>
       <title>{location.pathname}</title>

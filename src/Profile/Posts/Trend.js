@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FormattedNumber } from "react-intl";
 import styled from "styled-components";
-import trends from "../../../data/trends";
+import trends from "../../data/trends";
 
 const Headline = styled.span`
   color: #1da1f2;
