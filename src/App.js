@@ -3,14 +3,14 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import Profile from "./Profile";
 import { Error404Page, DummyPage } from "./UtilityPages";
-import Navigation from "./Profile/Header/Navigation";
+import Header from "./Header";
 
 export default function App() {
   return (
     <IntlProvider locale="en">
       <BrowserRouter>
         <React.Fragment>
-          <Navigation />
+          <Header />
           <Switch>
             <Redirect exact from="/" to="/EveryInteract" />
             <Route exact path="/moments" component={DummyPage} />
