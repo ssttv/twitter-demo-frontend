@@ -42,18 +42,16 @@ export default () => (
       {followers.length} Followers you now
     </Title>
     <Followers>
-      {followers.map(follower => (
+      {followers.filter(follower => follower.id <= 10).map(follower => (
         <React.Fragment key={follower.id}>
-          {follower.id <= 10 && (
-            <Follower>
-              <StLink to={follower.name}>
-                <Avatar
-                  src={follower.src}
-                  alt={`avatar ${follower.name.slice(1)}`}
-                />
-              </StLink>
-            </Follower>
-          )}
+          <Follower>
+            <StLink to={follower.name}>
+              <Avatar
+                src={follower.src}
+                alt={`avatar ${follower.name.slice(1)}`}
+              />
+            </StLink>
+          </Follower>
         </React.Fragment>
       ))}
     </Followers>
