@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Counter from "./Counter";
-import Navigation from "./Navigation";
 import Button from "../../UI/Button";
 import background from "./background.jpg";
 import optiondots from "./optiondots.svg";
