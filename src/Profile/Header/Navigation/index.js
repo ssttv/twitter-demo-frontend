@@ -15,7 +15,8 @@ const Header = styled.header`
   right: 0;
   z-index: 1000;
   background-color: white;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid lightgrey;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const Nav = styled.nav`
