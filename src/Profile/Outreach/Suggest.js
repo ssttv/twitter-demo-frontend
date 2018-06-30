@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../UI/Button";
-import cross from "./cross.svg";
-import checkmark from "./checkmark.svg";
+import cross from "../icons/cross.svg";
+import checkmark from "../icons/checkmark.svg";
 import suggests from "../../data/suggests";
 
 const FollowButton = styled(Button)`

@@ -5,7 +5,7 @@ import Suggest from "./Suggest";
 import Action from "./Action";
 import Trend from "./Trend";
 import CorporateInfo from "./CorporateInfo";
-import people from "./people.svg";
+import people from "../icons/people.svg";
 
 const Container = styled.div``;
 

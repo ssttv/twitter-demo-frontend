@@ -7,7 +7,7 @@ import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
 import SharedFollowers from "./Info/SharedFollowers";
 import Posts from "./Posts";
-import OutreachSidebar from "./Posts/OutreachSidebar";
+import Outreach from "./Outreach";
 import { findUser } from "../data/utils";
 
 const Container = styled.div`
@@ -55,28 +55,28 @@ export default ({ match }) => (
                 <Route
                   exact
                   path={`${match.url}/following`}
-                  render={() => <h3>This is Following</h3>}
+                  render={() => <h2>This is Following</h2>}
                 />
                 <Route
                   exact
                   path={`${match.url}/followers`}
-                  render={() => <h3>This is Followers</h3>}
+                  render={() => <h2>This is Followers</h2>}
                 />
                 <Route
                   exact
                   path={`${match.url}/likes`}
-                  render={() => <h3>This is Likes</h3>}
+                  render={() => <h2>This is Likes</h2>}
                 />
                 <Route
                   exact
                   path={`${match.url}/lists`}
-                  render={() => <h3>This is Lists</h3>}
+                  render={() => <h2>This is Lists</h2>}
                 />
                 <Route path={`${match.url}`} component={Posts} />
               </Switch>
             </div>
             <div className="col-xs-3">
-              <OutreachSidebar />
+              <Outreach />
             </div>
           </ProfileFace>
         </div>

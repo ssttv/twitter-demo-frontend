@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
-import pinned from "./pinned.svg";
+import pinned from "../icons/pinned.svg";
 import contentImg from "./post-img.jpg";
-import comment from "./comment.svg";
-import retweet from "./retweet.svg";
-import like from "./like.svg";
-import message from "./message.svg";
+import comment from "../icons/comment.svg";
+import retweet from "../icons/retweet.svg";
+import like from "../icons/like.svg";
+import message from "../icons/message.svg";
 
 const Container = styled.div`
   background-color: white;
