@@ -12,6 +12,7 @@ export default function App() {
         <React.Fragment>
           <Header />
           <Switch>
+            <Redirect exact from="/" to="/EveryInteract" />
             <Route exact path="/moments" component={Dummy} />
             <Route exact path="/notifications" component={Dummy} />
             <Route exact path="/messages" component={Dummy} />
@@ -28,7 +29,6 @@ export default function App() {
             <Route exact path="/error" component={GenericError} />
             <Route path="/:user" component={Profile} />
             <Route component={Error404} />
-            <Redirect exact from="/" to="/EveryInteract" />
           </Switch>
         </React.Fragment>
       </BrowserRouter>

@@ -6,21 +6,21 @@ const suggests = [
     src: `${publicURL}/img/rec-avatar-1.png`,
     name: "AppleInsider",
     status: false,
-    handle: "appleinsider"
+    username: "appleinsider"
   },
   {
     id: 2,
     src: `${publicURL}/img/rec-avatar-2.png`,
     name: "Creode",
     status: true,
-    handle: "Creode"
+    username: "Creode"
   },
   {
     id: 3,
     src: `${publicURL}/img/rec-avatar-3.png`,
     name: "Epiphany Search",
     status: false,
-    handle: "Epiphanysearch"
+    username: "Epiphanysearch"
   }
 ];
 

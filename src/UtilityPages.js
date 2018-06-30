@@ -37,15 +37,12 @@ export const Error404 = ({ location }) => (
   </React.Fragment>
 );
 
-export const GenericError = ({ location }) => (
+export const GenericError = () => (
   <React.Fragment>
     <Helmet>
       <title>Generic Error</title>
     </Helmet>
-    <Text>
-      Unspecified error loading
-      {`${location.pathname}${location.search}`}
-    </Text>
+    <Text>Unspecified error</Text>
   </React.Fragment>
 );
 

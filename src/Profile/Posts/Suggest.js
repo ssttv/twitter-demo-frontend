@@ -91,13 +91,13 @@ export default () => (
       <User key={suggest.id}>
         <Recommended>
           <Info>
-            <UserLink to={`/${suggest.handle}`}>
+            <UserLink to={`/${suggest.username}`}>
               <Avatar src={suggest.src} alt="avatar" />
               <FullName>
                 <Name>{suggest.name}</Name>
                 {suggest.status && <Status src={checkmark} />}
               </FullName>
-              <UserHandle>{`@${suggest.handle}`}</UserHandle>
+              <UserHandle>{`@${suggest.username}`}</UserHandle>
             </UserLink>
             <FollowButton primary>Follow</FollowButton>
           </Info>

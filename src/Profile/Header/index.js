@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Counter from "./Counter";
+import { Link, Route, withRouter } from "react-router-dom";
+import Stats from "./Stats";
 import Button from "../../UI/Button";
 import background from "./background.jpg";
 import optiondots from "./optiondots.svg";
@@ -48,8 +48,8 @@ const Avatar = styled.img`
   height: 83%;
   boder: 1px solid gainsboro;
 `;
-
-const Statistics = styled.ul`
+/*
+const Counters = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -58,6 +58,7 @@ const Statistics = styled.ul`
   justify-content: flex-start;
   padding: 0 0px;
 `;
+*/
 
 const UserActions = styled.div`
   display: flex;
@@ -88,26 +89,30 @@ const Dropdown = styled.div`
   }
 `;
 
-export default () => (
+/*
+<Counters>
+  <Counter link="/tweets" text="Tweets" count={8058} />
+  <Counter link="/following" text="Following" count={721} />
+  <Counter link="/followers" text="Followers" count={1815} />
+  <Counter link="/likes" text="Likes" count={460} />
+  <Counter link="/lists" text="Lists" count={2} />
+</Counters>;
+*/
+
+export default withRouter(({ match }) => (
   <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">
       <ProfileInfoContainer>
         <div className="col-xs-3">
           <ProfileBlock>
-            <AvatarLink to="/images">
-              <Avatar src="img/avatar-max.png" />
+            <AvatarLink to={match.url}>
+              <Avatar src="/img/avatar-max.png" />
             </AvatarLink>
           </ProfileBlock>
         </div>
         <div className="col-xs-6">
-          <Statistics>
-            <Counter link="/EveryInteract" text="Tweets" count={8058} />
-            <Counter link="/following" text="Following" count={721} />
-            <Counter link="/followers" text="Followers" count={1815} />
-            <Counter link="/likes" text="Likes" count={460} />
-            <Counter link="/lists" text="Lists" count={2} />
-          </Statistics>
+          <Route component={Stats} />
         </div>
         <div className="col-xs-3">
           <UserActions>
@@ -118,4 +123,4 @@ export default () => (
       </ProfileInfoContainer>
     </div>
   </React.Fragment>
-);
+));

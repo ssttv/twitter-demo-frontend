@@ -7,6 +7,7 @@ import notifications from "./icons/notifications.svg";
 import messages from "./icons/messages.svg";
 import twitterLogo from "./icons/twitter.svg";
 import search from "./icons/search.svg";
+import Crumb from "./Crumb";
 
 const Header = styled.header`
   position: fixed;
@@ -28,43 +29,15 @@ const Nav = styled.nav`
   padding-bottom: 10px;
 `;
 
-const BreadCrumbs = styled.div`
+const BreadCrumbs = styled.ul`
   display: flex;
   align-items: center;
   min-width: 395px;
   justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 `;
-
-const Home = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #667580;
-  text-decoration: none;
-  padding-bottom: 10px;
-  padding-top: 4px;
-
-  &:hover {
-    cursor: pointer;
-    border-bottom: 2px solid #1da1f2;
-    transition: all 0.1s ease-in-out;
-  }
-`;
-
-const CrumbText = styled.span`
-  padding-left: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 15px;
-`;
-
-const CrumbIcon = styled.img``;
-
-const Moments = Home.extend``;
-
-const Notifications = Home.extend``;
-
-const Messages = Home.extend``;
 
 const TwitterLogo = styled.img`
   min-height: 17px;
@@ -156,22 +129,10 @@ export default () => (
     <div className="container">
       <Nav>
         <BreadCrumbs>
-          <Home>
-            <CrumbIcon alt="Home" src={home} />
-            <CrumbText>Home</CrumbText>
-          </Home>
-          <Moments>
-            <CrumbIcon alt="Moments" src={moments} />
-            <CrumbText>Moments</CrumbText>
-          </Moments>
-          <Notifications>
-            <CrumbIcon alt="Notifications" src={notifications} />
-            <CrumbText>Notifications</CrumbText>
-          </Notifications>
-          <Messages>
-            <CrumbIcon alt="Messages" src={messages} />
-            <CrumbText>Messages</CrumbText>
-          </Messages>
+          <Crumb to="/" src={home} text="Home" />
+          <Crumb to="/moments" src={moments} text="Moments" />
+          <Crumb to="/notifications" src={notifications} text="Notifications" />
+          <Crumb to="/messages" src={messages} text="Messages" />
         </BreadCrumbs>
         <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
         <ActionsContainer>
