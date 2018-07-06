@@ -1,12 +1,5 @@
-import users from "./users";
-
-export const findUser = (user, param) => {
-  try {
-    return users.find(obj => obj.username === user)[param];
-  } catch (e) {
-    return "Error";
-  }
-};
+import format from "date-fns/format";
+import enLocale from "date-fns/locale/en";
 
 export const linkFormat = ({ tag }) => {
   if (tag.charAt(0) === "#") {
@@ -27,3 +20,6 @@ export const statsFormat = ({ tweets }) => {
   }
   return tweets;
 };
+
+export const dateFormat = type =>
+  format(new Date(type), "Do MMMM YYYY", { locale: enLocale });

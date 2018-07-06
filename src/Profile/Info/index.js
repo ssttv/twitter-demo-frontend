@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { dateFormat } from "../../data/utils";
 import mapmarker from "../icons/mapmarker.svg";
 import linkimg from "../icons/linkimg.svg";
-import date from "../icons/date.svg";
+import calendar from "../icons/calendar.svg";
 import checkmark from "../icons/checkmark.svg";
 
 const ProfileTitle = styled.div``;
@@ -139,9 +140,7 @@ const DateIcon = styled.img``;
 
 const Date = Place.extend``;
 
-const Month = Country.extend``;
-
-const Year = Month.extend``;
+const Pick = Country.extend``;
 
 const Actions = styled.div`
   padding-top: 18px;
@@ -178,8 +177,7 @@ export default ({
   city,
   country,
   website,
-  month,
-  year
+  date
 }) => (
   <ProfileContainer>
     <ProfileTitle>
@@ -196,7 +194,7 @@ export default ({
         <TextFollow>Follows you</TextFollow>
       </FollowContainer>
     </ProfileTitle>
-    <ProfileBio>{bio}</ProfileBio>
+    <ProfileBio dangerouslySetInnerHTML={{ __html: bio }} />
     <Location>
       <LocationIcon alt="mapmarker" src={mapmarker} />
       <Place>
@@ -209,11 +207,9 @@ export default ({
       <Source href={website}>{website}</Source>
     </Website>
     <DateOfReg>
-      <DateIcon alt="Registration date" src={date} />
+      <DateIcon alt="Registration date" src={calendar} />
       <Date>
-        Joined
-        <Month>{month}</Month>
-        <Year>{year}</Year>
+        Joined <Pick>{dateFormat(date)}</Pick>
       </Date>
     </DateOfReg>
     <Actions>

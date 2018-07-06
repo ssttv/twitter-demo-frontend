@@ -7,10 +7,11 @@ import optiondots from "./icons/optiondots.svg";
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
+  height: 100%;
   width: 100%;
-  object-fit: cover;
-  will-change: transform;
   min-width: 100%;
+  will-change: transform;
+  object-fit: cover;
 `;
 
 const ProfileInfoContainer = styled.div`

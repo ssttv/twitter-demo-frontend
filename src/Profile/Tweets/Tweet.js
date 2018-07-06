@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import styledMap from "styled-map";
 import Actions from "./Actions";
-import pin from "../icons/pinned.svg";
+import { dateFormat } from "../../data/utils";
+import pin from "../icons/pin.svg";
 
 const TweetContent = styled.div`
   display: flex;
@@ -248,7 +249,7 @@ class Tweet extends Component {
               </PersonLink>
               <Date>
                 <Dotted> • </Dotted>
-                <DateLink to={uri}>{date}</DateLink>
+                <DateLink to={uri}>{dateFormat(date)}</DateLink>
               </Date>
             </Title>
             {content.length > 120 ? (

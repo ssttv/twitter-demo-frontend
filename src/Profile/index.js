@@ -100,8 +100,7 @@ class Profile extends Component {
                     city="London"
                     country="UK"
                     website={userInfo.url}
-                    month="May"
-                    year={2008}
+                    date={userInfo.created_at}
                   />
                   <Route component={SharedFollowers} />
                   <Route component={Artefacts} />
@@ -112,22 +111,22 @@ class Profile extends Component {
                     <Route
                       exact
                       path={`${userInfo.id}/following`}
-                      render={() => <h2>Following</h2>}
+                      render={() => <h2> Following </h2>}
                     />
                     <Route
                       exact
                       path={`${userInfo.id}/followers`}
-                      render={() => <h2>Followers</h2>}
+                      render={() => <h2> Followers </h2>}
                     />
                     <Route
                       exact
                       path={`${userInfo.id}/likes`}
-                      render={() => <h2>Likes</h2>}
+                      render={() => <h2> Likes </h2>}
                     />
                     <Route
                       exact
                       path={`${userInfo.id}/lists`}
-                      render={() => <h2>Lists</h2>}
+                      render={() => <h2> Lists </h2>}
                     />
                   </Switch>
                 </div>
