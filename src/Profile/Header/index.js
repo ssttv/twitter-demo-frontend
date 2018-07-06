@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link, Route, withRouter } from "react-router-dom";
 import Counters from "./Counters";
 import Button from "../../UI/Button";
-import background from "./background.jpg";
 import optiondots from "./icons/optiondots.svg";
 
 const ProfileHeader = styled.img`
@@ -44,10 +43,18 @@ const AvatarLink = styled(Link)`
 
 const Avatar = styled.img`
   border-radius: 100px;
+  width: 200px;
+  height: auto;
+`;
+
+/*
+const Avatar = styled.img`
+  border-radius: 100px;
   width: 83%;
   height: 83%;
   boder: 1px solid gainsboro;
 `;
+*/
 
 const UserActions = styled.div`
   display: flex;
@@ -78,7 +85,7 @@ const Dropdown = styled.div`
   }
 `;
 
-export default withRouter(({ match }) => (
+export default withRouter(({ match, background, avatar }) => (
   <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">
@@ -86,7 +93,7 @@ export default withRouter(({ match }) => (
         <div className="col-xs-3">
           <ProfileBlock>
             <AvatarLink to={match.url}>
-              <Avatar src="/img/avatar-max.png" />
+              <Avatar src={avatar} />
             </AvatarLink>
           </ProfileBlock>
         </div>

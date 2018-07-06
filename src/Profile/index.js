@@ -69,7 +69,7 @@ class Profile extends Component {
       return <Redirect to="/error" />;
     }
     if (!isLoaded) {
-      return <h3>Loading ...</h3>;
+      return <h3>Loading in progress</h3>;
     }
 
     return (
@@ -80,7 +80,13 @@ class Profile extends Component {
           </title>
         </Helmet>
         <React.Fragment>
-          <Header />
+          <Header
+            background={userInfo.header_static}
+            avatar={userInfo.avatar_static}
+            followers={userInfo.followers_count}
+            following={userInfo.following_count}
+            tweets={userInfo.statuses_count}
+          />
           <Container>
             <div className="container">
               <ProfileFace>

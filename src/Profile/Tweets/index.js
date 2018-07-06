@@ -41,7 +41,7 @@ class Tweets extends Component {
   render() {
     const { error, tweets } = this.state;
     if (error) {
-      return <h3>Error: {error.message}</h3>;
+      return <h3>Error rendering tweets</h3>;
     }
 
     return (

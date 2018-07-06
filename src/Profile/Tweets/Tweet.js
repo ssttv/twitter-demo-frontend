@@ -208,7 +208,7 @@ class Tweet extends Component {
   render() {
     const { error, card } = this.state;
     if (error) {
-      return <h3>Can not render Tweet</h3>;
+      return <h3>Error rendering tweet unit</h3>;
     }
 
     const {
