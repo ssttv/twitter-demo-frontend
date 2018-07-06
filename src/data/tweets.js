@@ -47,7 +47,7 @@ const tweets = [
     dateText: "Nov 18",
     tweetText:
       "Variable web fonts are coming, and will open a world of opportunities for weight use online",
-    infoSrc: `${publicURL}/img/peview.png`,
+    infoSrc: `${publicURL}/img/preview.png`,
     infoPromo: true,
     infoTitle: "The Future of Web Fonts",
     infoText:
