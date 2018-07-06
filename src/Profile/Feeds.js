@@ -1,12 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Tweets from "./Tweets";
-import Tabs from "./Tweets/Tabs";
+import Posts from "./Posts";
+import Tabs from "./Posts/Tabs";
 
 export default ({ match }) => (
   <React.Fragment>
     <Tabs />
-    <Route exact path={`${match.url}`} component={Tweets} />
+    <Route exact path={`${match.url}`} component={Posts} />
     <Route
       exact
       path={`${match.url}/with-replies`}

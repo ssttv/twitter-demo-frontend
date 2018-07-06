@@ -6,7 +6,7 @@ const TweetList = styled.div`
   background-color: white;
 `;
 
-class Tweets extends Component {
+class Posts extends Component {
   constructor(match) {
     super(match);
     this.id = match;
@@ -70,4 +70,4 @@ class Tweets extends Component {
   }
 }
 
-export default Tweets;
+export default Posts;
