@@ -110,24 +110,6 @@ const Message = styled.p`
   word-wrap: break-word;
 `;
 
-const Hashtag = styled(Link)`
-  color: #1da1f2;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const LinkWebSite = styled.a`
-  color: #1da1f2;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 const Image = styled.img`
   width: ${styledMap({
     shortImg: "126px",
@@ -201,31 +183,6 @@ const TweetList = styled.div`
   background-color: white;
 `;
 
-const tweetMessage = text => {
-  let key = 0;
-  return text.split(" ").map(textElement => {
-    key += 1;
-    if (textElement[0] === "#") {
-      return (
-        <span key={key}>
-          <Hashtag to={`/search?q=${textElement}`}>{textElement}</Hashtag>{" "}
-        </span>
-      );
-    }
-    if (textElement.includes(".com")) {
-      return (
-        <span key={key}>
-          <LinkWebSite href={`https://${textElement}`}>
-            {textElement}
-          </LinkWebSite>{" "}
-        </span>
-      );
-    }
-
-    return `${textElement} `;
-  });
-};
-
 export default withRouter(({ match }) => (
   <TweetList>
     {tweets.map(tweet => (
@@ -252,9 +209,9 @@ export default withRouter(({ match }) => (
               </Date>
             </Title>
             {tweet.tweetText.split(" ").length >= 16 ? (
-              <Message short>{tweetMessage(tweet.tweetText)}</Message>
+              <Message short>{tweet.tweetText}</Message>
             ) : (
-              <Message>{tweetMessage(tweet.tweetText)}</Message>
+              <Message>{tweet.tweetText}</Message>
             )}
             <ShortInfo>
               {tweet.infoSrc &&

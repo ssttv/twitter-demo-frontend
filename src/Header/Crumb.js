@@ -26,9 +26,9 @@ const CrumbLink = styled(NavLink)`
   }
 `;
 
-const CrumbIcon = styled.img``;
+const Icon = styled.img``;
 
-const CrumbText = styled.span`
+const Text = styled.span`
   padding-left: 6px;
   font-size: 13px;
   font-weight: 500;
@@ -38,8 +38,8 @@ const CrumbText = styled.span`
 export default ({ to, src, alt }) => (
   <Crumb>
     <CrumbLink to={to} exact>
-      <CrumbIcon src={src} alt={alt} />
-      <CrumbText>Home</CrumbText>
+      <Icon src={src} alt={alt} />
+      <Text>Home</Text>
     </CrumbLink>
   </Crumb>
 );
