@@ -1,11 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styledMap from "styled-map";
-import { findUser } from "../../data/utils";
 import Actions from "./Actions";
 import pinned from "../icons/pinned.svg";
-import tweets from "../../data/tweets";
 
 const TweetContent = styled.div`
   display: flex;
@@ -167,7 +165,7 @@ const ShortInfo = styled.div`
   }
 `;
 
-const Tweet = styled.section`
+const TweetUnit = styled.section`
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
@@ -179,15 +177,41 @@ const Tweet = styled.section`
   }
 `;
 
-const TweetList = styled.div`
-  background-color: white;
-`;
+class Tweet extends Component {
+  state = {
+    error: false,
+    card: []
+  };
 
-export default withRouter(({ match }) => (
-  <TweetList>
-    {tweets.map(tweet => (
-      <Tweet key={tweet.id}>
-        {tweet.statusPin && (
+  componentDidMount() {
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/statuses/${
+        this.props.id
+      }/card?access_token=${process.env.REACT_APP_SECRET_KEY}`
+    )
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            card: result
+          });
+        },
+        error => {
+          this.setState({
+            error
+          });
+        }
+      );
+  }
+
+  render() {
+    const { error, card } = this.state;
+    if (error) {
+      return <h3>Can not render Tweet</h3>;
+    }
+    return (
+      <TweetUnit key={this.props.id}>
+        {this.props.pinned && (
           <Pinned>
             <PinnedIcon alt="Pinned image" src={pinned} />
             <PinnedText>Pinned Tweet</PinnedText>
@@ -195,50 +219,61 @@ export default withRouter(({ match }) => (
         )}
         <TweetContent>
           <AvatarContainer>
-            <Avatar src={tweet.userAvatar} />
+            <Avatar src={this.props.avatar} />
           </AvatarContainer>
           <ContentContainer>
             <Title>
-              <PersonLink to={`${match.url}`}>
-                <Person>{findUser(match.url.slice(1), "name")}</Person>
-                <Username>@{match.url.slice(1)}</Username>
+              <PersonLink to={`/${this.props.personNick}`}>
+                <Person>{this.props.person}</Person>
+                <Username>@{this.props.personNick}</Username>
               </PersonLink>
               <Date>
                 <Dotted> • </Dotted>
-                <DateLink to={tweet.toDate}>{tweet.dateText}</DateLink>
+                <DateLink to={this.props.uri}>{this.props.date}</DateLink>
               </Date>
             </Title>
-            {tweet.tweetText.split(" ").length >= 16 ? (
-              <Message short>{tweet.tweetText}</Message>
+            {this.props.content.length > 120 ? (
+              <Message
+                short
+                dangerouslySetInnerHTML={{ __html: this.props.content }}
+              />
             ) : (
-              <Message>{tweet.tweetText}</Message>
+              <Message
+                dangerouslySetInnerHTML={{ __html: this.props.content }}
+              />
             )}
             <ShortInfo>
-              {tweet.infoSrc &&
-                !tweet.infoPromo && (
-                  <Image alt="Tweet image" src={tweet.infoSrc} />
-                )}
-              {tweet.infoPromo && (
+              {this.props.media.length > 0 && (
+                <Image
+                  alt="Tweet image"
+                  src={this.props.media[0].preview_url}
+                />
+              )}
+              {card.url ? (
                 <React.Fragment>
-                  <Image alt="Tweet image" src={tweet.infoSrc} shortImg />
-                  <Info>
-                    <InfoTitle>{tweet.infoTitle}</InfoTitle>
-                    <InfoText>{tweet.infoText}</InfoText>
-                    <InfoLink>{tweet.toInfo}</InfoLink>
+                  {card.image ? (
+                    <Image alt="Tweet image" src={card.image} shortImg />
+                  ) : null}
+                  <Info href={card.url}>
+                    <InfoTitle>{card.title}</InfoTitle>
+                    <InfoText>{card.description}</InfoText>
+                    <InfoLink href={card.url}>{card.url}</InfoLink>
                   </Info>
                 </React.Fragment>
-              )}
+              ) : null}
             </ShortInfo>
             <Actions
-              comments={tweet.comments}
-              retweets={tweet.retweets}
-              likes={tweet.likes}
-              messages={tweet.messages}
-              activeLike={tweet.activeLike}
+              comments={this.props.comments}
+              retweets={this.props.retweets}
+              likes={this.props.likes}
+              messages={this.props.messages}
+              activeLike={this.props.activeLike}
             />
           </ContentContainer>
         </TweetContent>
-      </Tweet>
-    ))}
-  </TweetList>
-));
+      </TweetUnit>
+    );
+  }
+}
+
+export default Tweet;

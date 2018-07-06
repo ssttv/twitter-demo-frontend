@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
@@ -22,66 +22,118 @@ const ProfileFace = styled.div`
   justify-content: space-between;
 `;
 
-export default ({ match }) => (
-  <main>
-    <Helmet>
-      <title>
-        {findUser(match.params.user, "name")} (@{match.params.user})
-      </title>
-    </Helmet>
-    <React.Fragment>
-      <Header />
-      <Container>
-        <div className="container">
-          <ProfileFace>
-            <div className="col-xs-3">
-              <Info
-                handle={match.params.user}
-                name={findUser(match.params.user, "name")}
-                verifiedStatus
-                followStatus
-                bio="UX Design studio focussed problem solving creativity. Design to us is how can we make things *work* amazing."
-                city="London"
-                country="UK"
-                website="everyinteraction.com"
-                month="May"
-                year={2008}
-              />
-              <Route component={SharedFollowers} />
-              <Route component={Artefacts} />
-            </div>
-            <div className="col-xs-6">
-              <Switch>
-                <Route
-                  exact
-                  path={`${match.url}/following`}
-                  render={() => <h2>Following</h2>}
-                />
-                <Route
-                  exact
-                  path={`${match.url}/followers`}
-                  render={() => <h2>Followers</h2>}
-                />
-                <Route
-                  exact
-                  path={`${match.url}/likes`}
-                  render={() => <h2>Likes</h2>}
-                />
-                <Route
-                  exact
-                  path={`${match.url}/lists`}
-                  render={() => <h2>Lists</h2>}
-                />
-                <Route path={`${match.url}`} component={Feeds} />
-              </Switch>
-            </div>
-            <div className="col-xs-3">
-              <Outreach />
-            </div>
-          </ProfileFace>
-        </div>
-      </Container>
-    </React.Fragment>
+class Profile extends Component {
+  state = {
+    error: null,
+    isLoaded: false,
+    userInfo: []
+  };
+
+  componentDidMount() {
+    this.getUserInfo();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.getUserInfo();
+    }
+  }
+
+  getUserInfo = () => {
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${
+        this.props.match.params.id
+      }?access_token=${process.env.REACT_APP_SECRET_KEY}`
     )
-  </main>
-);
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+            userInfo: result
+          });
+        },
+        err => {
+          this.setState({
+            isLoaded: false,
+            error: err
+          });
+        }
+      );
+  };
+
+  render() {
+    const { error, isLoaded, userInfo } = this.state;
+    if (error) {
+      return <Redirect to="/error" />;
+    }
+    if (!isLoaded) {
+      return <h3>Loading ...</h3>;
+    }
+
+    return (
+      <main>
+        <Helmet>
+          <title>
+            {userInfo.display_name} (@{userInfo.username})
+          </title>
+        </Helmet>
+        <React.Fragment>
+          <Header />
+          <Container>
+            <div className="container">
+              <ProfileFace>
+                <div className="col-xs-3">
+                  <Info
+                    handle={userInfo.username}
+                    name={userInfo.display_name}
+                    verifiedStatus={false}
+                    followStatus
+                    bio={userInfo.note}
+                    city="London"
+                    country="UK"
+                    website={userInfo.url}
+                    month="May"
+                    year={2008}
+                  />
+                  <Route component={SharedFollowers} />
+                  <Route component={Artefacts} />
+                </div>
+                <div className="col-xs-6">
+                  <Switch>
+                    <Route path={`/${userInfo.id}`} component={Feeds} />
+                    <Route
+                      exact
+                      path={`${userInfo.id}/following`}
+                      render={() => <h2>Following</h2>}
+                    />
+                    <Route
+                      exact
+                      path={`${userInfo.id}/followers`}
+                      render={() => <h2>Followers</h2>}
+                    />
+                    <Route
+                      exact
+                      path={`${userInfo.id}/likes`}
+                      render={() => <h2>Likes</h2>}
+                    />
+                    <Route
+                      exact
+                      path={`${userInfo.id}/lists`}
+                      render={() => <h2>Lists</h2>}
+                    />
+                  </Switch>
+                </div>
+                <div className="col-xs-3">
+                  <Outreach />
+                </div>
+              </ProfileFace>
+            </div>
+          </Container>
+        </React.Fragment>
+      </main>
+    );
+  }
+}
+
+export default Profile;
