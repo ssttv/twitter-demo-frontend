@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import styledMap from "styled-map";
 import Actions from "./Actions";
-import pinned from "../icons/pinned.svg";
+import pin from "../icons/pinned.svg";
 
 const TweetContent = styled.div`
   display: flex;
@@ -184,10 +184,11 @@ class Tweet extends Component {
   };
 
   componentDidMount() {
+    const { id } = this.props;
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/statuses/${
-        this.props.id
-      }/card?access_token=${process.env.REACT_APP_SECRET_KEY}`
+      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${
+        process.env.REACT_APP_SECRET_KEY
+      }`
     )
       .then(res => res.json())
       .then(
@@ -209,45 +210,55 @@ class Tweet extends Component {
     if (error) {
       return <h3>Can not render Tweet</h3>;
     }
+
+    const {
+      id,
+      pinned,
+      avatar,
+      personNick,
+      person,
+      uri,
+      date,
+      content,
+      media,
+      comments,
+      retweets,
+      likes,
+      messages,
+      activeLike
+    } = this.props;
+
     return (
-      <TweetUnit key={this.props.id}>
-        {this.props.pinned && (
+      <TweetUnit key={id}>
+        {pinned && (
           <Pinned>
-            <PinnedIcon alt="Pinned image" src={pinned} />
+            <PinnedIcon alt="Pinned image" src={pin} />
             <PinnedText>Pinned Tweet</PinnedText>
           </Pinned>
         )}
         <TweetContent>
           <AvatarContainer>
-            <Avatar src={this.props.avatar} />
+            <Avatar src={avatar} />
           </AvatarContainer>
           <ContentContainer>
             <Title>
-              <PersonLink to={`/${this.props.personNick}`}>
-                <Person>{this.props.person}</Person>
-                <Username>@{this.props.personNick}</Username>
+              <PersonLink to={`/${personNick}`}>
+                <Person>{person}</Person>
+                <Username>@{personNick}</Username>
               </PersonLink>
               <Date>
                 <Dotted> • </Dotted>
-                <DateLink to={this.props.uri}>{this.props.date}</DateLink>
+                <DateLink to={uri}>{date}</DateLink>
               </Date>
             </Title>
-            {this.props.content.length > 120 ? (
-              <Message
-                short
-                dangerouslySetInnerHTML={{ __html: this.props.content }}
-              />
+            {content.length > 120 ? (
+              <Message short dangerouslySetInnerHTML={{ __html: content }} />
             ) : (
-              <Message
-                dangerouslySetInnerHTML={{ __html: this.props.content }}
-              />
+              <Message dangerouslySetInnerHTML={{ __html: content }} />
             )}
             <ShortInfo>
-              {this.props.media.length > 0 && (
-                <Image
-                  alt="Tweet image"
-                  src={this.props.media[0].preview_url}
-                />
+              {media.length > 0 && (
+                <Image alt="Tweet image" src={media[0].preview_url} />
               )}
               {card.url ? (
                 <React.Fragment>
@@ -263,11 +274,11 @@ class Tweet extends Component {
               ) : null}
             </ShortInfo>
             <Actions
-              comments={this.props.comments}
-              retweets={this.props.retweets}
-              likes={this.props.likes}
-              messages={this.props.messages}
-              activeLike={this.props.activeLike}
+              comments={comments}
+              retweets={retweets}
+              likes={likes}
+              messages={messages}
+              activeLike={activeLike}
             />
           </ContentContainer>
         </TweetContent>

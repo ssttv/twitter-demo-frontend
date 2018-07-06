@@ -8,7 +8,6 @@ import Artefacts from "./Info/Artefacts";
 import SharedFollowers from "./Info/SharedFollowers";
 import Feeds from "./Feeds";
 import Outreach from "./Outreach";
-import { findUser } from "../data/utils";
 
 const Container = styled.div`
   background-color: #e6ecf0;
@@ -34,15 +33,17 @@ class Profile extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
+    const { match } = this.props;
+    if (prevProps.match.params.id !== match.params.id) {
       this.getUserInfo();
     }
   }
 
   getUserInfo = () => {
+    const { match } = this.props;
     fetch(
       `https://twitter-demo.erodionov.ru/api/v1/accounts/${
-        this.props.match.params.id
+        match.params.id
       }?access_token=${process.env.REACT_APP_SECRET_KEY}`
     )
       .then(res => res.json())
