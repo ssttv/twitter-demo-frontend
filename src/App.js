@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { IntlProvider } from "react-intl";
