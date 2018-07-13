@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,14 @@ const TitleLink = styled(Link)`
   }
 `;
 
-export default ({ to, src, alt, children }) => (
+type Props = {
+  to: string,
+  src: string,
+  alt: string,
+  children: React.Node
+};
+
+export default ({ to, src, alt, children }: Props) => (
   <TitleLink to={to}>
     <Icon src={src} alt={alt} />
     <Text>{children}</Text>

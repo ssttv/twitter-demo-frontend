@@ -169,6 +169,18 @@ const Interact = styled.button`
   }
 `;
 
+type Props = {
+  handle: string,
+  name: string,
+  verifiedStatus: boolean,
+  followStatus: boolean,
+  bio: string,
+  city: string,
+  country: string,
+  website: string,
+  date: string
+};
+
 export default ({
   handle,
   name,
@@ -179,7 +191,7 @@ export default ({
   country,
   website,
   date
-}) => (
+}: Props) => (
   <ProfileContainer>
     <ProfileTitle>
       <UserHandle>

@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -28,7 +28,12 @@ const TabLink = styled(NavLink)`
   }
 `;
 
-export default ({ to, children }) => (
+type Props = {
+  to: string,
+  children: React.Node
+};
+
+export default ({ to, children }: Props) => (
   <Tab>
     <TabLink to={to} exact>
       {children}

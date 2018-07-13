@@ -50,7 +50,15 @@ const Count = styled.span`
   color: #667580;
 `;
 
-export default ({ comments, retweets, likes, activeLike, messages }) => (
+type Props = {
+  comments: number,
+  retweets: number,
+  likes: number,
+  activeLike: boolean,
+  messages: number
+};
+
+export default ({ comments, retweets, likes, activeLike, messages }: Props) => (
   <Actions>
     <Action>
       <Image alt="comments" src={comment} />

@@ -4,7 +4,11 @@ import { Route } from "react-router-dom";
 import Posts from "./Posts";
 import Tabs from "./Posts/Tabs";
 
-export default ({ match }) => (
+type Props = {
+  match: Object
+};
+
+export default ({ match }: Props) => (
   <React.Fragment>
     <Tabs />
     <Route exact path={`${match.url}`} component={Posts} />

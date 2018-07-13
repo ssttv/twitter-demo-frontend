@@ -130,10 +130,25 @@ export default () => (
     <div className="container">
       <Nav>
         <BreadCrumbs>
-          <Crumb to="/" src={home} text="Home" />
-          <Crumb to="/moments" src={moments} text="Moments" />
-          <Crumb to="/notifications" src={notifications} text="Notifications" />
-          <Crumb to="/messages" src={messages} text="Messages" />
+          <Crumb to="/" src={home} alt="Link to Home" text="Home" />
+          <Crumb
+            to="/moments"
+            src={moments}
+            alt="Link to Moments"
+            text="Moments"
+          />
+          <Crumb
+            to="/notifications"
+            src={notifications}
+            alt="Link to Notifications"
+            text="Notifications"
+          />
+          <Crumb
+            to="/messages"
+            src={messages}
+            alt="Link to Messages"
+            text="Messages"
+          />
         </BreadCrumbs>
         <TwitterLogo alt="Twitter Logo" src={twitterLogo} />
         <ActionsContainer>

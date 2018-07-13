@@ -18,7 +18,12 @@ const Dot = styled.small`
   margin: 0 5px 0 5px;
 `;
 
-export default ({ to, text }) => (
+type Props = {
+  to: string,
+  text: string
+};
+
+export default ({ to, text }: Props) => (
   <React.Fragment>
     <Dot>·</Dot>
     <Action to={to}>{text}</Action>
