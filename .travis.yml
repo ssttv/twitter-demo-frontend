@@ -7,7 +7,7 @@ cache:
     script: yarn start
     deploy:
     - provider: script
-      script: now --token $NOW_TOKEN
+      script: now
       skip_cleanup: true
       on:
         master: true
