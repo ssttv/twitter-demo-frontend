@@ -7,13 +7,6 @@ const TweetList = styled.div`
   background-color: white;
 `;
 
-/*
-const REACT_APP_SECRET_KEY: string =
-  process.env.REACT_APP_SECRET_KEY != null
-    ? process.env.REACT_APP_SECRET_KEY
-    : "";
-*/
-
 type Props = {};
 
 type State = {
@@ -22,27 +15,10 @@ type State = {
 };
 
 class Posts extends React.Component<Props, State> {
-  /*
-  constructor(match: any) {
-    super(match);
-    this.id = match.url;
-    console.log(match.url);
-  }
-  */
-
   state = {
     error: false,
     tweets: []
   };
-
-  /*
-  const env = process.env || {};
-    const secretKey = env.REACT_APP_SECRET_KEY;
-    if (!secretKey) throw new Error("missing API key");
-    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${
-      this.id.match.url
-    }/statuses?access_token=${REACT_APP_SECRET_KEY}`;
-*/
 
   componentDidMount() {
     const env = process.env || {};
