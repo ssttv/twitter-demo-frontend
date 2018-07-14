@@ -1,6 +1,5 @@
 // @flow
 import * as React from "react";
-import type { Match } from "react-router-dom";
 import styled from "styled-components";
 import Tweet from "./Tweet";
 
@@ -15,10 +14,7 @@ const REACT_APP_SECRET_KEY: string =
     : "";
 */
 
-type Props = {
-  id: string,
-  match: Match
-};
+type Props = {};
 
 type State = {
   error: boolean,
