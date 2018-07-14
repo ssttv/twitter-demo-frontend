@@ -1,11 +1,12 @@
 // @flow
 import React from "react";
 import { Route } from "react-router-dom";
+import type { Match } from "react-router-dom";
 import Posts from "./Posts";
 import Tabs from "./Posts/Tabs";
 
 type Props = {
-  match: Object
+  match: Match
 };
 
 export default ({ match }: Props) => (

@@ -1,8 +1,9 @@
 // @flow
-import React, { Component } from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { Route, Switch, Redirect } from "react-router-dom";
+import type { Match } from "react-router-dom";
 import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
@@ -22,18 +23,33 @@ const ProfileFace = styled.div`
   justify-content: space-between;
 `;
 
-class Profile extends Component {
+const REACT_APP_SECRET_KEY: string =
+  process.env.REACT_APP_SECRET_KEY != null
+    ? process.env.REACT_APP_SECRET_KEY
+    : "";
+
+type Props = {
+  match: Match
+};
+
+type State = {
+  error: null | Object,
+  isLoaded: boolean,
+  userInfo: Object
+};
+
+class Profile extends React.Component<Props, State> {
   state = {
     error: null,
     isLoaded: false,
-    userInfo: []
+    userInfo: {}
   };
 
   componentDidMount() {
     this.getUserInfo();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { match } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       this.getUserInfo();
@@ -42,10 +58,10 @@ class Profile extends Component {
 
   getUserInfo = () => {
     const { match } = this.props;
+    const userId: ?string = match.params.id;
+
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${
-        match.params.id
-      }?access_token=${process.env.REACT_APP_SECRET_KEY}`
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}?access_token=${REACT_APP_SECRET_KEY}`
     )
       .then(res => res.json())
       .then(

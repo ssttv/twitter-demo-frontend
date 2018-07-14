@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import styled from "styled-components";
+import type { Match } from "react-router-dom";
 import Counter from "./Counter";
 
 const List = styled.ul`
@@ -23,7 +24,7 @@ const isMainNavActive = (match: Object, location: Object) => {
 };
 
 type Props = {
-  match: Object
+  match: Match
 };
 
 export default ({ match }: Props) => (

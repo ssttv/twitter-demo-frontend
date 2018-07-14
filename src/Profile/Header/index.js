@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, Route, withRouter } from "react-router-dom";
+import type { Match } from "react-router-dom";
 import Counters from "./Counters";
 import Button from "../../UI/Button";
 import optiondots from "./icons/optiondots.svg";
@@ -86,8 +87,13 @@ const Dropdown = styled.div`
     background-repeat: no-repeat;
   }
 `;
+type Props = {
+  match: Match,
+  background: string,
+  avatar: string
+};
 
-export default withRouter(({ match, background, avatar }) => (
+export default withRouter(({ match, background, avatar }: Props) => (
   <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">

@@ -1,5 +1,6 @@
 // @flow
-import React, { Component } from "react";
+import * as React from "react";
+import type { Match } from "react-router-dom";
 import styled from "styled-components";
 import Tweet from "./Tweet";
 
@@ -7,23 +8,52 @@ const TweetList = styled.div`
   background-color: white;
 `;
 
-class Posts extends Component {
-  constructor(match) {
+/*
+const REACT_APP_SECRET_KEY: string =
+  process.env.REACT_APP_SECRET_KEY != null
+    ? process.env.REACT_APP_SECRET_KEY
+    : "";
+*/
+
+type Props = {
+  id: string,
+  match: Match
+};
+
+type State = {
+  error: boolean,
+  tweets: Array<Object>
+};
+
+class Posts extends React.Component<Props, State> {
+  /*
+  constructor(match: any) {
     super(match);
-    this.id = match;
+    this.id = match.url;
+    console.log(match.url);
   }
+  */
 
   state = {
     error: false,
     tweets: []
   };
 
+  /*
+  const env = process.env || {};
+    const secretKey = env.REACT_APP_SECRET_KEY;
+    if (!secretKey) throw new Error("missing API key");
+    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${
+      this.id.match.url
+    }/statuses?access_token=${REACT_APP_SECRET_KEY}`;
+*/
+
   componentDidMount() {
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${this.id.match.url.slice(
-        1
-      )}/statuses?access_token=${process.env.REACT_APP_SECRET_KEY}`
-    )
+    const env = process.env || {};
+    const secretKey = env.REACT_APP_SECRET_KEY;
+    if (!secretKey) throw new Error("missing API key");
+    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${1}/statuses?access_token=${secretKey}`;
+    fetch(url)
       .then(res => res.json())
       .then(
         result => {
