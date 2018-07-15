@@ -44,18 +44,17 @@ class Posts extends React.Component<Props, State> {
 
   componentDidMount() {
     const {
-      match: {
-        params: { id }
-      }
+      match: { url }
     } = this.props;
-    let userId: ?string = id;
+    let userId: ?string = url.slice(1);
     const errorWatchdog: string = "1";
     if (userId === null || userId === undefined) userId = errorWatchdog;
     const env = process.env || {};
     const secretKey = env.REACT_APP_SECRET_KEY;
     if (!secretKey) throw new Error("missing API key");
-    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses?access_token=${secretKey}`;
-    fetch(url)
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses?access_token=${secretKey}`
+    )
       .then(res => res.json())
       .then(
         result => {
