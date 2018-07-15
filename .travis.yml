@@ -11,5 +11,4 @@ deploy:
     script: now --public --token $NOW_TOKEN -e REACT_APP_SECRET_KEY=$API_TOKEN
     skip_cleanup: true
     on:
-      master: true
-      candidate: true
+      all_branches: true

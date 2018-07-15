@@ -27,5 +27,5 @@ export const statsFormat = ({ tweets }: Props) => {
   return tweets;
 };
 
-export const dateFormat = type =>
+export const dateFormat = (type: string) =>
   format(new Date(type), "Do MMMM YYYY", { locale: enLocale });

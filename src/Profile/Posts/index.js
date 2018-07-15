@@ -16,7 +16,6 @@ const REACT_APP_SECRET_KEY: string =
 */
 
 type Props = {
-  id: number | string,
   match: Match
 };
 
@@ -40,10 +39,18 @@ class Posts extends React.Component<Props, State> {
   };
 
   componentDidMount() {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    let userId: ?string = id;
+    if (userId === null) userId = "1";
+    if (userId === undefined) userId = "1";
     const env = process.env || {};
     const secretKey = env.REACT_APP_SECRET_KEY;
     if (!secretKey) throw new Error("missing API key");
-    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${1}/statuses?access_token=${secretKey}`;
+    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses?access_token=${secretKey}`;
     fetch(url)
       .then(res => res.json())
       .then(
