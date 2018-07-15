@@ -31,7 +31,21 @@ const REACT_APP_SECRET_KEY: string =
 type Props = {
   match: Match
 };
-
+/*
+type info = {
+  id: string,
+  display_name: string,
+  username: string,
+  header_static: string,
+  avatar_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  note: string,
+  url: string,
+  created_at: string
+};
+*/
 type State = {
   error: null | Object,
   isLoaded: boolean,

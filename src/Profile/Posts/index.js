@@ -19,9 +19,28 @@ type Props = {
   match: Match
 };
 
+type tweet = {
+  id: number | string,
+  pinned: boolean,
+  account: {
+    avatar_static: string,
+    username: string,
+    display_name: string
+  },
+  uri: string,
+  created_at: string,
+  content: string,
+  media_attachments: Object,
+  comments: number,
+  reblogs_count: number,
+  favourites_count: number,
+  messages: number,
+  activeLike: boolean
+};
+
 type State = {
   error: boolean,
-  tweets: Array<Object>
+  tweets: Array<tweet>
 };
 
 class Posts extends React.Component<Props, State> {
@@ -75,23 +94,23 @@ class Posts extends React.Component<Props, State> {
 
     return (
       <TweetList>
-        {tweets.map(tweet => (
+        {tweets.map(unit => (
           <Tweet
-            key={tweet.id}
-            id={tweet.id}
-            pinned={tweet.pinned}
-            avatar={tweet.account.avatar_static}
-            personNick={tweet.account.username}
-            person={tweet.account.display_name}
-            uri={tweet.uri}
-            date={tweet.created_at}
-            content={tweet.content}
-            media={tweet.media_attachments}
-            comments={tweet.comments}
-            retweets={tweet.reblogs_count}
-            likes={tweet.favourites_count}
-            messages={tweet.messages}
-            activeLike={tweet.activeLike}
+            key={unit.id}
+            id={unit.id}
+            pinned={unit.pinned}
+            avatar={unit.account.avatar_static}
+            personNick={unit.account.username}
+            person={unit.account.display_name}
+            uri={unit.uri}
+            date={unit.created_at}
+            content={unit.content}
+            media={unit.media_attachments}
+            comments={unit.comments}
+            retweets={unit.reblogs_count}
+            likes={unit.favourites_count}
+            messages={unit.messages}
+            activeLike={unit.activeLike}
           />
         ))}
       </TweetList>
