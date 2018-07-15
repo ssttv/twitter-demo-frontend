@@ -49,8 +49,8 @@ class Posts extends React.Component<Props, State> {
       }
     } = this.props;
     let userId: ?string = id;
-    if (userId === null) userId = "1";
-    if (userId === undefined) userId = "1";
+    const errorWatchdog: string = "1";
+    if (userId === null || userId === undefined) userId = errorWatchdog;
     const env = process.env || {};
     const secretKey = env.REACT_APP_SECRET_KEY;
     if (!secretKey) throw new Error("missing API key");
@@ -79,23 +79,23 @@ class Posts extends React.Component<Props, State> {
 
     return (
       <TweetList>
-        {tweets.map(unit => (
+        {tweets.map(post => (
           <Tweet
-            key={unit.id}
-            id={unit.id}
-            pinned={unit.pinned}
-            avatar={unit.account.avatar_static}
-            personNick={unit.account.username}
-            person={unit.account.display_name}
-            uri={unit.uri}
-            date={unit.created_at}
-            content={unit.content}
-            media={unit.media_attachments}
-            comments={unit.comments}
-            retweets={unit.reblogs_count}
-            likes={unit.favourites_count}
-            messages={unit.messages}
-            activeLike={unit.activeLike}
+            key={post.id}
+            id={post.id}
+            pinned={post.pinned}
+            avatar={post.account.avatar_static}
+            personNick={post.account.username}
+            person={post.account.display_name}
+            uri={post.uri}
+            date={post.created_at}
+            content={post.content}
+            media={post.media_attachments}
+            comments={post.comments}
+            retweets={post.reblogs_count}
+            likes={post.favourites_count}
+            messages={post.messages}
+            activeLike={post.activeLike}
           />
         ))}
       </TweetList>

@@ -77,8 +77,8 @@ class Profile extends React.Component<Props, State> {
       }
     } = this.props;
     let userId: ?string = id;
-    if (userId === null) userId = "1";
-    if (userId === undefined) userId = "1";
+    const errorWatchdog: string = "1";
+    if (userId === null || userId === undefined) userId = errorWatchdog;
 
     fetch(
       `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}?access_token=${REACT_APP_SECRET_KEY}`
