@@ -28,7 +28,7 @@ type tweet = {
   reblogs_count: number,
   favourites_count: number,
   messages: number,
-  activeLike: boolean
+  favourited: boolean
 };
 
 type State = {
@@ -94,7 +94,7 @@ class Posts extends React.Component<Props, State> {
             retweets={post.reblogs_count}
             likes={post.favourites_count}
             messages={post.messages}
-            activeLike={post.activeLike}
+            activeLike={post.favourited}
           />
         ))}
       </TweetList>
