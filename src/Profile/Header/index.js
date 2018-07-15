@@ -10,7 +10,7 @@ import optiondots from "./icons/optiondots.svg";
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
   height: 100%;
-  max-height: 30%;
+  max-height: 600px;
   width: 100%;
   min-width: 100%;
   will-change: transform;
