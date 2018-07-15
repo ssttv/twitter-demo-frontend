@@ -70,9 +70,9 @@ export default ({ comments, retweets, likes, activeLike, messages }: Props) => (
     </Action>
     <Action>
       {activeLike ? (
-        <Image alt="likes" src={like} />
-      ) : (
         <Image alt="likes" src={likeActive} />
+      ) : (
+        <Image alt="likes" src={like} />
       )}
       <Count>{likes}</Count>
     </Action>

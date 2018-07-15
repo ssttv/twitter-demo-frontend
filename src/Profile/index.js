@@ -31,7 +31,21 @@ const REACT_APP_SECRET_KEY: string =
 type Props = {
   match: Match
 };
-
+/*
+type info = {
+  id: string,
+  display_name: string,
+  username: string,
+  header_static: string,
+  avatar_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  note: string,
+  url: string,
+  created_at: string
+};
+*/
 type State = {
   error: null | Object,
   isLoaded: boolean,
@@ -57,8 +71,14 @@ class Profile extends React.Component<Props, State> {
   }
 
   getUserInfo = () => {
-    const { match } = this.props;
-    const userId: ?string = match.params.id;
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    let userId: ?string = id;
+    const errorWatchdog: string = "1";
+    if (userId === null || userId === undefined) userId = errorWatchdog;
 
     fetch(
       `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}?access_token=${REACT_APP_SECRET_KEY}`

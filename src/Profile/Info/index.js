@@ -127,6 +127,9 @@ const Source = styled.a`
   letter-spacing: 0.01px;
   text-decoration: none;
   color: #1da1f2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     text-decoration: underline;
