@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import type { Match } from "react-router-dom";
 import styled from "styled-components";
 import Tweet from "./Tweet";
 
@@ -14,7 +15,10 @@ const REACT_APP_SECRET_KEY: string =
     : "";
 */
 
-type Props = {};
+type Props = {
+  id: number | string,
+  match: Match
+};
 
 type State = {
   error: boolean,
@@ -34,15 +38,6 @@ class Posts extends React.Component<Props, State> {
     error: false,
     tweets: []
   };
-
-  /*
-  const env = process.env || {};
-    const secretKey = env.REACT_APP_SECRET_KEY;
-    if (!secretKey) throw new Error("missing API key");
-    const url = `https://twitter-demo.erodionov.ru/api/v1/accounts/${
-      this.id.match.url
-    }/statuses?access_token=${REACT_APP_SECRET_KEY}`;
-*/
 
   componentDidMount() {
     const env = process.env || {};
