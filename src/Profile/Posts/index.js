@@ -8,13 +8,6 @@ const TweetList = styled.div`
   background-color: white;
 `;
 
-/*
-const REACT_APP_SECRET_KEY: string =
-  process.env.REACT_APP_SECRET_KEY != null
-    ? process.env.REACT_APP_SECRET_KEY
-    : "";
-*/
-
 type Props = {
   match: Match
 };
@@ -44,14 +37,6 @@ type State = {
 };
 
 class Posts extends React.Component<Props, State> {
-  /*
-  constructor(match: any) {
-    super(match);
-    this.id = match.url;
-    console.log(match.url);
-  }
-  */
-
   state = {
     error: false,
     tweets: []
