@@ -23,29 +23,10 @@ const ProfileFace = styled.div`
   justify-content: space-between;
 `;
 
-const REACT_APP_SECRET_KEY: string =
-  process.env.REACT_APP_SECRET_KEY != null
-    ? process.env.REACT_APP_SECRET_KEY
-    : "";
-
 type Props = {
   match: Match
 };
-/*
-type info = {
-  id: string,
-  display_name: string,
-  username: string,
-  header_static: string,
-  avatar_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  note: string,
-  url: string,
-  created_at: string
-};
-*/
+
 type State = {
   error: null | Object,
   isLoaded: boolean,
@@ -76,13 +57,22 @@ class Profile extends React.Component<Props, State> {
         params: { id }
       }
     } = this.props;
-    let userId: ?string = id;
-    const errorWatchdog: string = "1";
-    if (userId === null || userId === undefined) userId = errorWatchdog;
 
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}?access_token=${REACT_APP_SECRET_KEY}`
-    )
+    const getUserId = (): string => {
+      const errorWatchdog: string = "1";
+      if (id === null || id === undefined) {
+        return errorWatchdog;
+      }
+      const userId: string = id;
+      return userId;
+    };
+
+    const env = process.env || {};
+    const secretKey = env.REACT_APP_SECRET_KEY;
+    if (!secretKey) throw new Error("missing API key");
+
+    const link: string = `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`;
+    fetch(link)
       .then(res => res.json())
       .then(
         result => {
