@@ -1,18 +1,20 @@
-import React, { Component } from "react";
+// @flow
+import React from "react";
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
-import Counter from "./Counter";
-import Navigation from "./Navigation";
+import { Link, Route, withRouter } from "react-router-dom";
+import type { Match } from "react-router-dom";
+import Counters from "./Counters";
 import Button from "../../UI/Button";
-import background from "./background.jpg";
-import optiondots from "./optiondots.svg";
+import optiondots from "./icons/optiondots.svg";
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
+  height: 100%;
+  max-height: 600px;
   width: 100%;
-  object-fit: cover;
-  will-change: transform;
   min-width: 100%;
+  will-change: transform;
+  object-fit: cover;
 `;
 
 const ProfileInfoContainer = styled.div`
@@ -45,20 +47,18 @@ const AvatarLink = styled(Link)`
 
 const Avatar = styled.img`
   border-radius: 100px;
+  width: 200px;
+  height: auto;
+`;
+
+/*
+const Avatar = styled.img`
+  border-radius: 100px;
   width: 83%;
   height: 83%;
   boder: 1px solid gainsboro;
 `;
-
-const Statistics = styled.ul`
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  min-width: 200px;
-  list-style: none;
-  justify-content: flex-start;
-  padding: 0 0px;
-`;
+*/
 
 const UserActions = styled.div`
   display: flex;
@@ -88,28 +88,26 @@ const Dropdown = styled.div`
     background-repeat: no-repeat;
   }
 `;
+type Props = {
+  match: Match,
+  background: string,
+  avatar: string
+};
 
-export default () => (
-  <header>
-    <Navigation />
+export default withRouter(({ match, background, avatar }: Props) => (
+  <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">
       <ProfileInfoContainer>
         <div className="col-xs-3">
           <ProfileBlock>
-            <AvatarLink to="/images">
-              <Avatar src="img/avatar-max.png" />
+            <AvatarLink to={match.url}>
+              <Avatar src={avatar} />
             </AvatarLink>
           </ProfileBlock>
         </div>
         <div className="col-xs-6">
-          <Statistics>
-            <Counter link="/EveryInteract" text="Tweets" count={8058} />
-            <Counter link="/following" text="Following" count={721} />
-            <Counter link="/followers" text="Followers" count={1815} />
-            <Counter link="/likes" text="Likes" count={460} />
-            <Counter link="/lists" text="Lists" count={2} />
-          </Statistics>
+          <Route component={Counters} />
         </div>
         <div className="col-xs-3">
           <UserActions>
@@ -119,5 +117,5 @@ export default () => (
         </div>
       </ProfileInfoContainer>
     </div>
-  </header>
-);
+  </React.Fragment>
+));

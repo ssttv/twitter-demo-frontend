@@ -1,9 +1,11 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Button from "../../../UI/Button";
-import cross from "./cross.svg";
-import checkmark from "./checkmark.svg";
+import Button from "../../UI/Button";
+import cross from "../icons/cross.svg";
+import checkmark from "../icons/checkmark.svg";
+import suggests from "../../data/suggests";
 
 const FollowButton = styled(Button)`
   padding: 7px 20px;
@@ -84,21 +86,25 @@ const FullName = styled.p`
   display: inline-block;
 `;
 
-export default ({ src, to, name, status, handle }) => (
-  <User>
-    <Recommended>
-      <Info>
-        <UserLink to={to}>
-          <Avatar src={src} alt="avatar" />
-          <FullName>
-            <Name>{name}</Name>
-            {status && <Status src={checkmark} />}
-          </FullName>
-          <UserHandle>{handle}</UserHandle>
-        </UserLink>
-        <FollowButton primary>Follow</FollowButton>
-      </Info>
-      <Delete src={cross} alt="remove from suggestions" />
-    </Recommended>
-  </User>
+export default () => (
+  <React.Fragment>
+    {suggests.map(suggest => (
+      <User key={suggest.id}>
+        <Recommended>
+          <Info>
+            <UserLink to={`/${suggest.username}`}>
+              <Avatar src={suggest.src} alt="avatar" />
+              <FullName>
+                <Name>{suggest.name}</Name>
+                {suggest.status && <Status src={checkmark} />}
+              </FullName>
+              <UserHandle>{`@${suggest.username}`}</UserHandle>
+            </UserLink>
+            <FollowButton primary>Follow</FollowButton>
+          </Info>
+          <Delete src={cross} alt="Remove from suggestions" />
+        </Recommended>
+      </User>
+    ))}
+  </React.Fragment>
 );

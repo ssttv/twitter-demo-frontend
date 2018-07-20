@@ -1,12 +1,12 @@
+// @flow
 import React from "react";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Suggest from "./Suggest";
 import Action from "./Action";
 import Trend from "./Trend";
 import CorporateInfo from "./CorporateInfo";
-import people from "./people.svg";
+import people from "../icons/people.svg";
 
 const Container = styled.div``;
 
@@ -63,10 +63,6 @@ const SearchLink = styled(Link)`
 
 const Trends = styled.div``;
 
-const TrendsContainer = styled.div`
-  margin-top: 14px;
-`;
-
 const SearchIcon = styled.img``;
 export default () => (
   <Container>
@@ -79,27 +75,7 @@ export default () => (
         </Actions>
       </SideTitle>
       <Suggestions>
-        <Suggest
-          src={`${process.env.PUBLIC_URL}/img/rec-avatar-1.png`}
-          to="/rec1"
-          name="AppleInsider"
-          status={false}
-          handle="@appleinsider"
-        />
-        <Suggest
-          src={`${process.env.PUBLIC_URL}/img/rec-avatar-2.png`}
-          to="/rec2"
-          name="Creode"
-          status
-          handle="@Creode"
-        />
-        <Suggest
-          src={`${process.env.PUBLIC_URL}/img/rec-avatar-3.png`}
-          to="/rec3"
-          name="Epiphany Search"
-          status={false}
-          handle="@Epiphanysearch"
-        />
+        <Suggest />
       </Suggestions>
       <SearchLink to="/all_people">
         <SearchIcon src={people} />
@@ -112,18 +88,7 @@ export default () => (
           <Desc>United Kingdom Trends</Desc>
           <Action to="/change" text="Change" />
         </SideTitle>
-        <TrendsContainer>
-          <Trend tag="#BringYourDogToWorkDay" text={null} tweets={null} />
-          <Trend tag="#FridayFeeling" text={null} tweets={12100} />
-          <Trend
-            tag="#BrexitAnniversary"
-            text="It’s one year since the UK voted to leave the European Union"
-            tweets={null}
-          />
-          <Trend tag="HMS Queen Elizabeth" text={null} tweets={1036} />
-          <Trend tag="Joe Budden" text={null} tweets={1036} />
-          <Trend tag="Trident" text={null} tweets={6136} />
-        </TrendsContainer>
+        <Trend />
       </Trends>
     </Sidebar>
     <CorporateInfo />
