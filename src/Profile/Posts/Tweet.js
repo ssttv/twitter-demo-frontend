@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+// @flow
+import * as React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import styledMap from "styled-map";
@@ -178,18 +179,43 @@ const TweetUnit = styled.section`
   }
 `;
 
-class Tweet extends Component {
+const REACT_APP_SECRET_KEY: string =
+  process.env.REACT_APP_SECRET_KEY != null
+    ? process.env.REACT_APP_SECRET_KEY
+    : "";
+
+type Props = {
+  id: number | string,
+  pinned: boolean,
+  avatar: string,
+  personNick: string,
+  person: string,
+  uri: string,
+  date: string,
+  content: string,
+  media: Object,
+  comments: number,
+  retweets: number,
+  likes: number,
+  messages: number,
+  activeLike: boolean
+};
+
+type State = {
+  error: boolean,
+  card: Object
+};
+
+class Tweet extends React.Component<Props, State> {
   state = {
     error: false,
-    card: []
+    card: {}
   };
 
   componentDidMount() {
     const { id } = this.props;
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${
-        process.env.REACT_APP_SECRET_KEY
-      }`
+      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${REACT_APP_SECRET_KEY}`
     )
       .then(res => res.json())
       .then(

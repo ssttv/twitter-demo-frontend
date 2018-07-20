@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import { IntlProvider } from "react-intl";
@@ -19,6 +20,7 @@ export default function App() {
             <Route exact path="/about" component={Dummy} />
             <Route exact path="/all_people" component={Dummy} />
             <Route exact path="/view_all" component={Dummy} />
+            <Route exact path="/update" component={Dummy} />
             <Route exact path="/change" component={Dummy} />
             <Route exact path="/support" component={Dummy} />
             <Route exact path="/terms" component={Dummy} />

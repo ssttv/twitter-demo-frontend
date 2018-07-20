@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -126,6 +127,9 @@ const Source = styled.a`
   letter-spacing: 0.01px;
   text-decoration: none;
   color: #1da1f2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     text-decoration: underline;
@@ -168,6 +172,18 @@ const Interact = styled.button`
   }
 `;
 
+type Props = {
+  handle: string,
+  name: string,
+  verifiedStatus: boolean,
+  followStatus: boolean,
+  bio: string,
+  city: string,
+  country: string,
+  website: string,
+  date: string
+};
+
 export default ({
   handle,
   name,
@@ -178,7 +194,7 @@ export default ({
   country,
   website,
   date
-}) => (
+}: Props) => (
   <ProfileContainer>
     <ProfileTitle>
       <UserHandle>

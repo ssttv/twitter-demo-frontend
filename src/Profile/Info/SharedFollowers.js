@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -39,7 +40,7 @@ const StLink = styled(Link)``;
 export default () => (
   <Container>
     <Title to="/shared_followers" src={person} alt="follower icon">
-      {followers.length} Followers you now
+      `{followers.length} Followers you now`
     </Title>
     <Followers>
       {followers.filter(follower => follower.id <= 10).map(follower => (

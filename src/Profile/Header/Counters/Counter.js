@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
@@ -54,7 +55,15 @@ const Stat = styled.li`
   cursor: pointer;
 `;
 
-export default ({ url, to, active, text, count }) => (
+type Props = {
+  url: string,
+  to: string,
+  active?: Object,
+  text: string,
+  count: number
+};
+
+const Counter = ({ url, to, active, text, count }: Props) => (
   <Stat>
     <InfoLink to={`${url}${to}`} isActive={active}>
       <Text>{text}</Text>
@@ -64,3 +73,9 @@ export default ({ url, to, active, text, count }) => (
     </InfoLink>
   </Stat>
 );
+
+Counter.defaultProps = {
+  active: undefined
+};
+
+export default Counter;

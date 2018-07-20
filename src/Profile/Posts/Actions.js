@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import comment from "../icons/comment.svg";
@@ -49,7 +50,15 @@ const Count = styled.span`
   color: #667580;
 `;
 
-export default ({ comments, retweets, likes, activeLike, messages }) => (
+type Props = {
+  comments: number,
+  retweets: number,
+  likes: number,
+  activeLike: boolean,
+  messages: number
+};
+
+export default ({ comments, retweets, likes, activeLike, messages }: Props) => (
   <Actions>
     <Action>
       <Image alt="comments" src={comment} />
@@ -61,9 +70,9 @@ export default ({ comments, retweets, likes, activeLike, messages }) => (
     </Action>
     <Action>
       {activeLike ? (
-        <Image alt="likes" src={like} />
-      ) : (
         <Image alt="likes" src={likeActive} />
+      ) : (
+        <Image alt="likes" src={like} />
       )}
       <Count>{likes}</Count>
     </Action>

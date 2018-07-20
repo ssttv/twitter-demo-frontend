@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+// @flow
+import * as React from "react";
+import type { Match } from "react-router-dom";
 import styled from "styled-components";
 import Tweet from "./Tweet";
 
@@ -6,23 +8,52 @@ const TweetList = styled.div`
   background-color: white;
 `;
 
-class Posts extends Component {
-  constructor(match) {
-    super(match);
-    this.id = match;
-  }
+type Props = {
+  match: Match
+};
 
+type tweet = {
+  id: number | string,
+  pinned: boolean,
+  account: {
+    avatar_static: string,
+    username: string,
+    display_name: string
+  },
+  uri: string,
+  created_at: string,
+  content: string,
+  media_attachments: Object,
+  comments: number,
+  reblogs_count: number,
+  favourites_count: number,
+  messages: number,
+  favourited: boolean
+};
+
+type State = {
+  error: boolean,
+  tweets: Array<tweet>
+};
+
+class Posts extends React.Component<Props, State> {
   state = {
     error: false,
     tweets: []
   };
 
   componentDidMount() {
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${this.id.match.url.slice(
-        1
-      )}/statuses?access_token=${process.env.REACT_APP_SECRET_KEY}`
-    )
+    const {
+      match: { url }
+    } = this.props;
+
+    const env = process.env || {};
+    const secretKey = env.REACT_APP_SECRET_KEY;
+    if (!secretKey) throw new Error("missing API key");
+
+    const link: string = `https://twitter-demo.erodionov.ru/api/v1/accounts/${url}/statuses?access_token=${secretKey}`;
+
+    fetch(link)
       .then(res => res.json())
       .then(
         result => {
@@ -46,23 +77,23 @@ class Posts extends Component {
 
     return (
       <TweetList>
-        {tweets.map(tweet => (
+        {tweets.map(post => (
           <Tweet
-            key={tweet.id}
-            id={tweet.id}
-            pinned={tweet.pinned}
-            avatar={tweet.account.avatar_static}
-            personNick={tweet.account.username}
-            person={tweet.account.display_name}
-            uri={tweet.uri}
-            date={tweet.created_at}
-            content={tweet.content}
-            media={tweet.media_attachments}
-            comments={tweet.comments}
-            retweets={tweet.reblogs_count}
-            likes={tweet.favourites_count}
-            messages={tweet.messages}
-            activeLike={tweet.activeLike}
+            key={post.id}
+            id={post.id}
+            pinned={post.pinned}
+            avatar={post.account.avatar_static}
+            personNick={post.account.username}
+            person={post.account.display_name}
+            uri={post.uri}
+            date={post.created_at}
+            content={post.content}
+            media={post.media_attachments}
+            comments={post.comments}
+            retweets={post.reblogs_count}
+            likes={post.favourites_count}
+            messages={post.messages}
+            activeLike={post.favourited}
           />
         ))}
       </TweetList>

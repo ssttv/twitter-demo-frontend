@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+// @flow
+import * as React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { Route, Switch, Redirect } from "react-router-dom";
+import type { Match } from "react-router-dom";
 import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
@@ -21,18 +23,48 @@ const ProfileFace = styled.div`
   justify-content: space-between;
 `;
 
-class Profile extends Component {
+type Props = {
+  match: Match
+};
+
+type State = {
+  error: ?Object,
+  isLoaded: boolean,
+  userInfo: {
+    id: string,
+    username: string,
+    acct: string,
+    display_name: string,
+    locked: boolean,
+    bot: boolean,
+    createdf_at: string,
+    note: string,
+    url: string,
+    avatar: string,
+    avatar_static: string,
+    header: string,
+    header_static: string,
+    followers_count: number,
+    following_count: number,
+    statuses_count: number,
+    emojis: (?Object)[],
+    fields: (?Object)[],
+    error?: string
+  }
+};
+
+class Profile extends React.Component<Props, State> {
   state = {
     error: null,
     isLoaded: false,
-    userInfo: []
+    userInfo: {}
   };
 
   componentDidMount() {
     this.getUserInfo();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { match } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       this.getUserInfo();
@@ -40,12 +72,27 @@ class Profile extends Component {
   }
 
   getUserInfo = () => {
-    const { match } = this.props;
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${
-        match.params.id
-      }?access_token=${process.env.REACT_APP_SECRET_KEY}`
-    )
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+
+    const getUserId = (): string => {
+      const errorWatchdog: string = "1";
+      if (id === null || id === undefined) {
+        return errorWatchdog;
+      }
+      const userId: string = id;
+      return userId;
+    };
+
+    const env = process.env || {};
+    const secretKey = env.REACT_APP_SECRET_KEY;
+    if (!secretKey) throw new Error("missing API key");
+
+    const link: string = `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`;
+    fetch(link)
       .then(res => res.json())
       .then(
         result => {

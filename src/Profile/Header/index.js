@@ -1,6 +1,8 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { Link, Route, withRouter } from "react-router-dom";
+import type { Match } from "react-router-dom";
 import Counters from "./Counters";
 import Button from "../../UI/Button";
 import optiondots from "./icons/optiondots.svg";
@@ -8,6 +10,7 @@ import optiondots from "./icons/optiondots.svg";
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
   height: 100%;
+  max-height: 600px;
   width: 100%;
   min-width: 100%;
   will-change: transform;
@@ -85,8 +88,13 @@ const Dropdown = styled.div`
     background-repeat: no-repeat;
   }
 `;
+type Props = {
+  match: Match,
+  background: string,
+  avatar: string
+};
 
-export default withRouter(({ match, background, avatar }) => (
+export default withRouter(({ match, background, avatar }: Props) => (
   <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">

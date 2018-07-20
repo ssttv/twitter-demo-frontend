@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
@@ -35,7 +36,13 @@ const Text = styled.span`
   line-height: 15px;
 `;
 
-export default ({ to, src, alt }) => (
+type Props = {
+  to: string,
+  src: string,
+  alt: ?string
+};
+
+export default ({ to, src, alt }: Props) => (
   <Crumb>
     <CrumbLink to={to} exact>
       <Icon src={src} alt={alt} />

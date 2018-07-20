@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "date-fns": "^1.29.0",
+    "flow-bin": "^0.76.0",
+    "flow-typed": "^2.5.1",
     "flexboxgrid2": "^7.2.1",
     "normalize.css": "^8.0.0",
     "react": "^16.4.1",

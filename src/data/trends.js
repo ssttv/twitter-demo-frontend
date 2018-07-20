@@ -1,4 +1,13 @@
-const trends = [
+// @flow
+
+type trend = {
+  id: number,
+  tag: string,
+  text?: string | null,
+  tweets?: number | null
+};
+
+const trends: Array<trend> = [
   {
     id: 1,
     tag: "#BringYourDogToWorkDay",
