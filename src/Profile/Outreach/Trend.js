@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import { Link } from "react-router-dom";
 import { FormattedNumber } from "react-intl";
@@ -51,7 +52,7 @@ export default function() {
             <TrendLink to={`/search?q=${trend.tag}`}>
               <Headline>{trend.tag}</Headline>
               <Text>{trend.text}</Text>
-              {trend.tweets > 0 && (
+              {trend.tweets != null && (
                 <Counter>
                   <FormattedNumber value={trend.tweets} />
                   {trend.tweets > 1 ? " Tweets" : " Tweet"}

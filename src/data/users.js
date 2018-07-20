@@ -1,3 +1,5 @@
+// @flow
+
 const users = [
   {
     id: 1,

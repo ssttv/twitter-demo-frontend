@@ -1,9 +1,11 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { dateFormat } from "../../data/utils";
 import mapmarker from "../icons/mapmarker.svg";
 import linkimg from "../icons/linkimg.svg";
-import date from "../icons/date.svg";
+import calendar from "../icons/calendar.svg";
 import checkmark from "../icons/checkmark.svg";
 
 const ProfileTitle = styled.div``;
@@ -125,6 +127,9 @@ const Source = styled.a`
   letter-spacing: 0.01px;
   text-decoration: none;
   color: #1da1f2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     text-decoration: underline;
@@ -139,9 +144,7 @@ const DateIcon = styled.img``;
 
 const Date = Place.extend``;
 
-const Month = Country.extend``;
-
-const Year = Month.extend``;
+const Pick = Country.extend``;
 
 const Actions = styled.div`
   padding-top: 18px;
@@ -169,6 +172,18 @@ const Interact = styled.button`
   }
 `;
 
+type Props = {
+  handle: string,
+  name: string,
+  verifiedStatus: boolean,
+  followStatus: boolean,
+  bio: string,
+  city: string,
+  country: string,
+  website: string,
+  date: string
+};
+
 export default ({
   handle,
   name,
@@ -178,9 +193,8 @@ export default ({
   city,
   country,
   website,
-  month,
-  year
-}) => (
+  date
+}: Props) => (
   <ProfileContainer>
     <ProfileTitle>
       <UserHandle>
@@ -196,7 +210,7 @@ export default ({
         <TextFollow>Follows you</TextFollow>
       </FollowContainer>
     </ProfileTitle>
-    <ProfileBio>{bio}</ProfileBio>
+    <ProfileBio dangerouslySetInnerHTML={{ __html: bio }} />
     <Location>
       <LocationIcon alt="mapmarker" src={mapmarker} />
       <Place>
@@ -209,11 +223,9 @@ export default ({
       <Source href={website}>{website}</Source>
     </Website>
     <DateOfReg>
-      <DateIcon alt="Registration date" src={date} />
+      <DateIcon alt="Registration date" src={calendar} />
       <Date>
-        Joined
-        <Month>{month}</Month>
-        <Year>{year}</Year>
+        Joined <Pick>{dateFormat(date)}</Pick>
       </Date>
     </DateOfReg>
     <Actions>

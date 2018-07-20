@@ -1,17 +1,20 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { Link, Route, withRouter } from "react-router-dom";
+import type { Match } from "react-router-dom";
 import Counters from "./Counters";
 import Button from "../../UI/Button";
-import background from "./background.jpg";
 import optiondots from "./icons/optiondots.svg";
 
 const ProfileHeader = styled.img`
   backface-visibility: hidden;
+  height: 100%;
+  max-height: 600px;
   width: 100%;
-  object-fit: cover;
-  will-change: transform;
   min-width: 100%;
+  will-change: transform;
+  object-fit: cover;
 `;
 
 const ProfileInfoContainer = styled.div`
@@ -44,10 +47,18 @@ const AvatarLink = styled(Link)`
 
 const Avatar = styled.img`
   border-radius: 100px;
+  width: 200px;
+  height: auto;
+`;
+
+/*
+const Avatar = styled.img`
+  border-radius: 100px;
   width: 83%;
   height: 83%;
   boder: 1px solid gainsboro;
 `;
+*/
 
 const UserActions = styled.div`
   display: flex;
@@ -77,8 +88,13 @@ const Dropdown = styled.div`
     background-repeat: no-repeat;
   }
 `;
+type Props = {
+  match: Match,
+  background: string,
+  avatar: string
+};
 
-export default withRouter(({ match }) => (
+export default withRouter(({ match, background, avatar }: Props) => (
   <React.Fragment>
     <ProfileHeader alt="Profile Header" src={background} />
     <div className="container">
@@ -86,7 +102,7 @@ export default withRouter(({ match }) => (
         <div className="col-xs-3">
           <ProfileBlock>
             <AvatarLink to={match.url}>
-              <Avatar src="/img/avatar-max.png" />
+              <Avatar src={avatar} />
             </AvatarLink>
           </ProfileBlock>
         </div>

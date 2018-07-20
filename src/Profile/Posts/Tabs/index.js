@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
@@ -12,8 +13,11 @@ const Tabs = styled.ul`
   list-style: none;
   background-color: white;
 `;
+type Props = {
+  match: Object
+};
 
-export default withRouter(({ match }) => (
+export default withRouter(({ match }: Props) => (
   <Tabs>
     <Tab to={`${match.url}`}>Tweets</Tab>
     <Tab to={`${match.url}/with-replies`}>Tweets & replies </Tab>

@@ -1,244 +1,104 @@
-import React from "react";
+// @flow
+import * as React from "react";
+import type { Match } from "react-router-dom";
 import styled from "styled-components";
-import { Link, withRouter } from "react-router-dom";
-import styledMap from "styled-map";
-import { findUser } from "../../data/utils";
-import Actions from "./Actions";
-import pinned from "../icons/pinned.svg";
-import tweets from "../../data/tweets";
-
-const TweetContent = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const AvatarContainer = styled.div`
-  padding-right: 10px;
-`;
-
-const Avatar = styled.img`
-  width: 45px;
-  height: 45px;
-  display: block;
-  margin-top: 10px;
-  border-radius: 50%;
-`;
-
-const ContentContainer = styled.div``;
-
-const Pinned = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 38px;
-`;
-
-const PinnedText = styled.p`
-  margin: 0;
-  font-size: 12px;
-  line-height: 14px;
-  color: #707e88;
-  padding-left: 6px;
-`;
-
-const PinnedIcon = styled.img``;
-
-const Title = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 5px;
-`;
-
-const Person = styled.span``;
-
-const PersonLink = styled(Link)`
-  font-size: 16px;
-  line-height: 16px;
-  color: black;
-  text-decoration: none;
-  margin-right: 4px;
-  cursor: pointer;
-
-  &:hover ${Person} {
-    text-decoration: underline;
-  }
-`;
-
-const Username = styled.span`
-  padding-left: 2px;
-  font-size: 14px;
-  line-height: 16px;
-  color: #697787;
-`;
-
-const Dotted = styled.span`
-  color: #697787;
-`;
-
-const Date = styled.div`
-  padding-left: 2px;
-`;
-
-const DateLink = styled(Link)`
-  font-size: 14px;
-  line-height: 16px;
-  color: #697787;
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Message = styled.p`
-  font-size: ${styledMap({
-    short: "16px",
-    default: "25px"
-  })};
-
-  line-height: ${styledMap({
-    short: "22px",
-    default: "30px"
-  })};
-
-  font-weight: 200;
-  color: black;
-  margin: 2px 0 8px 0;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-`;
-
-const Image = styled.img`
-  width: ${styledMap({
-    shortImg: "126px",
-    default: "100%"
-  })};
-
-  height: ${styledMap({
-    shortImg: "126px",
-    default: "100%"
-  })};
-
-  backface-visibility: hidden;
-  will-change: transform;
-  max-width: 100%;
-`;
-
-const Info = styled.div`
-  font-size: 15px;
-  line-height: 18px;
-  border: 1px solid #e1e8ed;
-  border-left: none;
-  padding: 6px 2px 4px 9px;
-`;
-
-const InfoTitle = styled.span`
-  font-weight: 500;
-`;
-
-const InfoText = styled.p`
-  margin: 0;
-  max-height: 75px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-const InfoLink = styled.a`
-  font-weight: normal;
-  color: #697787;
-  text-decoration: none;
-  opacity: 0.8;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const ShortInfo = styled.div`
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  border: 1px solid transparent;
-
-  &:hover {
-    border: 1px solid #e1e8ed;
-  }
-`;
-
-const Tweet = styled.section`
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid #e6ecf0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f5f8fa;
-  }
-`;
+import Tweet from "./Tweet";
 
 const TweetList = styled.div`
   background-color: white;
 `;
 
-export default withRouter(({ match }) => (
-  <TweetList>
-    {tweets.map(tweet => (
-      <Tweet key={tweet.id}>
-        {tweet.statusPin && (
-          <Pinned>
-            <PinnedIcon alt="Pinned image" src={pinned} />
-            <PinnedText>Pinned Tweet</PinnedText>
-          </Pinned>
-        )}
-        <TweetContent>
-          <AvatarContainer>
-            <Avatar src={tweet.userAvatar} />
-          </AvatarContainer>
-          <ContentContainer>
-            <Title>
-              <PersonLink to={`${match.url}`}>
-                <Person>{findUser(match.url.slice(1), "name")}</Person>
-                <Username>@{match.url.slice(1)}</Username>
-              </PersonLink>
-              <Date>
-                <Dotted> • </Dotted>
-                <DateLink to={tweet.toDate}>{tweet.dateText}</DateLink>
-              </Date>
-            </Title>
-            {tweet.tweetText.split(" ").length >= 16 ? (
-              <Message short>{tweet.tweetText}</Message>
-            ) : (
-              <Message>{tweet.tweetText}</Message>
-            )}
-            <ShortInfo>
-              {tweet.infoSrc &&
-                !tweet.infoPromo && (
-                  <Image alt="Tweet image" src={tweet.infoSrc} />
-                )}
-              {tweet.infoPromo && (
-                <React.Fragment>
-                  <Image alt="Tweet image" src={tweet.infoSrc} shortImg />
-                  <Info>
-                    <InfoTitle>{tweet.infoTitle}</InfoTitle>
-                    <InfoText>{tweet.infoText}</InfoText>
-                    <InfoLink>{tweet.toInfo}</InfoLink>
-                  </Info>
-                </React.Fragment>
-              )}
-            </ShortInfo>
-            <Actions
-              comments={tweet.comments}
-              retweets={tweet.retweets}
-              likes={tweet.likes}
-              messages={tweet.messages}
-              activeLike={tweet.activeLike}
-            />
-          </ContentContainer>
-        </TweetContent>
-      </Tweet>
-    ))}
-  </TweetList>
-));
+type Props = {
+  match: Match
+};
+
+type tweet = {
+  id: number | string,
+  pinned: boolean,
+  account: {
+    avatar_static: string,
+    username: string,
+    display_name: string
+  },
+  uri: string,
+  created_at: string,
+  content: string,
+  media_attachments: Object,
+  comments: number,
+  reblogs_count: number,
+  favourites_count: number,
+  messages: number,
+  favourited: boolean
+};
+
+type State = {
+  error: boolean,
+  tweets: Array<tweet>
+};
+
+class Posts extends React.Component<Props, State> {
+  state = {
+    error: false,
+    tweets: []
+  };
+
+  componentDidMount() {
+    const {
+      match: { url }
+    } = this.props;
+
+    const env = process.env || {};
+    const secretKey = env.REACT_APP_SECRET_KEY;
+    if (!secretKey) throw new Error("missing API key");
+
+    const link: string = `https://twitter-demo.erodionov.ru/api/v1/accounts/${url}/statuses?access_token=${secretKey}`;
+
+    fetch(link)
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            tweets: result
+          });
+        },
+        error => {
+          this.setState({
+            error
+          });
+        }
+      );
+  }
+
+  render() {
+    const { error, tweets } = this.state;
+    if (error) {
+      return <h3>Error rendering tweets</h3>;
+    }
+
+    return (
+      <TweetList>
+        {tweets.map(post => (
+          <Tweet
+            key={post.id}
+            id={post.id}
+            pinned={post.pinned}
+            avatar={post.account.avatar_static}
+            personNick={post.account.username}
+            person={post.account.display_name}
+            uri={post.uri}
+            date={post.created_at}
+            content={post.content}
+            media={post.media_attachments}
+            comments={post.comments}
+            retweets={post.reblogs_count}
+            likes={post.favourites_count}
+            messages={post.messages}
+            activeLike={post.favourited}
+          />
+        ))}
+      </TweetList>
+    );
+  }
+}
+
+export default Posts;

@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
@@ -25,7 +26,11 @@ const Return = styled(Link)`
   }
 `;
 
-export const Error404 = ({ location }) => (
+type Props = {
+  location: Object
+};
+
+export const Error404 = ({ location }: Props) => (
   <React.Fragment>
     <Helmet>
       <title>Error 404</title>
@@ -46,7 +51,7 @@ export const GenericError = () => (
   </React.Fragment>
 );
 
-export const Dummy = ({ location }) => (
+export const Dummy = ({ location }: Props) => (
   <React.Fragment>
     <Helmet>
       <title>{location.pathname}</title>
