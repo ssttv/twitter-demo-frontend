@@ -37,7 +37,7 @@ type State = {
     display_name: string,
     locked: boolean,
     bot: boolean,
-    createdf_at: string,
+    created_at: string,
     note: string,
     url: string,
     avatar: string,
