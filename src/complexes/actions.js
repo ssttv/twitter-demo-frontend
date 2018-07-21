@@ -1,14 +1,14 @@
 // @flow
 function userInfoIsLoading(bool) {
   return {
-    type: "USER_DATA_IS_LOADING",
+    type: "USER_INFO_IS_LOADING",
     isLoading: bool
   };
 }
 
 function userInfoHasError(bool) {
   return {
-    type: "USER_DATA_HAS_ERROR",
+    type: "USER_INFO_HAS_ERROR",
     hasError: bool
   };
 }

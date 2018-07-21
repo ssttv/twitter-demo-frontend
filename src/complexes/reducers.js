@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 
 function userInfoIsLoading(state = false, action) {
   switch (action.type) {
-    case "USER_DATA_IS_LOADING":
+    case "USER_INFO_IS_LOADING":
       return action.isLoading;
 
     default:
@@ -13,7 +13,7 @@ function userInfoIsLoading(state = false, action) {
 
 function userInfoHasError(state = false, action) {
   switch (action.type) {
-    case "USER_DATA_HAS_ERROR":
+    case "USER_INFO_HAS_ERROR":
       return action.hasError;
 
     default:
