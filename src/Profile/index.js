@@ -30,9 +30,19 @@ const ProfileFace = styled.div`
   justify-content: space-between;
 `;
 
+const Splash = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  font-size: 22px;
+`;
+
 type Props = {
   match: Match,
   userInfo: AccountData,
+  hasError: boolean,
+  isLoading: boolean,
   fetchUserInfo: Function
 };
 
@@ -64,7 +74,24 @@ class Profile extends React.Component<Props> {
   }
 
   render() {
-    const { userInfo } = this.props;
+    const { userInfo, hasError, isLoading } = this.props;
+
+    if (hasError) {
+      return <Splash>Error</Splash>;
+    }
+
+    if (!userInfo) {
+      return <Splash>User info not found</Splash>;
+    }
+
+    if (userInfo && userInfo.error) {
+      return <Splash>User could not be identified</Splash>;
+    }
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <main>
         <Helmet>
