@@ -51,15 +51,6 @@ const Avatar = styled.img`
   height: auto;
 `;
 
-/*
-const Avatar = styled.img`
-  border-radius: 100px;
-  width: 83%;
-  height: 83%;
-  boder: 1px solid gainsboro;
-`;
-*/
-
 const UserActions = styled.div`
   display: flex;
   flex-direction: row;
