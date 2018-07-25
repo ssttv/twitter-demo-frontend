@@ -31,11 +31,12 @@ const ProfileFace = styled.div`
 `;
 
 const Splash = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 180px;
-  font-size: 22px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
 `;
 
 type Props = {
