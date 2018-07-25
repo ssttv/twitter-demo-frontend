@@ -2,14 +2,20 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import type { Match } from "react-router-dom";
+import { connect } from "react-redux";
+import addData from "../complexes/actions";
 import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
 import SharedFollowers from "./Info/SharedFollowers";
 import Feeds from "./Feeds";
 import Outreach from "./Outreach";
+
+const env = process.env || {};
+const secretKey = env.REACT_APP_SECRET_KEY;
+if (!secretKey) throw new Error("missing API key");
 
 const Container = styled.div`
   background-color: #e6ecf0;
@@ -23,61 +29,41 @@ const ProfileFace = styled.div`
   justify-content: space-between;
 `;
 
+type AccountData = {
+  id: string,
+  username: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+  error?: string
+};
+
 type Props = {
-  match: Match
+  match: Match,
+  userInfo: AccountData,
+  addDataToStore: Function
 };
 
-type State = {
-  error: ?Object,
-  isLoaded: boolean,
-  userInfo:
-    | {
-        id: string,
-        username: string,
-        acct: string,
-        display_name: string,
-        locked: boolean,
-        bot: boolean,
-        created_at: string,
-        note: string,
-        url: string,
-        avatar: string,
-        avatar_static: string,
-        header: string,
-        header_static: string,
-        followers_count: number,
-        following_count: number,
-        statuses_count: number,
-        emojis: (?Object)[],
-        fields: (?Object)[],
-        error?: string
-      }
-    | Object
-};
-
-class Profile extends React.Component<Props, State> {
-  state = {
-    error: null,
-    isLoaded: false,
-    userInfo: {}
-  };
-
+class Profile extends React.Component<Props> {
   componentDidMount() {
-    this.getUserInfo();
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const { match } = this.props;
-    if (prevProps.match.params.id !== match.params.id) {
-      this.getUserInfo();
-    }
-  }
-
-  getUserInfo = () => {
     const {
       match: {
         params: { id }
-      }
+      },
+      addDataToStore
     } = this.props;
 
     const getUserId = (): string => {
@@ -89,43 +75,52 @@ class Profile extends React.Component<Props, State> {
       return userId;
     };
 
-    const env = process.env || {};
-    const secretKey = env.REACT_APP_SECRET_KEY;
-    if (!secretKey) throw new Error("missing API key");
-
-    const link: string = `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`;
-    fetch(link)
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`
+    )
       .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            isLoaded: true,
-            userInfo: result
-          });
+      .then(data => {
+        addDataToStore(data);
+      });
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const { match } = this.props;
+
+    if (prevProps.match.params.id !== match.params.id) {
+      const {
+        match: {
+          params: { id }
         },
-        err => {
-          this.setState({
-            isLoaded: false,
-            error: err
-          });
+        addDataToStore
+      } = this.props;
+
+      const getUserId = (): string => {
+        const errorWatchdog: string = "1";
+        if (id === null || id === undefined) {
+          return errorWatchdog;
         }
-      );
-  };
+        const userId: string = id;
+        return userId;
+      };
+
+      fetch(
+        `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          addDataToStore(data);
+        });
+    }
+  }
 
   render() {
-    const { error, isLoaded, userInfo } = this.state;
-    if (error) {
-      return <Redirect to="/error" />;
-    }
-    if (!isLoaded) {
-      return <h3>Loading in progress</h3>;
-    }
-
+    const { userInfo } = this.props;
     return (
       <main>
         <Helmet>
           <title>
-            {userInfo.display_name} (@{userInfo.username})
+            {`${userInfo.display_name}`} (@{`${userInfo.username}`})
           </title>
         </Helmet>
         <React.Fragment>
@@ -191,4 +186,19 @@ class Profile extends React.Component<Props, State> {
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return { userInfo: state.account.userInfo };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addDataToStore: data => {
+      dispatch(addData(data));
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);

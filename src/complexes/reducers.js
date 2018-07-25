@@ -1,38 +1,14 @@
-// @flow
 import { combineReducers } from "redux";
 
-function userInfoIsLoading(state = false, action) {
+const account = (state = { userInfo: {} }, action) => {
   switch (action.type) {
-    case "USER_INFO_IS_LOADING":
-      return action.isLoading;
-
+    case "ADD_USER_INFO":
+      return { ...state, userInfo: action.data };
     default:
       return state;
   }
-}
-
-function userInfoHasError(state = false, action) {
-  switch (action.type) {
-    case "USER_INFO_HAS_ERROR":
-      return action.hasError;
-
-    default:
-      return state;
-  }
-}
-
-function userInfo(state = [], action) {
-  switch (action.type) {
-    case "USER_INFO_FETCH_SUCCESS":
-      return action.userInfo;
-
-    default:
-      return state;
-  }
-}
+};
 
 export default combineReducers({
-  userInfo,
-  userInfoHasError,
-  userInfoIsLoading
+  account
 });
