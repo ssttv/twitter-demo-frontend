@@ -162,7 +162,7 @@ const Header = ({ userInfo }) => (
             />
             <SearchBtn alt="search-icon" src={search} />
           </Search>
-          <AvatarLink to={`${userInfo.id}`}>
+          <AvatarLink to={`/${userInfo.id}`}>
             <Avatar src={userInfo.avatar_static} />
           </AvatarLink>
           <Tweet>Tweet</Tweet>

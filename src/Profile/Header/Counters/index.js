@@ -1,7 +1,10 @@
 // @flow
 import React from "react";
 import styled from "styled-components";
-import type { Match } from "react-router-dom";
+import { connect } from "react-redux";
+import type { Match, Location } from "react-router-dom";
+import type { AccountData } from "../../../data/utils";
+import addData from "../../../complexes/actions";
 import Counter from "./Counter";
 
 const List = styled.ul`
@@ -14,7 +17,7 @@ const List = styled.ul`
   padding: 0 5px;
 `;
 
-const isMainNavActive = (match: Object, location: Object) => {
+const isMainNavActive = (match: Match, location: Location) => {
   const matches = [
     `${match.url}`,
     `${match.url}/with-replies`,
@@ -24,20 +27,31 @@ const isMainNavActive = (match: Object, location: Object) => {
 };
 
 type Props = {
-  match: Match
+  match: Match,
+  userInfo: AccountData
 };
 
-export default ({ match }: Props) => (
+const Counters = ({ match, userInfo }: Props) => (
   <List>
     <Counter
       url={match.url}
       active={isMainNavActive}
       to=""
       text="Tweets"
-      count={8058}
+      count={userInfo.statuses_count}
     />
-    <Counter url={match.url} to="/following" text="Following" count={721} />
-    <Counter url={match.url} to="/followers" text="Followers" count={1815} />
+    <Counter
+      url={match.url}
+      to="/following"
+      text="Following"
+      count={userInfo.following_count}
+    />
+    <Counter
+      url={match.url}
+      to="/followers"
+      text="Followers"
+      count={userInfo.followers_count}
+    />
     <Counter url={match.url} to="/likes" text="Likes" count={460} />
     <Counter
       url={match.url}
@@ -48,3 +62,20 @@ export default ({ match }: Props) => (
     />
   </List>
 );
+
+function mapStateToProps(state) {
+  return { userInfo: state.account.userInfo };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addDataToStore: data => {
+      dispatch(addData(data));
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counters);

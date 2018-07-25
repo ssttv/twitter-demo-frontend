@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { Route, Switch } from "react-router-dom";
 import type { Match } from "react-router-dom";
 import { connect } from "react-redux";
+import type { AccountData } from "../data/utils";
 import addData from "../complexes/actions";
 import Header from "./Header";
 import Info from "./Info";
@@ -28,28 +29,6 @@ const ProfileFace = styled.div`
   padding-top: 10px;
   justify-content: space-between;
 `;
-
-type AccountData = {
-  id: string,
-  username: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string
-};
 
 type Props = {
   match: Match,
