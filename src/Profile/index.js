@@ -34,7 +34,7 @@ const Splash = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 180px;
   font-size: 22px;
 `;
 
@@ -89,7 +89,7 @@ class Profile extends React.Component<Props> {
     }
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <Splash>Loading...</Splash>;
     }
 
     return (
