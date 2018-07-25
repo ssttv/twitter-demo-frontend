@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import type { Match, Location } from "react-router-dom";
 import type { AccountData } from "../../../data/utils";
-import addData from "../../../complexes/actions";
+import userInfoFetchData from "../../../complexes/actions";
 import Counter from "./Counter";
 
 const List = styled.ul`
@@ -63,17 +63,15 @@ const Counters = ({ match, userInfo }: Props) => (
   </List>
 );
 
-function mapStateToProps(state) {
-  return { userInfo: state.account.userInfo };
-}
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addDataToStore: data => {
-      dispatch(addData(data));
-    }
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: id => dispatch(userInfoFetchData(id))
+});
 
 export default connect(
   mapStateToProps,

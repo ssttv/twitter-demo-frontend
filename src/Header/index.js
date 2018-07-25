@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import addData from "../complexes/actions";
+import userInfoFetchData from "../complexes/actions";
 import home from "./icons/home.svg";
 import moments from "./icons/moments.svg";
 import notifications from "./icons/notifications.svg";
@@ -172,17 +172,15 @@ const Header = ({ userInfo }) => (
   </Block>
 );
 
-function mapStateToProps(state) {
-  return { userInfo: state.account.userInfo };
-}
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addDataToStore: data => {
-      dispatch(addData(data));
-    }
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: id => dispatch(userInfoFetchData(id))
+});
 
 export default connect(
   mapStateToProps,

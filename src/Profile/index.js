@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import type { Match } from "react-router-dom";
 import { connect } from "react-redux";
 import type { AccountData } from "../data/utils";
-import addData from "../complexes/actions";
+import userInfoFetchData from "../complexes/actions";
 import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
@@ -33,7 +33,7 @@ const ProfileFace = styled.div`
 type Props = {
   match: Match,
   userInfo: AccountData,
-  addDataToStore: Function
+  fetchUserInfo: Function
 };
 
 class Profile extends React.Component<Props> {
@@ -42,25 +42,10 @@ class Profile extends React.Component<Props> {
       match: {
         params: { id }
       },
-      addDataToStore
+      fetchUserInfo
     } = this.props;
 
-    const getUserId = (): string => {
-      const errorWatchdog: string = "1";
-      if (id === null || id === undefined) {
-        return errorWatchdog;
-      }
-      const userId: string = id;
-      return userId;
-    };
-
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`
-    )
-      .then(res => res.json())
-      .then(data => {
-        addDataToStore(data);
-      });
+    fetchUserInfo(id);
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -71,25 +56,10 @@ class Profile extends React.Component<Props> {
         match: {
           params: { id }
         },
-        addDataToStore
+        fetchUserInfo
       } = this.props;
 
-      const getUserId = (): string => {
-        const errorWatchdog: string = "1";
-        if (id === null || id === undefined) {
-          return errorWatchdog;
-        }
-        const userId: string = id;
-        return userId;
-      };
-
-      fetch(
-        `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`
-      )
-        .then(res => res.json())
-        .then(data => {
-          addDataToStore(data);
-        });
+      fetchUserInfo(id);
     }
   }
 
@@ -165,17 +135,15 @@ class Profile extends React.Component<Props> {
   }
 }
 
-function mapStateToProps(state) {
-  return { userInfo: state.account.userInfo };
-}
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addDataToStore: data => {
-      dispatch(addData(data));
-    }
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: id => dispatch(userInfoFetchData(id))
+});
 
 export default connect(
   mapStateToProps,
