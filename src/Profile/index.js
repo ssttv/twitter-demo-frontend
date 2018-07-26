@@ -40,7 +40,7 @@ type Props = {
   userInfo: AccountData,
   hasError: boolean,
   isLoading: boolean,
-  fetchUserInfo: Function
+  dispatch: Function
 };
 
 class Profile extends React.Component<Props> {
@@ -49,10 +49,10 @@ class Profile extends React.Component<Props> {
       match: {
         params: { id }
       },
-      fetchUserInfo
+      dispatch
     } = this.props;
 
-    fetchUserInfo(id);
+    dispatch(userInfoFetchData(id));
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -63,10 +63,10 @@ class Profile extends React.Component<Props> {
         match: {
           params: { id }
         },
-        fetchUserInfo
+        dispatch
       } = this.props;
 
-      fetchUserInfo(id);
+      dispatch(userInfoFetchData(id));
     }
   }
 
@@ -165,11 +165,4 @@ const mapStateToProps = state => ({
   isLoading: state.userInfoIsLoading
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Profile);
+export default connect(mapStateToProps)(Profile);
