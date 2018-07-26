@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import userInfoFetchData from "../complexes/actions";
 import home from "./icons/home.svg";
 import moments from "./icons/moments.svg";
 import notifications from "./icons/notifications.svg";
@@ -173,16 +172,7 @@ const Header = ({ userInfo }) => (
 );
 
 const mapStateToProps = state => ({
-  userInfo: state.userInfo,
-  hasError: state.userInfoHasError,
-  isLoading: state.userInfoIsLoading
+  userInfo: state.userInfo
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default connect(mapStateToProps)(Header);

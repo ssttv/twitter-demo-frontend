@@ -26,20 +26,11 @@ function userInfoFetchSuccess(userInfo) {
 }
 
 export default function userInfoFetchData(id: string) {
-  const getUserId = (): string => {
-    const errorWatchdog: string = "1";
-    if (id === null || id === undefined) {
-      return errorWatchdog;
-    }
-    const userId: string = id;
-    return userId;
-  };
-
   return dispatch => {
     dispatch(userInfoIsLoading(true));
 
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${getUserId()}?access_token=${secretKey}`
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${secretKey}`
     )
       .then(response => {
         if (!response.ok) {

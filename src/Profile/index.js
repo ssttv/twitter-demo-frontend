@@ -6,17 +6,13 @@ import { Route, Switch } from "react-router-dom";
 import type { Match } from "react-router-dom";
 import { connect } from "react-redux";
 import type { AccountData } from "../data/utils";
-import userInfoFetchData from "../complexes/actions";
+import userInfoFetchData from "./actions";
 import Header from "./Header";
 import Info from "./Info";
 import Artefacts from "./Info/Artefacts";
 import SharedFollowers from "./Info/SharedFollowers";
 import Feeds from "./Feeds";
 import Outreach from "./Outreach";
-
-const env = process.env || {};
-const secretKey = env.REACT_APP_SECRET_KEY;
-if (!secretKey) throw new Error("missing API key");
 
 const Container = styled.div`
   background-color: #e6ecf0;
