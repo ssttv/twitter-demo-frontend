@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import home from "./icons/home.svg";
 import moments from "./icons/moments.svg";
@@ -10,7 +11,7 @@ import twitterLogo from "./icons/twitter.svg";
 import search from "./icons/search.svg";
 import Crumb from "./Crumb";
 
-const Header = styled.header`
+const Block = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -125,8 +126,8 @@ const Tweet = styled.button`
   }
 `;
 
-export default () => (
-  <Header>
+const Header = ({ userInfo }) => (
+  <Block>
     <div className="container">
       <Nav>
         <BreadCrumbs>
@@ -160,12 +161,18 @@ export default () => (
             />
             <SearchBtn alt="search-icon" src={search} />
           </Search>
-          <AvatarLink to="/EveryInteract">
-            <Avatar src="/img/avatar-min.png" />
+          <AvatarLink to={`/${userInfo.id}`}>
+            <Avatar src={userInfo.avatar_static} />
           </AvatarLink>
           <Tweet>Tweet</Tweet>
         </ActionsContainer>
       </Nav>
     </div>
-  </Header>
+  </Block>
 );
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo
+});
+
+export default connect(mapStateToProps)(Header);

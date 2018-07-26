@@ -2,6 +2,28 @@
 import format from "date-fns/format";
 import enLocale from "date-fns/locale/en";
 
+export type AccountData = {
+  id: string,
+  username: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+  error?: string
+};
+
 type Props = {
   tag: string,
   tweets: number
